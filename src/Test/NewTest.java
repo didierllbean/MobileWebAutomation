@@ -47,6 +47,7 @@ public class NewTest {
    driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
    
    driver.get("https://m-ecwebq.llbean.com/index.html?nav=ftlink#userlogin");
+   System.out.println("output");
 
   }
    
