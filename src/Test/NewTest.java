@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import Pages.MenuPageObjects;
 import Pages.ProductListPageObjects;
 import Pages.HomePageObjects;
 
@@ -16,6 +17,7 @@ import org.testng.annotations.Test;
 
 public class NewTest {
 	HomePageObjects HP;
+	MenuPageObjects MP;
 	ProductListPageObjects plp;
     WebDriver driver;
     
@@ -51,10 +53,11 @@ public class NewTest {
   @Test
   public void f() {
 	  
+	  MP = new MenuPageObjects();
 	  HP = new HomePageObjects();
 	  plp = new ProductListPageObjects();
 	  
-	  HP.NavigateToPlp(driver);
+	  MP.NavigateToPlp(driver);
 	  String verifiedtxt = plp.PLPVerification(driver);
 	  
 	  

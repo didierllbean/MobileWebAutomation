@@ -27,21 +27,41 @@ public class ProductListPageObjects {
     
     WebElement PLPFilterRst;
     
-    @FindBy(xpath ="//div[5]//div[4]/h3")
+    @FindBy(xpath ="//div/div[@name='Size Range']")
     
     WebElement PLPFLSizeRng;
     
     
-    @FindBy(xpath ="//div[5]/div//div[4]/div/div[1]/div[2]")
+    @FindBy(xpath ="//div/div[@name='Regular']/div[1]")
     
     WebElement PLPFLSizeRngReg;
    
- 
-    @FindBy(name="btnLogin")
- 
-    WebElement login;
+    @FindBy(xpath ="//div/div[@name='Features']")
     
+    WebElement PLPFLFeature;
     
+    @FindBy(xpath ="//div/div[@name='Fade-Resistant']/div[1]")
+    
+    WebElement PLPFLFeatureAbrasionRstnt;
+    
+    @FindBy(xpath ="//div/div[@name='Fabric']")
+    
+    WebElement PLPFLFabric;
+    
+    @FindBy(xpath ="//div/div[@name='Cotton Blend']/div[1]") 
+    
+    WebElement PLPFabricCtnBlend;
+   
+    
+   @FindBy(xpath ="//div[5]//div[2]/div[2]/div[2]")
+  
+   
+   WebElement PLPResetAllFilter;
+  
+   
+  
+   
+  
     public String PLPVerification (WebDriver driver){
     	
     	this.driver = driver;

@@ -37,102 +37,10 @@ public class HomePageObjects {
     
    
 
-    @FindBy(className="llb_ftCustServTxt")
-
-    WebElement HPCustServlink;
- 
-        
-    		
-    WebElement HPChildShirts;
- 
- 
-    @FindBy(className="llb_ftFindAStoreTxt")
- 
-    WebElement HPFindAStrLink;
- 
-     
- 
-    @FindBy(linkText="L.L.Bean® Visa® Apply Now")
- 
-    WebElement HPLbVisaApply;
-    
-    @FindBy(linkText="L.L.Bean® Visa® Card Coupon Lookup")
-    
-    WebElement HPLbVisaCoupLkUp;
-    
-   @FindBy(linkText="Purchase History & Order Tracking")
-    
-    WebElement HPPrcHistOrdTrk;
-    
-    
-   @FindBy(className="llb_ftLogInStatusTxt")
-   
-   WebElement HPLogin;
-   
-   @FindBy(linkText="Security")
-   
-   WebElement HPSecurity;
-   
-   
- @FindBy(linkText="Privacy")
-   
-   WebElement HPPrivacy;
-   
-   
- @FindBy(linkText="Recalls")
-   
-   WebElement HPRecalls;
-   
-   
-   
- @FindBy(linkText="Promotional Terms")
-   
-   WebElement HPPromotionalTerms;
-   
-   
- @FindBy(linkText="888-797-3880")
- 
- WebElement HPPhoneNumber;
- 
- 
-
- @FindBy(linkText="Full Site")
- 
- WebElement HPFullSite;
- 
-   
-@FindBy(linkText="Download the Mobile App")
- 
- WebElement HPDownLdApp;
- 
    
   
-    
-   @FindBy(name="emailaddress")
-   
-   WebElement HPEmailAddFld;
-    
-    
-  @FindBy(id="llb_ftSignUpBtn")
-   
-   WebElement SignUpBtn;
   
   
-  @FindBy(id="search-string")
-  
-  WebElement HpSrchBar;
-  
-  
-  public void NavigateToPlp (WebDriver driver){
-  	
-  	this.driver = driver;
-  	PageFactory.initElements(driver, this);
-  	HPShopMenu.click();
-  	HPMensCat.click();
-  	MenShirt.click();
-  	
-  	
-  }
   
 }
 
