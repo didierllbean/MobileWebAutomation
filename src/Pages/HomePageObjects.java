@@ -31,7 +31,7 @@ public class HomePageObjects {
     WebElement  HPMenPolos;
     
     
-    @FindBy(xpath="/html/body/div[13]/div/div/div[11]/div[2]/h3")
+    @FindBy(xpath="//h3[@catid='26'])[2]")
     
     WebElement HPMensCat;
     

@@ -1,25 +1,29 @@
 package Pages;
 
+import java.util.Dictionary;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import Util.Fetch;
 
 public class FooterObjects {
 
 	
+		Fetch obj=new Fetch();
+		Dictionary dict1=obj.readfromExcel();
 	
-	
+	 WebDriver driver;
+
 
 	
-	 @FindBy(xpath="//div[@id= 'llb_footer']/div[2]/a[1]/div/div[2]")
+	  @FindBy(xpath = "//div[@class='llb_ftCustServTxt' and contains(text(), 'Customer Service")
 
 	    WebElement FTCustServlink;
+		
 	 
-	  
-	    		
-	    WebElement FTChildShirts;
-	
-	 
-	   // "//div[@id='llb_header']/div[2]/div/div[2]"
 	 
 	    @FindBy(linkText="L.L.Bean® Visa® Apply Now")
 	 
@@ -34,7 +38,7 @@ public class FooterObjects {
 	    WebElement FTPrcHistOrdTrk;
 	    
 	    
-	   @FindBy(className="llb_ftLogInStatusTxt")
+	   @FindBy(xpath="//div[@class='llb_ftLogInStatusTxt' and contains(text(), 'Log In')]")
 	   
 	   WebElement FTLogin;
 	   
@@ -91,10 +95,28 @@ public class FooterObjects {
 	  
 	  WebElement FTSrchBar;
 	  
-	  @FindBy(xpath = "//div/div[@id='llb_footer']/div[4]")
+	  @FindBy(xpath = "//div[@class='llb_ftLogInStatusTxt' and contains(text(), 'Log In")
 	  
 	  WebElement  FooterLogin;
 	  
 	  @FindBy(xpath = "//div/div[@id='llb_footer']/div[4]")
 	  WebElement UserAccount;
+	  
+      @FindBy(xpath = "//div[@class='llb_ftLogInStatusTxt' and contains(text(), 'Log Out")
+	  
+	  WebElement  FooterLogOut;
+      
+      public void NavigateToLoginPage (WebDriver driver){
+	      	
+	      	this.driver = driver;
+	      	PageFactory.initElements(driver, this);
+	      	FooterLogin.click();
+	      	
+	            }
+      
+      
+
+    	
+      
+	  
 }

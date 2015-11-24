@@ -14,7 +14,7 @@ public class MenuPageObjects {
 
 	    WebElement MNShopMenu;
 	    
-	    @FindBy(xpath="//div[1]/div/div[@name='Shirts']")
+	    @FindBy(xpath="//div/div[2]/div[@name='Shirts']")
 	    
 	    
 	    WebElement MNMenShirt;

@@ -23,7 +23,7 @@ public class ProductListPageObjects {
      WebElement PLPSearchRsName;
     
     
-    @FindBy(xpath ="//div[@id='id_scfContent_productlistpage']/div[1]/div[12]")
+    @FindBy(xpath ="//div[@class='llbFilterResTxt' and contains(text(), 'Filter Results')]")
     
     WebElement PLPFilterRst;
     
@@ -53,7 +53,7 @@ public class ProductListPageObjects {
     WebElement PLPFabricCtnBlend;
    
     
-   @FindBy(xpath ="//div[5]//div[2]/div[2]/div[2]")
+   @FindBy(xpath ="//div[@class='facetCatWFiltersResetAllTxt' and contains(text(), 'Reset All')]")
   
    
    WebElement PLPResetAllFilter;

@@ -1,11 +1,14 @@
 package Test;
+import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import Pages.AccountPageObjects;
 import Pages.MenuPageObjects;
 import Pages.ProductListPageObjects;
 import Pages.HomePageObjects;
+import Util.Fetch;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,6 +19,9 @@ import org.testng.annotations.Test;
 
 
 public class NewTest {
+	
+	
+	AccountPageObjects AccPage;
 	HomePageObjects HP;
 	MenuPageObjects MP;
 	ProductListPageObjects plp;
@@ -44,6 +50,8 @@ public class NewTest {
 	capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
     WebDriver driver = new ChromeDriver(capabilities);
   
+    
+   
    driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
    
    driver.get("https://m-ecwebq.llbean.com/index.html?nav=ftlink#userlogin");
@@ -57,10 +65,17 @@ public class NewTest {
 	  MP = new MenuPageObjects();
 	  HP = new HomePageObjects();
 	  plp = new ProductListPageObjects();
+	  AccPage = new AccountPageObjects();
 	  
 	  MP.NavigateToPlp(driver);
 	  String verifiedtxt = plp.PLPVerification(driver);
 	  
-	  
   }
-}
+  
+  
+
+	}
+  
+  
+  
+ 
