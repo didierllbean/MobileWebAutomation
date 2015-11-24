@@ -56,9 +56,51 @@ public class Checkout {
 	@FindBy(xpath  = "//a[contains(@class, ' editCountry')]")
 	WebElement shippingEditCountryLink;
 	
-	@FindBy(id  = "")
-	WebElement shippingSelectCountryDropDown;
+	@FindBy(id  = "shipAddress1")
+	WebElement shippingAddressLine1Textfield;
+
+	@FindBy(id  = "shipAddress2")
+	WebElement shippingAddressLine2Textfield;
 	
+	@FindBy(id  = "shipZipCode")
+	WebElement shippingZipCodeTextfield;
+	
+	@FindBy(id  = "shipCity")
+	WebElement shippingCityTextfield;
+	
+	@FindBy(id  = "shipState")
+	WebElement shippingStateTextfield;
+	
+	@FindBy(id  = "shipHomeAddress")
+	WebElement shippingAddressTypeHomeRadioButton;
+	
+	@FindBy(id  = "shipBizAddress")
+	WebElement shippingAdressTypeBusinessRadioButton;
+	
+	@FindBy(id  = "shipDaytimePhone")
+	WebElement shippingDayTimePhoneTextfield;
+	
+	@FindBy(id  = "shipHomePhone")
+	WebElement shippingPhoneTypeHomeRadioButton;
+	
+	@FindBy(id  = "shipWorkPhone")
+	WebElement shippingPhoneTypeWorkRadioButton;
+	
+	@FindBy(id  = "shipMobilePhone")
+	WebElement shippingPhoneTypeMobileRadioButton;
+	
+	@FindBy(id  = "shipCkoutShippingCheck")
+	WebElement shippingIncludePhoneCheckbox;
+	
+	@FindBy(xpath = "//input[@value='CONTINUE TO BILLING ADDRESS']")
+	WebElement shippingContinueButton;
+	
+	@FindBy(linkText  = "Return to Shopping Bag")
+	WebElement shippingReturnToSBButton;
+	
+	@FindBy(xpath = "//input[@value='USE AS ENTERED']")
+	WebElement shippingUseAddressButton;
+		
 	
 	/** Billing Step Elements **/
 	
