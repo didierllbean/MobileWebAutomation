@@ -1,11 +1,14 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ShoppingBagPage {
 
+	private WebElement productOnList,
+						aux;
 	
 	/**
 	 * WebElements
@@ -32,12 +35,40 @@ public class ShoppingBagPage {
 	WebElement sbShiptoMultipleAddressesRadioButton;
 	
 	@FindBy(xpath  = "id('un_clearcart')//a")
-	WebElement sbGoToWLLink;
+	WebElement sbGoToWishListLink;
 	
 	@FindBy(xpath  = "id('clearSB')/span")
 	WebElement sbClearSBLink;
+	
+	@FindBy(xpath  = "//div[@class = 'shoppingBagDays']/a[1]")
+	WebElement sbDaysMessageLoginLink;
+	
+	@FindBy(xpath  = "//div[@class = 'shoppingBagDays']/a[2]")
+	WebElement sbDaysMessageCreateAccountLink;
+	
+	@FindBy(xpath  = "//div[@class = 'sbPopupTitle' and contains(.,'Merge Bag')]")
+	WebElement sbMergeMessagePopipTitle;
+	
+	@FindBy(xpath  = "id('un_popup_wrapper')//input")
+	WebElement sbMergePopipOkButton;
 
-	protected WebElement getProductInSB(String productID) {
-		WebElement emailInputField = driver.findElement(By.xpath("//div[@class = 'sbItemAttributes']/div[contains(.,'209410')]/../../.."));
+	private WebElement getProductInSB(String productID, WebDriver driver) {
+		return productOnList = driver.findElement(By.xpath("//div[@class = 'sbItemAttributes']/div[contains(.,'"+productID+"')]/../../.."));
+	}
+	
+	protected void updateProductQty(String qty, String productID, WebDriver driver) {
+		aux = getProductInSB(productID, driver);
+		aux.findElement(By.xpath("//input[@id]")).sendKeys(qty);
+		aux.findElement(By.xpath("//input[@value = 'Update']")).click();		
+	}
+	
+	protected void moveProductToWishList(String productID, WebDriver driver) {
+		aux = getProductInSB(productID, driver);
+		aux.findElement(By.linkText("Move to Wish List")).click();		
+	}
+	
+	protected void removeProduct(String productID, WebDriver driver) {
+		aux = getProductInSB(productID, driver);
+		aux.findElement(By.linkText("Remove")).click();		
 	}
 }
