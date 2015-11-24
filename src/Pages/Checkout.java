@@ -35,9 +35,6 @@ public class Checkout {
 	@FindBy(linkText  = "Ship to someone else")
 	WebElement shippingShipNotMeLink;
 	
-	@FindBy(id  = "shipPersonTitle")
-	WebElement shippingSelectTitleDropDown;
-	
 	@FindBy(id  = "shipFirstName")
 	WebElement shippingFirstNameTextfield;
 	
@@ -53,7 +50,7 @@ public class Checkout {
 	@FindBy(id  = "shipFemale")
 	WebElement shippingShipToFamaleRadioButton;
 	
-	@FindBy(xpath  = "//a[contains(@class, ' editCountry')]")
+	@FindBy(xpath  = "//a[contains(@class, 'editCountry')]")
 	WebElement shippingEditCountryLink;
 	
 	@FindBy(id  = "shipAddress1")
@@ -67,9 +64,6 @@ public class Checkout {
 	
 	@FindBy(id  = "shipCity")
 	WebElement shippingCityTextfield;
-	
-	@FindBy(id  = "shipState")
-	WebElement shippingStateTextfield;
 	
 	@FindBy(id  = "shipHomeAddress")
 	WebElement shippingAddressTypeHomeRadioButton;
@@ -104,15 +98,117 @@ public class Checkout {
 	
 	/** Billing Step Elements **/
 	
+	@FindBy(id  = "ckoutSameAsShip")
+	WebElement billingBASASACheckbox;
+	
+	@FindBy(id  = "billFirstName")
+	WebElement billingFirstNameTextfield;
+	
+	@FindBy(id  = "billMiddleName")
+	WebElement billingMiddleNameTextfield;
+	
+	@FindBy(id  = "billLastName")
+	WebElement billingLastNameTextfield;
+	
+	@FindBy(id  = "billMale")
+	WebElement billingMaleCheckbox;
+	
+	@FindBy(id  = "billFemale")
+	WebElement billingFemaleCheckbox;
+	
+	@FindBy(xpath  = "//a[contains(@class, 'editCountry')]")
+	WebElement billingEditCountryLink;
+	
+	@FindBy(id  = "billAddress1")
+	WebElement billingAddressLine1Textfield;
+
+	@FindBy(id  = "billAddress2")
+	WebElement billingAddressLine2Textfield;
+	
+	@FindBy(id  = "billZipCode")
+	WebElement billingZipCodeTextfield;
+	
+	@FindBy(id  = "billCity")
+	WebElement billingCityTextfield;
+	
+	@FindBy(id  = "billHomeAddress")
+	WebElement billingAddressTypeHomeRadioButton;
+	
+	@FindBy(id  = "billBizAddress")
+	WebElement billingAdressTypeBusinessRadioButton;
+	
+	@FindBy(id  = "billDaytimePhone")
+	WebElement billingDayTimePhoneTextfield;
+	
+	@FindBy(id  = "billHomePhone")
+	WebElement billingPhoneTypeHomeRadioButton;
+	
+	@FindBy(id  = "billWorkPhone")
+	WebElement billingPhoneTypeWorkRadioButton;
+	
+	@FindBy(id  = "billMobilePhone")
+	WebElement billingPhoneTypeMobileRadioButton;
+	
+	@FindBy(id  = "enterEmail")
+	WebElement billingEmailTextfield;
+	
+	@FindBy(id  = "verifyEmail")
+	WebElement billingReenterEmailTextfield;
+	
+	@FindBy(id  = "ckoutSentmeEmail")
+	WebElement billingPromoEmailsCheckbox;
+	
+	@FindBy(id  = "eveningPhone")
+	WebElement billingEveningPhoneTextfield;
+	
+	@FindBy(id  = "billHomePhone2")
+	WebElement billingPhone2TypeHomeRadioButton;
+	
+	@FindBy(id  = "billWorkPhone2")
+	WebElement billingPhone2TypeWorkRadioButton;
+	
+	@FindBy(id  = "billMobilePhone2")
+	WebElement billingPhone2TypeMobileRadioButton;
+	
+	@FindBy(xpath = "//input[@value='CONTINUE TO PAYMENT OPTIONS']")
+	WebElement billingContinueButton;
+	
+	@FindBy(linkText  = "Return to Shopping Address")
+	WebElement billingReturnToSBButton;
+	
+	@FindBy(xpath = "//input[@value='USE AS ENTERED']")
+	WebElement billingUseAddressButton;
+	
 	/** Payment Step Elements **/
 	
 	/** Review Step Elements **/
 	
 	/** Methods **/ 
 	
-	protected void selectCountry(WebDriver driver, String country) { 
+	protected void selectShippingPersonTitle(WebDriver driver, String country) { 
+		Utilities.selectDropDownOption (By.id( "shipPersonTitle" ),  "option", driver, Checkout.class);
+	}
+	
+	protected void selectShippingCountry(WebDriver driver, String country) { 
 		Utilities.selectDropDownOption (By.id( "shipCountry" ),  "option", driver, Checkout.class);
 	}
 	
-	//div[contains(@class, 'Selected')]
+	protected void selectShippingState(WebDriver driver, String country) { 
+		Utilities.selectDropDownOption (By.id( "shipState" ),  "option", driver, Checkout.class);
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	protected void selectBillingPersonTitle(WebDriver driver, String country) { 
+		Utilities.selectDropDownOption (By.id( "billPersonTitle" ),  "option", driver, Checkout.class);
+	}
+	
+	protected void selectBillingCountry(WebDriver driver, String country) { 
+		Utilities.selectDropDownOption (By.id( "billCountry" ),  "option", driver, Checkout.class);
+	}
+	
+	protected void selectBillingState(WebDriver driver, String country) { 
+		Utilities.selectDropDownOption (By.id( "billState" ),  "option", driver, Checkout.class);
+	}
+	
 }
