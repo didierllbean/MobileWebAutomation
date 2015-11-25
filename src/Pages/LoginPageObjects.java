@@ -38,5 +38,8 @@ public class LoginPageObjects {
    
    WebElement ContinueAsAGuest;
     
+   public void login (string user, string pass)
+   
+   
     
 }

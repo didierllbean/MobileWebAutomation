@@ -20,11 +20,15 @@ import org.testng.annotations.Test;
 
 public class NewTest {
 	
+	Fetch excelreader;
+	Dictionary dict1;
+	
 	
 	AccountPageObjects AccPage;
 	HomePageObjects HP;
 	MenuPageObjects MP;
 	ProductListPageObjects plp;
+	LoginPageObjects LoginObj;
     WebDriver driver;
     
     
@@ -34,6 +38,8 @@ public class NewTest {
     
   @BeforeTest
   public void setup(){	  
+	  
+	  
 	  
 	    
 	 String DeviceName = "Apple iPhone 6";
@@ -65,18 +71,22 @@ public class NewTest {
   @Test
   public void f() {
 	  
+	  Fetch excelreader=new fetch();
+	  Dictionary dict1=obj.readfromExcel();
 	  MP = new MenuPageObjects();
 	  HP = new HomePageObjects();
 	  plp = new ProductListPageObjects();
 	  AccPage = new AccountPageObjects();
+	  LoginObj= new LoginPageObjects();
 	  
 	  MP.NavigateToPlp(driver);
 	  String verifiedtxt = plp.PLPVerification(driver);
+	  LoginObj.login(dict1.get("username"),dict1.get("password"));
 	  
   }
   
   
-
+  
 	}
   
   
