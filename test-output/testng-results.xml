@@ -2,7 +2,7 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="105320" started-at="2015-11-27T00:20:15Z" finished-at="2015-11-27T00:22:01Z">
+  <suite name="Default suite" duration-ms="140338" started-at="2015-11-27T18:49:25Z" finished-at="2015-11-27T18:51:45Z">
     <groups>
       <group name="smokeTest">
         <method signature="CheckoutTestCases.fullCheckout()[pri:0, instance:Test.CheckoutTestCases@7c75222b]" name="fullCheckout" class="Test.CheckoutTestCases"/>
@@ -11,38 +11,38 @@
         <method signature="CheckoutTestCases.fullCheckout()[pri:0, instance:Test.CheckoutTestCases@7c75222b]" name="fullCheckout" class="Test.CheckoutTestCases"/>
       </group> <!-- checkoutOnly -->
     </groups>
-    <test name="Default test" duration-ms="105320" started-at="2015-11-27T00:20:15Z" finished-at="2015-11-27T00:22:01Z">
+    <test name="Default test" duration-ms="140338" started-at="2015-11-27T18:49:25Z" finished-at="2015-11-27T18:51:45Z">
       <class name="Test.CheckoutTestCases">
-        <test-method status="PASS" signature="setup()[pri:0, instance:Test.CheckoutTestCases@7c75222b]" name="setup" is-config="true" duration-ms="6933" started-at="2015-11-26T18:20:15Z" finished-at="2015-11-26T18:20:22Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:Test.CheckoutTestCases@7c75222b]" name="setup" is-config="true" duration-ms="21955" started-at="2015-11-27T12:49:25Z" finished-at="2015-11-27T12:49:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="FAIL" signature="fullCheckout()[pri:0, instance:Test.CheckoutTestCases@7c75222b]" name="fullCheckout" duration-ms="95486" started-at="2015-11-26T18:20:22Z" finished-at="2015-11-26T18:21:58Z">
+        <test-method status="FAIL" signature="fullCheckout()[pri:0, instance:Test.CheckoutTestCases@7c75222b]" name="fullCheckout" duration-ms="114982" started-at="2015-11-27T12:49:47Z" finished-at="2015-11-27T12:51:42Z">
           <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
               <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//a[contains(.,'Continue Shopping')]"}
   (Session info: chrome=46.0.2490.86)
   (Driver info: chromedriver=2.20.353145 (343b531d31eeb933ec778dbcf7081628a1396067),platform=Windows NT 6.1 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 90.07 seconds
+Command duration or timeout: 90.06 seconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.48.2', revision: '41bccdd10cf2c0560f637404c2d96164b67d9d67', time: '2015-10-09 13:08:06'
-System info: host: 'LR901DK8X-LP', ip: '172.18.42.82', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_66'
+System info: host: 'LR901DK8X-LP', ip: '10.202.115.8', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_66'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=true, chrome={userDataDir=C:\Users\ydesanti\AppData\Local\Temp\scoped_dir10084_16514}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=true, version=46.0.2490.86, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: e561e99a9c696aab30f3e57c3dff14f8
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=true, chrome={userDataDir=C:\Users\ydesanti\AppData\Local\Temp\scoped_dir7472_894}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=true, version=46.0.2490.86, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 677549c522b294a7bb98cd4995d2565c
 *** Element info: {Using=xpath, value=//a[contains(.,'Continue Shopping')]}]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//a[contains(.,'Continue Shopping')]"}
   (Session info: chrome=46.0.2490.86)
   (Driver info: chromedriver=2.20.353145 (343b531d31eeb933ec778dbcf7081628a1396067),platform=Windows NT 6.1 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 90.07 seconds
+Command duration or timeout: 90.06 seconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.48.2', revision: '41bccdd10cf2c0560f637404c2d96164b67d9d67', time: '2015-10-09 13:08:06'
-System info: host: 'LR901DK8X-LP', ip: '172.18.42.82', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_66'
+System info: host: 'LR901DK8X-LP', ip: '10.202.115.8', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_66'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=true, chrome={userDataDir=C:\Users\ydesanti\AppData\Local\Temp\scoped_dir10084_16514}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=true, version=46.0.2490.86, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: e561e99a9c696aab30f3e57c3dff14f8
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=true, chrome={userDataDir=C:\Users\ydesanti\AppData\Local\Temp\scoped_dir7472_894}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=true, version=46.0.2490.86, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 677549c522b294a7bb98cd4995d2565c
 *** Element info: {Using=xpath, value=//a[contains(.,'Continue Shopping')]}
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
@@ -58,9 +58,9 @@ Session ID: e561e99a9c696aab30f3e57c3dff14f8
 	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
 	at com.sun.proxy.$Proxy6.click(Unknown Source)
-	at Pages.ProductPageCore.continueChopping(ProductPageCore.java:86)
-	at Pages.ProductPageCore.addToBagAndContinueShopping(ProductPageCore.java:96)
-	at Test.CheckoutTestCases.fullCheckout(CheckoutTestCases.java:15)
+	at Pages.ProductPageCore.continueChopping(ProductPageCore.java:93)
+	at Pages.ProductPageCore.addToBagAndContinueShopping(ProductPageCore.java:103)
+	at Test.CheckoutTestCases.fullCheckout(CheckoutTestCases.java:16)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -91,7 +91,7 @@ Session ID: e561e99a9c696aab30f3e57c3dff14f8
           <reporter-output>
           </reporter-output>
         </test-method> <!-- fullCheckout -->
-        <test-method status="PASS" signature="close()[pri:0, instance:Test.CheckoutTestCases@7c75222b]" name="close" is-config="true" duration-ms="2881" started-at="2015-11-26T18:21:58Z" finished-at="2015-11-26T18:22:01Z">
+        <test-method status="PASS" signature="close()[pri:0, instance:Test.CheckoutTestCases@7c75222b]" name="close" is-config="true" duration-ms="3373" started-at="2015-11-27T12:51:42Z" finished-at="2015-11-27T12:51:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- close -->

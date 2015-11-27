@@ -12,8 +12,8 @@ public class CheckoutTestCases extends TestCaseConfiguration
 	public void fullCheckout(){
 		ProductPageCore prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP, driver);
 		
+		prodPage.selectRandomColorAttribute(driver);
 		prodPage.addToBagAndContinueShopping(driver);
-		
 	}
 
 }

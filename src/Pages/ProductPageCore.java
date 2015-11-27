@@ -1,9 +1,14 @@
 package Pages;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import Tools.Utilities;
 
 public class ProductPageCore {
 	
@@ -28,6 +33,8 @@ public class ProductPageCore {
 	@FindBy(xpath = "id('AddToWishListBtnBox_0')//a")
 	WebElement addToWLButton;
 	
+	@FindBy(id = "tab_0_0_content")
+	WebElement attributesSection;
 	
 	/** ADQ **/
 	
@@ -94,5 +101,16 @@ public class ProductPageCore {
 	public void addToBagAndContinueShopping(WebDriver driver){
 		addToBag();
 		continueChopping();
+	}
+	
+	public void selectRandomColorAttribute(WebDriver driver) {
+		if(Utilities.isElementPresent(driver, By.id("un_color_cont")))
+		{
+			List <WebElement> colors = attributesSection.findElements(By.xpath("//img[not(contains(@src, 'outofstock')) and not(contains(@class, 'soldOutSwatchImg'))]/.."));
+			
+			System.err.println((int)(Math.random()*colors.size())+1);
+			colors.get((int)(Math.random()*colors.size())+1).click();
+			
+		}
 	}
 }
