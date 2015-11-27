@@ -260,7 +260,7 @@ public class Checkout {
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 		
 	protected void selectPaymentCCExpirationDate(WebDriver driver, String month, String year) { 	
-		Utilities.selectDropDownOption (By.id( "ccExpMonth" ),  title, month, Checkout.class);		
+		Utilities.selectDropDownOption (By.id( "ccExpMonth" ),  month, driver, Checkout.class);		
 		Utilities.selectDropDownOption (By.id( "ccExpYear" ),  year, driver, Checkout.class);	
 	}
 }

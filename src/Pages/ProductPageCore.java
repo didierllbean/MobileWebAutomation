@@ -1,7 +1,9 @@
 package Pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class ProductPageCore {
 	
@@ -68,4 +70,29 @@ public class ProductPageCore {
 	
 	@FindBy(xpath = "//a[contains(.,'Continue Shopping')]")
 	WebElement pasbContinueShoppingButton;
+	
+	private void addToBag()
+	{
+		addToBagButton.click();
+	}
+	
+	private ShoppingBagPage goToCheckout(WebDriver driver){
+		pasbCheckoutButton.click();
+		return PageFactory.initElements(driver, ShoppingBagPage.class);
+	}
+	
+	private void continueChopping()
+	{
+		pasbContinueShoppingButton.click();
+	}
+	
+	public ShoppingBagPage addToBagAndGoToSB(WebDriver driver){
+		addToBag();
+		return goToCheckout(driver);
+	}
+	
+	public void addToBagAndContinueShopping(WebDriver driver){
+		addToBag();
+		continueChopping();
+	}
 }

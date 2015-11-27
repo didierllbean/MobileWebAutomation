@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import Pages.ProductPageCore;
+import Tools.Constants;
+
 public class Utilities {
 	
 	/**
@@ -47,5 +50,45 @@ public class Utilities {
          new Select(driver.findElement(selector)).selectByVisibleText(option);                 
          return PageFactory.initElements(driver, expectedPage);
     }
+	
+	/**
+	 * Navigate to any valid product page.
+	 * 
+	 * @Param pdpID     String value for the desired product page(5 digits ID). 
+	 * @Param driver	Current WebDriver in use. 
+	 * @Return 			ProductPageCore class object.
+	 *  
+	 *  @author Yohan Desanti G.
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/26/2015
+	 */
+	public static ProductPageCore goToPDP(WebDriver driver, String pdpID){
+		driver.get(Constants.DOMAIN+Constants.PDPURL+pdpID);
+		return PageFactory.initElements(driver, ProductPageCore.class);
+	}
 
+	/**
+	 * Navigate to an predefined product page.
+	 * 
+	 * @Param pdpType   String value for the desired product page type (Constants.FULLPRICEPDP or Constants.SALEPRICEPDP). 
+	 * @Param driver	Current WebDriver in use. 
+	 * @Return 			ProductPageCore class object.
+	 *  
+	 *  @author Yohan Desanti G.
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/26/2015
+	 */
+	public static ProductPageCore goToPDP(String pdpType, WebDriver driver){
+		switch(pdpType)
+		{
+			case Constants.FULLPRICEPDP:
+				driver.get(Constants.PDPURL+Constants.FULLPRICEPDP);	
+			break;
+			case Constants.SALEPRICEPDP:
+				driver.get(Constants.PDPURL+Constants.SALEPRICEPDP);	
+			break;				
+		}
+		
+		return PageFactory.initElements(driver, ProductPageCore.class);
+	}
 }
