@@ -19,8 +19,7 @@ public class FooterObjects {
 
 
 	
-	  @FindBy(xpath = "//div[@class='llb_ftCustServTxt' and contains(text(), 'Customer Service")
-
+	@FindBy(xpath = "//div[@class='llb_ftCustServTxt' and contains(text(), 'Customer Service")
 	    WebElement FTCustServlink;
 		
 	 

@@ -17,19 +17,21 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.google.common.base.Objects;
+
 
 public class NewTest {
 	
 	Fetch excelreader;
 	Dictionary dict1;
 	
-	
 	AccountPageObjects AccPage;
 	HomePageObjects HP;
 	MenuPageObjects MP;
 	ProductListPageObjects plp;
-	LoginPageObjects LoginObj;
+	//LoginPageObjects LoginObj;
     WebDriver driver;
+    
     
     
     static DesiredCapabilities  capabilities;
@@ -71,17 +73,17 @@ public class NewTest {
   @Test
   public void f() {
 	  
-	  Fetch excelreader=new fetch();
-	  Dictionary dict1=obj.readfromExcel();
+	  Fetch excelreader=new Fetch();
+	//  Dictionary dict1=obj.readfromExcel();
 	  MP = new MenuPageObjects();
 	  HP = new HomePageObjects();
 	  plp = new ProductListPageObjects();
 	  AccPage = new AccountPageObjects();
-	  LoginObj= new LoginPageObjects();
+	 // LoginObj= new LoginPageObjects();
 	  
 	  MP.NavigateToPlp(driver);
 	  String verifiedtxt = plp.PLPVerification(driver);
-	  LoginObj.login(dict1.get("username"),dict1.get("password"));
+	  //LoginObj.login(dict1.get("username"),dict1.get("password"));
 	  
   }
   
