@@ -13,10 +13,10 @@ public class Utilities {
 	/**
 	 * Verify if a WebElement can be found during the current execution.
 	 * 
-	 * @Param selector   Selector for the WebElement. Can be any selector supported on the By class (ie.: By.xpath or By.id). 
-	 * @Param driver	 Current WebDriver in use. 
-	 * @Return 			 True if the element is present or False if not.
-	 * @Exception		 Ignores generic exceptions.
+	 * @param selector   Selector for the WebElement. Can be any selector supported on the By class (ie.: By.xpath or By.id). 
+	 * @param driver	 Current WebDriver in use. 
+	 * @return 			 True if the element is present or False if not.
+	 * @exception		 Ignores generic exceptions.
 	 *  
 	 *  @author Yohan Desanti G.
 	 *  @LastUpdate Yohan Desanti G.
@@ -36,10 +36,10 @@ public class Utilities {
 	 * Find and Select any option present on a Select dropdown list. <p> 
 	 * Returns a webdriver pointing to the desired page object class.
 	 * 
-	 * @Param selector   Selector for the WebElement. Can be any selector supported on the By class (ie.: By.xpath or By.id). 
-	 * @Param option     String text of the option present in list that wants to select.
-	 * @Param driver	 Current WebDriver in use. 
-	 * @Return 			 Object of the expected class.
+	 * @param selector   Selector for the WebElement. Can be any selector supported on the By class (ie.: By.xpath or By.id). 
+	 * @param option     String text of the option present in list that wants to select.
+	 * @param driver	 Current WebDriver in use. 
+	 * @return 			 Object of the expected class.
 	 * 
 	 *  @author Yohan Desanti G.  
 	 *  @LastUpdate Yohan Desanti G.
@@ -54,25 +54,25 @@ public class Utilities {
 	/**
 	 * Navigate to any valid product page.
 	 * 
-	 * @Param pdpID     String value for the desired product page(5 digits ID). 
-	 * @Param driver	Current WebDriver in use. 
-	 * @Return 			ProductPageCore class object.
+	 * @param pdpID     String value for the desired product page(5 digits ID). 
+	 * @param driver	Current WebDriver in use. 
+	 * @return 			ProductPageCore class object.
 	 *  
 	 *  @author Yohan Desanti G.
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/26/2015
 	 */
 	public static ProductPageCore goToPDP(WebDriver driver, String pdpID){
-		driver.get(Constants.DOMAIN+Constants.PDPURL+pdpID);
+		driver.get(Constants.PDPURL+pdpID);
 		return PageFactory.initElements(driver, ProductPageCore.class);
 	}
 
 	/**
 	 * Navigate to an predefined product page.
 	 * 
-	 * @Param pdpType   String value for the desired product page type (Constants.FULLPRICEPDP or Constants.SALEPRICEPDP). 
-	 * @Param driver	Current WebDriver in use. 
-	 * @Return 			ProductPageCore class object.
+	 * @param pdpType   String value for the desired product page type (Constants.FULLPRICEPDP or Constants.SALEPRICEPDP). 
+	 * @param driver	Current WebDriver in use. 
+	 * @return 			ProductPageCore class object.
 	 *  
 	 *  @author Yohan Desanti G.
 	 *  @LastUpdate Yohan Desanti G.

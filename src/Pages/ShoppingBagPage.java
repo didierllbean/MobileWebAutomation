@@ -10,11 +10,8 @@ public class ShoppingBagPage {
 	private WebElement productOnList,
 						aux;
 	
-	/**
-	 * WebElements
-	 */
-	
-	/** General Elements **/
+	/*--------------------------------------------------* WebElements *--------------------------------------------------*/	
+	/*-------------------------------------------------- General Elements --------------------------------------------------*/
 	
 	@FindBy(xpath  = "(//input[@value='Check Out'])[1]")
 	WebElement sbCheckoutButton;
@@ -52,6 +49,8 @@ public class ShoppingBagPage {
 	@FindBy(xpath  = "id('un_popup_wrapper')//input")
 	WebElement sbMergePopipOkButton;
 
+	/*-------------------------------------------------- functions --------------------------------------------------*/
+	
 	private WebElement getProductInSB(String productID, WebDriver driver) {
 		return productOnList = driver.findElement(By.xpath("//div[@class = 'sbItemAttributes']/div[contains(.,'"+productID+"')]/../../.."));
 	}
@@ -71,4 +70,8 @@ public class ShoppingBagPage {
 		aux = getProductInSB(productID, driver);
 		aux.findElement(By.linkText("Remove")).click();		
 	}
+	
+	/*-------------------------------------------------- Validations --------------------------------------------------*/
+	
+	
 }
