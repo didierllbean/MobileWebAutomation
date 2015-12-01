@@ -14,7 +14,6 @@ public class HomePageObjects
 {
 
 	WebDriver driver;
-    
 	@FindBy(xpath ="//div[@id='llb_header']/div[2]/div/div[2]")
     WebElement HPShopMenu;
     

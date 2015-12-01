@@ -43,7 +43,7 @@ public class TestCaseConfiguration {
     
      @AfterMethod(alwaysRun = true)
      public void close() throws InterruptedException {         
-         driver.close();
-         driver.quit();
+         //driver.close();
+         //driver.quit();
      }
 }

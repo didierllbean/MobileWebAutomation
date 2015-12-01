@@ -8,7 +8,6 @@ import Pages.AccountPageObjects;
 import Pages.MenuPageObjects;
 import Pages.ProductListPageObjects;
 import Pages.HomePageObjects;
-import Util.Fetch;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,8 +21,8 @@ import com.google.common.base.Objects;
 
 public class NewTest {
 	
-	Fetch excelreader;
-	Dictionary dict1;
+	//Fetch excelreader;
+	//Dictionary dict1;
 	
 	AccountPageObjects AccPage;
 	HomePageObjects HP;
@@ -38,34 +37,7 @@ public class NewTest {
 	static String DeviceName;
    //WebDriver driver = new ChromeDriver(capabilities);
     
-  @BeforeTest
-  public void setup(){	  
-	  
-	  
-	  
-	    
-	 String DeviceName = "Apple iPhone 6";
-	    
-  	System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-  	
-  	capabilities = DesiredCapabilities.chrome();
- 	 Map<String, String> mobileEmulation = new HashMap<String, String>();
- 	  mobileEmulation.put("deviceName", DeviceName);
- 	  
- 	  Map<String, Object> chromeOptions = new HashMap<String, Object>();
- 	  chromeOptions.put("mobileEmulation", mobileEmulation);
-
-	capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-    WebDriver driver = new ChromeDriver(capabilities);
   
-    
-   
-   driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
-   
-   driver.get("https://m-ecwebq.llbean.com/index.html?nav=ftlink#userlogin");
-   System.out.println("output");
-
-  }
    
   
   
@@ -73,7 +45,7 @@ public class NewTest {
   @Test
   public void f() {
 	  
-	  Fetch excelreader=new Fetch();
+	  //Fetch excelreader=new Fetch();
 	//  Dictionary dict1=obj.readfromExcel();
 	  MP = new MenuPageObjects();
 	  HP = new HomePageObjects();
