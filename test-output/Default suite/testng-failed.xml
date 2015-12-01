@@ -5,7 +5,7 @@
     <classes>
       <class name="Test.CheckoutTestCases">
         <methods>
-          <include name="fullCheckout"/>
+          <include name="fullGuestCheckout"/>
           <include name="close"/>
           <include name="setup"/>
         </methods>

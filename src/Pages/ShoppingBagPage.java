@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class ShoppingBagPage {
 
@@ -70,6 +71,13 @@ public class ShoppingBagPage {
 		aux = getProductInSB(productID, driver);
 		aux.findElement(By.linkText("Remove")).click();		
 	}
+	
+	
+	public LoginPageObjects startCheckoutProcessAsGuest(WebDriver driver){
+		sbCheckoutButton.click();
+		return PageFactory.initElements(driver, LoginPageObjects.class);
+	}
+	
 	
 	/*-------------------------------------------------- Validations --------------------------------------------------*/
 	
