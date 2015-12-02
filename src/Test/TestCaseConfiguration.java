@@ -36,14 +36,14 @@ public class TestCaseConfiguration {
 		 driver = new ChromeDriver(capabilities);
 		 driver.manage().deleteAllCookies();
 		 driver.manage().window().maximize();
-		 driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+		 driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		 driver.get(Constants.DOMAIN);
 		 homePage = PageFactory.initElements(driver, HomePageObjects.class);
      }
     
      @AfterMethod(alwaysRun = true)
      public void close() throws InterruptedException {         
-         //driver.close();
-         //driver.quit();
+         driver.close();
+         driver.quit();
      }
 }

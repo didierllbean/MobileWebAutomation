@@ -1,6 +1,7 @@
 package Tools;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -90,5 +91,30 @@ public class Utilities {
 		}
 		
 		return PageFactory.initElements(driver, ProductPageCore.class);
+	}
+	
+	public static void waitForAjaxToFinish(final int timeToWait, WebDriver driver) {
+		int timeout = 0;
+		 
+		while(timeout < timeToWait) {
+		    boolean ajaxFinished = (boolean) ((JavascriptExecutor) driver)
+		            .executeScript("return !!jQuery && jQuery.active == 0");
+		    
+		    if(ajaxFinished) 
+		        return;
+		    
+		    timeout++;
+		    explicitlyWait(1000);
+		}
+		 
+		throw new AssertionError("Ajax haven't finished its job in "+timeToWait+" sec");
+	}
+	
+	public static void explicitlyWait(int time){
+		 try {
+				Thread.sleep(time);
+			} catch (InterruptedException e) {
+				// Do nothing
+			}
 	}
 }

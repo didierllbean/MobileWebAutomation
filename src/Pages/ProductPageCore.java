@@ -160,7 +160,7 @@ public class ProductPageCore {
 			List <WebElement> colors = null;
 			colors = attributesSection.findElements(By.xpath("id('un_color_cont')//img[not(contains(@src, 'outofstock')) and not(contains(@class, 'soldOutSwatchImg'))]/.."));
 						
-			colors.get((int)(Math.random()*colors.size())+1).click();			
+			colors.get((int)(Math.random()*colors.size())).click();			
 		}
 	}
 	
@@ -179,7 +179,7 @@ public class ProductPageCore {
 			List <WebElement> sizes = null;
 			sizes = attributesSection.findElements(By.xpath("id('llb_size')/div//input[not(contains(@class, 'outofstock'))]"));
 						
-			sizes.get((int)(Math.random()*sizes.size())+1).click();			
+			sizes.get((int)(Math.random()*sizes.size())).click();			
 		}
 	}
 	

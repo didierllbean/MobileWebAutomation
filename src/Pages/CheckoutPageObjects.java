@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import Tools.Utilities;
 
@@ -94,7 +95,7 @@ public class CheckoutPageObjects {
 	WebElement shippingReturnToSBButton;
 	
 	@FindBy(xpath = "//input[@value='USE AS ENTERED']")
-	WebElement shippingUseAddressButton;
+	WebElement shippingUseAddressAsEnteredButton;
 		
 	
 	/** Billing Step Elements **/
@@ -178,7 +179,7 @@ public class CheckoutPageObjects {
 	WebElement billingReturnToSBButton;
 	
 	@FindBy(xpath = "//input[@value='USE AS ENTERED']")
-	WebElement billingUseAddressButton;
+	WebElement billingUseAddressAsEnteredButton;
 	
 	/** Payment Step Elements **/
 	
@@ -252,8 +253,10 @@ public class CheckoutPageObjects {
 		shippingAddressLine1Textfield.sendKeys("1221 Main St.");
 		shippingZipCodeTextfield.sendKeys("12345");
 		shippingZipCodeTextfield.sendKeys(Keys.TAB);
+		Utilities.explicitlyWait(3000);//wait for page to be fully loaded
 		shippingDayTimePhoneTextfield.sendKeys("5551234567");
 		shippingContinueButton.click();
+		shippingUseAddressAsEnteredButton.click();
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
@@ -270,6 +273,14 @@ public class CheckoutPageObjects {
 		Utilities.selectDropDownOption (By.id( "billState" ),  state, driver, CheckoutPageObjects.class);
 	}
 	
+	public void fillDefaultBillingData() {
+		String email = "mobiletest@automation.com";
+		
+		billingEmailTextfield.sendKeys(email);
+		billingReenterEmailTextfield.sendKeys(email);
+		billingContinueButton.click();
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 		
 	protected void selectPaymentCCExpirationDate(WebDriver driver, String month, String year) { 	
@@ -277,5 +288,17 @@ public class CheckoutPageObjects {
 		Utilities.selectDropDownOption (By.id( "ccExpYear" ),  year, driver, CheckoutPageObjects.class);	
 	}
 	
-	
+	public void fillDefaultPaymentData(WebDriver driver) {
+		
+		paymentCreditCardTextfield.sendKeys("4444444444444448");
+		selectPaymentCCExpirationDate(driver, "12", "2030");
+		paymentContinueToReviewOrderButton.click();
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public ThankYouPageObjects goToThankYouPage(WebDriver driver) {
+		reviewPlaceOrderButton.click();
+		return PageFactory.initElements(driver, ThankYouPageObjects.class);
+	}
 }
