@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPageObjects {
 
 	/* All WebElements are identified by @FindBy annotation */
-
+WebDriver driver;
 	/* Common Elements *///available for both regular and checkout login pages
 	@FindBy(id = "loginEmail")
 	WebElement email;
@@ -49,6 +49,7 @@ public class LoginPageObjects {
 		this.password.sendKeys(password);
 		return PageFactory.initElements(driver, expectedPage);
 	}
+	
 	
 	/**
 	 * Allow the user to log into the site during the chekcout process. <p> 
@@ -100,4 +101,26 @@ public class LoginPageObjects {
 	public CheckoutPageObjects continueCheckoutAsGuest(WebDriver driver){
 		return continueAsGuest(driver, CheckoutPageObjects.class);
 	}
+	
+	public LoginPageObjects(WebDriver driver)
+	
+	{
+		
+		this.driver = driver;
+	  	PageFactory.initElements(driver, this);
+
+	}
+	
+	public void VerifyNewAccount(String Email1, String Pass1)
+	
+	{
+		if(Email1.equals(email.getAttribute("value")))
+				{
+			
+			       
+				}
+		password.sendKeys(Pass1);
+		loginBttn.click();
+	}
+	
 }

@@ -1,6 +1,5 @@
 package Pages;
 
-import java.util.Dictionary;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -100,16 +99,29 @@ public class FooterObjects {
 	@FindBy(xpath = "//div/div[@id='llb_footer']/div[4]")
 	WebElement UserAccount;
 
-	@FindBy(xpath = "//div[@class='llb_ftLogInStatusTxt' and contains(text(), 'Log Out")
+	@FindBy(xpath = "//div[@class='llb_ftLogInStatusTxt' and contains(text(), 'Log Out')]")
 
 	WebElement  FooterLogOut;
 
-	public void NavigateToLoginPage (WebDriver driver){
+	public void NavigateToLoginPage (){
 
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
 		FooterLogin.click();
 
+	}
+	
+	public FooterObjects(WebDriver driver)
+
+	{
+		this.driver = driver;
+	  	PageFactory.initElements(driver, this);
+		
+	}
+
+	public void FooterSignOut()
+	
+	{
+		FooterLogOut.click();
+	}
 	}
 
 
@@ -119,4 +131,3 @@ public class FooterObjects {
 
 
 
-}
