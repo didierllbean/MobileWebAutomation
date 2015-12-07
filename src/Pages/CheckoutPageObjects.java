@@ -7,9 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import DataObjects.AddressData;
 import Tools.Utilities;
 
 public class CheckoutPageObjects {
+	
+	AddressData shippingData;
 	
 	/**
 	 * WebElements
@@ -245,9 +248,9 @@ public class CheckoutPageObjects {
 		Utilities.selectDropDownOption (By.id( "shipState" ),  state, driver, CheckoutPageObjects.class);
 	}
 	
-	public void fillDefaultShippingData() {
+	public AddressData fillDefaultShippingData() {
 		shippingFirstNameTextfield.sendKeys("John");
-		shippingMiddleNameTextfield.sendKeys("MobileWebAutomatedTestCase");
+		shippingMiddleNameTextfield.sendKeys("MobileWebTest");
 		shippingLastNameTextfield.sendKeys("Doe");
 		shippingShipToMaleRadioButton.click();
 		shippingAddressLine1Textfield.sendKeys("1221 Main St.");
@@ -257,6 +260,9 @@ public class CheckoutPageObjects {
 		shippingDayTimePhoneTextfield.sendKeys("5551234567");
 		shippingContinueButton.click();
 		shippingUseAddressAsEnteredButton.click();
+		
+		return shippingData = new AddressData(AddressData.SHIPPING, "Me", "", "John", "MobileWebTest", "Doe", "", "UNITED STATES", "1221 Main St.", "", "12345",
+				"", "", "5551234567", AddressData.FREE, "", ""); 
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
@@ -273,12 +279,16 @@ public class CheckoutPageObjects {
 		Utilities.selectDropDownOption (By.id( "billState" ),  state, driver, CheckoutPageObjects.class);
 	}
 	
-	public void fillDefaultBillingData() {
+	public AddressData fillDefaultBillingData() {
 		String email = "mobiletest@automation.com";
 		
 		billingEmailTextfield.sendKeys(email);
 		billingReenterEmailTextfield.sendKeys(email);
 		billingContinueButton.click();
+		
+		return new AddressData(AddressData.BILLING, "", "", shippingData.getFirstName(), shippingData.getMiddleName(), shippingData.getLastName(), "", shippingData.getCountry(), 
+				shippingData.getAddress1(), shippingData.getAddress2(), shippingData.getZipCode(), shippingData.getCity(), shippingData.getState(), shippingData.getDaytimePhone(), 
+				"", email, "");		
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
@@ -289,7 +299,7 @@ public class CheckoutPageObjects {
 	}
 	
 	public void fillDefaultPaymentData(WebDriver driver) {
-		
+		Utilities.explicitlyWait(2000);
 		paymentCreditCardTextfield.sendKeys("4444444444444448");
 		selectPaymentCCExpirationDate(driver, "12", "2030");
 		paymentContinueToReviewOrderButton.click();
