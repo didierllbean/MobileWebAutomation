@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import Tools.Utilities;
+
 
 public class FooterObjects {
 
@@ -103,9 +105,13 @@ public class FooterObjects {
 
 	WebElement  FooterLogOut;
 
-	public void NavigateToLoginPage (){
+	public void NavigateToLoginPage () throws InterruptedException{
+
+		Utilities.waitForAjaxToFinish(30, driver);//wait for page to be fully loaded
 
 		FooterLogin.click();
+		
+        
 
 	}
 	
@@ -120,7 +126,11 @@ public class FooterObjects {
 	public void FooterSignOut()
 	
 	{
+		Utilities.waitForAjaxToFinish(30, driver);//wait for page to be fully loaded
+
 		FooterLogOut.click();
+		Utilities.waitForAjaxToFinish(30, driver);//wait for page to be fully loaded
+
 	}
 	}
 

@@ -4,9 +4,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterClass;
+
+import Test.CreateAccountTestCases;
+
+import com.relevantcodes.extentreports.Chart;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class LoginPageObjects {
 
+	static final ExtentReports extent = ExtentReports.get(CreateAccountTestCases.class);
 	/* All WebElements are identified by @FindBy annotation */
 WebDriver driver;
 	/* Common Elements *///available for both regular and checkout login pages
@@ -111,16 +119,30 @@ WebDriver driver;
 
 	}
 	
-	public void VerifyNewAccount(String Email1, String Pass1)
+	public void VerifyNewAccount(String Email1, String Pass1) throws InterruptedException
 	
 	{
 		if(Email1.equals(email.getAttribute("value")))
 				{
 			
-			       
-				}
+		     extent.log(LogStatus.PASS, "Email Address Verification", "Email Address Matches");
+
+				
 		password.sendKeys(Pass1);
+		
+		
+				}
+		else
+		{
+		     extent.log(LogStatus.FAIL, "Email Address Verification", "Email Address Does Not Match");
+
+		}
+		
+
 		loginBttn.click();
+	     
 	}
+	
+	
 	
 }

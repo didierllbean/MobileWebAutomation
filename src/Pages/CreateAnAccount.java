@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import Tools.GenerateData;
+import Tools.Utilities;
 
 
 public class CreateAnAccount {
@@ -56,6 +57,8 @@ public CreateAnAccount(WebDriver driver)
 public void CreateAccClick()
 
 {
+	//Utilities.waitForAjaxToFinish(30, driver);//wait for page to be fully loaded
+	Utilities.explicitlyWait(10000);
 	CreateMyAccount.click();
 }
 
@@ -87,6 +90,9 @@ public String CreateAndVerifyAccount() throws InterruptedException
     SecurityQuestion.findElement(By.cssSelector("option[value=\"pet\"]")).click();
     SecurityAnswer.sendKeys("Raja");
     CreateMyAccount2.click();
+
+	Utilities.waitForAjaxToFinish(30, driver);//wait for page to be fully loaded
+
 
 if(driver.getPageSource().contains(FirstName+"'s"))
 		
