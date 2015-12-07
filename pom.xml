@@ -32,7 +32,7 @@
     <artifactId>com.report</artifactId>
     <version>1.0</version>
     <scope>system</scope>
-    <systemPath>${project.basedir}/Resources/reports_htm.jar</systemPath>
+    <systemPath>${project.basedir}/resources/reports_htm.jar</systemPath>
    
     </dependency>
   	<dependency>
