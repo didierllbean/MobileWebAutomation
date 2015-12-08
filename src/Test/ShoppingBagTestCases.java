@@ -22,9 +22,9 @@ private ProductData productData;
 	  System.out.println("Running ShoppingBagAsAGuestUser Test Case");
 	  
 	  ShoppingBagPage sbPage = new ShoppingBagPage();
-      HeaderObjects headerPage = new HeaderObjects(driver);
+      HeaderObjects header = new HeaderObjects(driver);
       ProductPageCore prodPage = new ProductPageCore();
-      headerPage.clickSBImage();
+      header.clickSBImage();
 	  Utilities.waitForAjaxToFinish(30, driver);//wait for page to be fully loaded
 	  
 	  if(driver.getPageSource().contains("Your Shopping Bag is empty"))
