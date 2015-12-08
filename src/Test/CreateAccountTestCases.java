@@ -42,9 +42,5 @@ public class CreateAccountTestCases extends TestCaseConfiguration
 	    extent.log(LogStatus.PASS, "Relogin", "Success");
 
 		Login.VerifyNewAccount(Part[0], Part[1]);
-		
-				
-
 	}
-
 }

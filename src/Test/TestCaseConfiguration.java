@@ -30,11 +30,8 @@ public class TestCaseConfiguration {
      protected ChromeDriver driver = null;
      protected HomePageObjects homePage = null;
      protected DesiredCapabilities  capabilities;
-     
-    
 	 static final ExtentReports extent = ExtentReports.get(TestCaseConfiguration.class);
-     
-	 String FilePath = "C:/Users/ssafdar/git/MobileWebAutomation/Report/TestResults.html";
+	 String FilePath = "Report/TestResults.html";
 
 
      @BeforeMethod(alwaysRun = true)
@@ -63,68 +60,58 @@ public class TestCaseConfiguration {
     
      @AfterMethod(alwaysRun = true)
      public void close() throws InterruptedException {         
-        // driver.close();
-        // driver.quit();
+         driver.close();
+         driver.quit();
      }
      
      @BeforeClass
-     public void beforeClass() {
-   	  
-   	  extent.init(FilePath, true);
-   	  extent.config().reportHeadline("LLBEAN MobileWeb Smoke Test Results Summary");
-   	  //HTMLReport report1 = new HTMLReport();
-   	  //report1.InitializeReport();
-   	  
-   	  System.out.println("Before Class");
-
+     public void beforeClass() {   	  
+		 extent.init(FilePath, true);
+		 extent.config().reportHeadline("LLBEAN MobileWeb Smoke Test Results Summary");
+		 //HTMLReport report1 = new HTMLReport();
+		 //report1.InitializeReport();
+		  
+		 System.out.println("Before Class");
      }
 
      @AfterClass
      public void afterClass() {
-   	  extent.config().chartTitle(Chart.TEST,"Test Steps");
-   	  extent.config().chartTitle(Chart.TEST_SET,"Test Cases");
-
-   	  System.out.println("After Class");
-     
+	   	 extent.config().chartTitle(Chart.TEST,"Test Steps");
+	   	 extent.config().chartTitle(Chart.TEST_SET,"Test Cases");
+	   	 System.out.println("After Class");
      }
      
      @BeforeSuite(groups = {"Initialize"})
      public void beforeSuite() {
-   	  
-   	  extent.init(FilePath, true);
-   	  extent.config().reportHeadline("LLBEAN MobileWeb Smoke Test Results Summary");
-   	  System.out.println("Before Suite");
-
+	   	 extent.init(FilePath, true);
+	   	 extent.config().reportHeadline("LLBEAN MobileWeb Smoke Test Results Summary");
+	   	 System.out.println("Before Suite");
      }
      
      @AfterSuite(groups = {"Destroy"})
      public void afterSuite() {
-   	  extent.config().chartTitle(Chart.TEST,"Test Steps");
-   	  extent.config().chartTitle(Chart.TEST_SET,"Test Cases");
-   	  System.out.println("After Suite");
-   	  try {
-   		  
-   		  
-             String content = FileUtils.readFileToString(new File(FilePath), "UTF-8");
-             content = content.replaceAll("<div id='footer'>", "");
-             content = content.replaceAll("<div class='footer'>","");
-             content = content.replaceAll("<div id='footer-section-1'>","");
-             content = content.replaceAll("<h4>ExtentReports Library</h4>","");
-             content = content.replaceAll("<li><a href='http://relevantcodes.com/extentreports-for-selenium/'>ProjectHome</a></span></li>","");
-             content = content.replaceAll("<a href='http://relevantcodes.com/extentreports-for-selenium/'>Project Home</a>","");
-             content = content.replaceAll("<li><a href='https://github.com/relevantcodes/extentreports/wiki'>Wiki</a></span></li>","");
-             content = content.replaceAll("<li><a href='https://github.com/relevantcodes/extentreports/graphs/contributors'>Contributors</a></span></li>","");
-             content = content.replaceAll("<li><a href='https://github.com/relevantcodes/extentreports/issues'>Issues</a></span></li>","");
-             content = content.replaceAll("<li><a href='http://relevantcodes.com/extentreports-documentation/'>Documentation</a></span></li>","");
-             content = content.replaceAll("extent-reports","Custom Report");
-             File tempFile = new File(FilePath);
-             FileUtils.writeStringToFile(tempFile, content, "UTF-8");
-          } catch (IOException e) {
-             //Simple exception handling, replace with what's necessary for
-             throw new RuntimeException("Generating file failed", e);
-
-
-          }
-     
-     }
+	   	extent.config().chartTitle(Chart.TEST,"Test Steps");
+	   	extent.config().chartTitle(Chart.TEST_SET,"Test Cases");
+	   	System.out.println("After Suite");
+	   	
+	   	try {
+			String content = FileUtils.readFileToString(new File(FilePath), "UTF-8");
+			content = content.replaceAll("<div id='footer'>", "");
+			content = content.replaceAll("<div class='footer'>","");
+			content = content.replaceAll("<div id='footer-section-1'>","");
+			content = content.replaceAll("<h4>ExtentReports Library</h4>","");
+			content = content.replaceAll("<li><a href='http://relevantcodes.com/extentreports-for-selenium/'>ProjectHome</a></span></li>","");
+			content = content.replaceAll("<a href='http://relevantcodes.com/extentreports-for-selenium/'>Project Home</a>","");
+			content = content.replaceAll("<li><a href='https://github.com/relevantcodes/extentreports/wiki'>Wiki</a></span></li>","");
+			content = content.replaceAll("<li><a href='https://github.com/relevantcodes/extentreports/graphs/contributors'>Contributors</a></span></li>","");
+			content = content.replaceAll("<li><a href='https://github.com/relevantcodes/extentreports/issues'>Issues</a></span></li>","");
+			content = content.replaceAll("<li><a href='http://relevantcodes.com/extentreports-documentation/'>Documentation</a></span></li>","");
+			content = content.replaceAll("extent-reports","Custom Report");
+			File tempFile = new File(FilePath);
+			FileUtils.writeStringToFile(tempFile, content, "UTF-8");
+		} catch (IOException e) {
+			//Simple exception handling, replace with what's necessary for
+			throw new RuntimeException("Generating file failed", e);
+		}
+	}
 }

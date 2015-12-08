@@ -14,11 +14,11 @@ public class CheckoutPageObjects {
 	
 	AddressData shippingData;
 	
-	/**
+	/*
 	 * WebElements
 	 */
 	
-	/** General Elements **/
+	/* General Elements */
 
 	@FindBy(linkText  = "Edit Shopping Bag")
 	WebElement checkoutEditSBLink;
@@ -35,7 +35,7 @@ public class CheckoutPageObjects {
 	@FindBy(xpath  = "//div[contains(@class, 'un_center') and contains(.,'Review')]")
 	WebElement checkoutReviewTabTitle;
 	
-	/** Shipping Step Elements **/
+	/* Shipping Step Elements */
 	
 	@FindBy(linkText  = "Ship to someone else")
 	WebElement shippingShipNotMeLink;
@@ -101,7 +101,7 @@ public class CheckoutPageObjects {
 	WebElement shippingUseAddressAsEnteredButton;
 		
 	
-	/** Billing Step Elements **/
+	/* Billing Step Elements */
 	
 	@FindBy(id  = "ckoutSameAsShip")
 	WebElement billingBASASACheckbox;
@@ -184,7 +184,7 @@ public class CheckoutPageObjects {
 	@FindBy(xpath = "//input[@value='USE AS ENTERED']")
 	WebElement billingUseAddressAsEnteredButton;
 	
-	/** Payment Step Elements **/
+	/* Payment Step Elements */
 	
 	@FindBy(id  = "creditRdo")
 	WebElement paymentPayWithCreditCardRadioButton;
@@ -210,7 +210,7 @@ public class CheckoutPageObjects {
 	@FindBy(id  = "promoPinInput")
 	WebElement paymentGiftCardPinTextfield;
 	
-	/** Review Step Elements **/
+	/* Review Step Elements */
 	
 	@FindBy(xpath  = "//input[contains(@class,'editOption billingEditLink')]")
 	WebElement reviewEditBillingAddressLink;
@@ -234,20 +234,55 @@ public class CheckoutPageObjects {
 	WebElement reviewReturnToSBButton;
 	
 	
-	/** Methods **/ 
+	/* Methods */ 
 	
+	/**
+	 * Select the desired title in the Title dropdown element in shipping page.
+	 * @param driver current webdriver in use.
+	 * @param title desired title
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/24/2015
+	 */
 	protected void selectShippingPersonTitle(WebDriver driver, String title) { 
 		Utilities.selectDropDownOption (By.id( "shipPersonTitle" ),  title, driver, CheckoutPageObjects.class);
 	}
 	
+	/**
+	 * Select the desired Country in the Country dropdown element in shipping page.
+	 * @param driver current driver in use.
+	 * @param country desired country
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/24/2015
+	 */
 	protected void selectShippingCountry(WebDriver driver, String country) { 
 		Utilities.selectDropDownOption (By.id( "shipCountry" ),  country, driver, CheckoutPageObjects.class);
 	}
 	
+	/**
+	 * Select the desired State in the state dropdown element in shipping page.
+	 * @param driver current webdriver in use.
+	 * @param state desired state
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/24/2015
+	 */
 	protected void selectShippingState(WebDriver driver, String state) { 
 		Utilities.selectDropDownOption (By.id( "shipState" ),  state, driver, CheckoutPageObjects.class);
 	}
 	
+	/**
+	 * Enter default predefined data in the Checkout's Shipping page.
+	 * @return A Shipping Address object which contains all the information entered.
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/24/2015
+	 */
 	public AddressData fillDefaultShippingData() {
 		shippingFirstNameTextfield.sendKeys("John");
 		shippingMiddleNameTextfield.sendKeys("MobileWebTest");
@@ -267,18 +302,53 @@ public class CheckoutPageObjects {
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	/**
+	 * Select the desired title in the Title dropdown element in billing page.
+	 * @param driver current webdriver in use.
+	 * @param title desired title
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/24/2015
+	 */
 	protected void selectBillingPersonTitle(WebDriver driver, String title) { 
 		Utilities.selectDropDownOption (By.id( "billPersonTitle" ),  title, driver, CheckoutPageObjects.class);
 	}
 	
+	/**
+	 * Select the desired Country in the Country dropdown element in billing page.
+	 * @param driver current driver in use.
+	 * @param country desired country
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/24/2015
+	 */
 	protected void selectBillingCountry(WebDriver driver, String country) { 
 		Utilities.selectDropDownOption (By.id( "billCountry" ),  country, driver, CheckoutPageObjects.class);
 	}
 	
+	/**
+	 * Select the desired State in the state dropdown element in billing page.
+	 * @param driver current webdriver in use.
+	 * @param state desired state
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/24/2015
+	 */
 	protected void selectBillingState(WebDriver driver, String state) { 
 		Utilities.selectDropDownOption (By.id( "billState" ),  state, driver, CheckoutPageObjects.class);
 	}
 	
+	/**
+	 * Enter default predefined data in the Checkout's Billing page. By default use BASASA option.
+	 * @return A Billing Address object which contains all the information entered.
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/24/2015
+	 */
 	public AddressData fillDefaultBillingData() {
 		String email = "mobiletest@automation.com";
 		
@@ -293,11 +363,29 @@ public class CheckoutPageObjects {
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 		
+	/**
+	 * Select the expiration date for a credit card in the Checkout's Payment page.
+	 * @param driver current webdriver in use.
+	 * @param month month number of the expiration date.
+	 * @param year year of the expiration date
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/24/2015
+	 */
 	protected void selectPaymentCCExpirationDate(WebDriver driver, String month, String year) { 	
 		Utilities.selectDropDownOption (By.id( "ccExpMonth" ),  month, driver, CheckoutPageObjects.class);		
 		Utilities.selectDropDownOption (By.id( "ccExpYear" ),  year, driver, CheckoutPageObjects.class);	
 	}
 	
+	/**
+	 * Enter default predefined data in the Checkout's Payment page. By default use Credit Card option.
+	 * @return A Payment Address object which contains all the information entered.
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/24/2015
+	 */
 	public void fillDefaultPaymentData(WebDriver driver) {
 		Utilities.explicitlyWait(2000);
 		paymentCreditCardTextfield.sendKeys("4444444444444448");
@@ -307,6 +395,15 @@ public class CheckoutPageObjects {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 
+	/**
+	 * Click on the Place Order button
+	 * @param driver current webdriver in use.
+	 * @return Thankyou page object
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/24/2015
+	 */
 	public ThankYouPageObjects goToThankYouPage(WebDriver driver) {
 		reviewPlaceOrderButton.click();
 		return PageFactory.initElements(driver, ThankYouPageObjects.class);

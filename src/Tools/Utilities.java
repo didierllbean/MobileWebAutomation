@@ -93,6 +93,16 @@ public class Utilities {
 		return PageFactory.initElements(driver, ProductPageCore.class);
 	}
 	
+	/**
+	 * Wait until the JQuery process is done. Continue the process as soon the JQuery is ready.
+	 * 
+	 * @param timeToWait   Number of seconds that the automation needs to wait. 
+	 * @param driver	Current WebDriver in use. 
+	 *  
+	 *  @author Yohan Desanti G.
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/26/2015
+	 */
 	public static void waitForAjaxToFinish(final int timeToWait, WebDriver driver) {
 		int timeout = 0;
 		 
@@ -110,11 +120,21 @@ public class Utilities {
 		throw new AssertionError("Ajax haven't finished its job in "+timeToWait+" sec");
 	}
 	
+	/**
+	 * Wait an exact amount of time. The automation restart after the time has passed.
+	 * 
+	 * @param timeToWait   Number of seconds that the automation needs to wait. 
+	 * @param driver	Current WebDriver in use. 
+	 *  
+	 *  @author Yohan Desanti G.
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/26/2015
+	 */
 	public static void explicitlyWait(int time){
 		 try {
-				Thread.sleep(time);
-			} catch (InterruptedException e) {
-				// Do nothing
-			}
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			// Do nothing
+		}
 	}
 }

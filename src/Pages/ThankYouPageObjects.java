@@ -1,7 +1,5 @@
 package Pages;
 
-
-
 import org.apache.commons.lang3.text.WordUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,8 +15,7 @@ import DataObjects.AddressData;
 import DataObjects.ProductData;
 
 public class ThankYouPageObjects {
-	private WebElement productOnList,
-	aux;
+	private WebElement productOnList;
 
 	@FindBy(xpath  = "id('wlsb_products')//span[not(contains(.,'Order Number'))]")
 	WebElement tyOrderNumberLabel;
@@ -44,12 +41,33 @@ public class ThankYouPageObjects {
 	@FindBy(xpath = "//input[@value='CONTINUE SHOPPING']")
 	WebElement paymentContinueButton;
 	
+	/**
+	 * Find the complete section which contains the product data in SB page
+	 * @param productID Six number digit to identify the desired product
+	 * @param driver Current webdriver in use.
+	 * @return WebElement with the product details
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 11/24/2015
+	 */
 	private WebElement getProductInSB(String productID, WebDriver driver) {
 		By selector = By.xpath("//div[@class = 'chkout_Review_InputLabel' and contains(.,'"+productID+"')]/../../..");
 		Assert.assertTrue(Utilities.isElementPresent(driver, selector), "Product "+productID+" is not present on Thank You page");
 		return driver.findElement(selector);
 	}
 
+	/**
+	 * Check the presence of the product basic details such as ID, Name, Price, Color, Size and Qty. Throw an assertion error in case of any of these attributes doesn't match the selected in PDP or are not present in TY page.
+	 * 
+	 * @param productData Product object which contain the exact attributes selected in PDP before adding the product to SB
+	 * @param driver Current webdriver in use.
+	 * 
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 12/4/2015
+	 */
 	public void verifyProductBasicAttributes(ProductData productData, WebDriver driver) {	
 		Utilities.explicitlyWait(2000);
 		//Check if the product ID is present and if it is, create a new element based on it.
@@ -72,6 +90,16 @@ public class ThankYouPageObjects {
 		
 	}
 
+	/**
+	 * Check the presence of the order shipping information such as Address, Country, Zip Code and Phone. Throw an assertion error in case of any of these details doesn't match the selected in Shipping step or are not present in TY page.
+	 * 
+	 * @param shippingAddress Shipping Address object which contains the information entered in the Checkout's Shipping step. 
+	 * @param driver Current webdriver in use.
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 12/7/2015
+	 */
 	public void verifyShippingAddress(AddressData shippingAddress, ChromeDriver driver) {
 		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getAddress1()+"')]")).isDisplayed(), "Address Line 1 is not found for Shipping Address Summary");
 		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+WordUtils.capitalizeFully(shippingAddress.getCountry())+"')]")).isDisplayed(), "Country is not found for Shipping Address Summary");
@@ -79,6 +107,16 @@ public class ThankYouPageObjects {
 		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getDaytimePhone()+"')]")).isDisplayed(), "Daytime phone number is not found for Shipping Address Summary");
 	}
 
+	/**
+	 * Check the presence of the order billing information such as Address, Country, Zip Code, email and Phone. Throw an assertion error in case of any of these details doesn't match the selected in Billing step or are not present in TY page.
+	 * 
+	 * @param billingAddress Billing Address object which contain the information entered in the Checkout's Billing Step.
+	 * @param driver Current webdriver in use.
+	 * 
+	 *  @author Yohan Desanti G.  
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.0, 12/7/2015
+	 */
 	public void verifyBillingAddress(AddressData billingAddress, ChromeDriver driver) {
 		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getAddress1()+"')]")).isDisplayed(), "Address Line 1 is not found for Billing Address Summary");
 		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+WordUtils.capitalizeFully(billingAddress.getCountry())+"')]")).isDisplayed(), "Country is not found for Billing Address Summary");
@@ -86,7 +124,4 @@ public class ThankYouPageObjects {
 		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getDaytimePhone()+"')]")).isDisplayed(), "Daytime phone number is not found for Billing Address Summary");
 		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getEmail()+"')]")).isDisplayed(), "Email address is not found for Billing Address Summary");	
 	}
-	
-	
-
 }

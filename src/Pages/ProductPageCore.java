@@ -88,6 +88,12 @@ public class ProductPageCore {
 		return driver.findElement(By.xpath("//select[@class = 'ppQutyCountSelect']")).getText();
 	}
 	*/
+	
+	/**
+	 * Find the product price value based on the page type (Fullpriced or Sale) 
+	 * @param driver current webdriver in use.
+	 * @return WebElement with the price text
+	 */
 	private WebElement getProductPrice(WebDriver driver) {
 		if(productID.getAttribute("data-catalogid").toString().equals("PO"))
 			return driver.findElement(By.xpath("(id('swatchDiv')//span[not(contains(@class,'un_line_through')) and contains(.,'$')])[1]"));
