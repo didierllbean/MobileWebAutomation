@@ -2,12 +2,15 @@ package Pages;
 
 
 
+import org.apache.commons.lang3.text.WordUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+
+import com.relevantcodes.extentreports.LogStatus;
 
 import Tools.Utilities;
 import DataObjects.AddressData;
@@ -70,13 +73,18 @@ public class ThankYouPageObjects {
 	}
 
 	public void verifyShippingAddress(AddressData shippingAddress, ChromeDriver driver) {
-		// TODO Auto-generated method stub
-		
+		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getAddress1()+"')]")).isDisplayed(), "Address Line 1 is not found for Shipping Address Summary");
+		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+WordUtils.capitalizeFully(shippingAddress.getCountry())+"')]")).isDisplayed(), "Country is not found for Shipping Address Summary");
+		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getZipCode()+"')]")).isDisplayed(), "Zip Code is not found for Shipping Address Summary");
+		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getDaytimePhone()+"')]")).isDisplayed(), "Daytime phone number is not found for Shipping Address Summary");
 	}
 
 	public void verifyBillingAddress(AddressData billingAddress, ChromeDriver driver) {
-		// TODO Auto-generated method stub
-		
+		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getAddress1()+"')]")).isDisplayed(), "Address Line 1 is not found for Billing Address Summary");
+		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+WordUtils.capitalizeFully(billingAddress.getCountry())+"')]")).isDisplayed(), "Country is not found for Billing Address Summary");
+		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getZipCode()+"')]")).isDisplayed(), "Zip Code is not found for Billing Address Summary");
+		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getDaytimePhone()+"')]")).isDisplayed(), "Daytime phone number is not found for Billing Address Summary");
+		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getEmail()+"')]")).isDisplayed(), "Email address is not found for Billing Address Summary");	
 	}
 	
 	

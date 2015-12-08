@@ -106,33 +106,25 @@ public class FooterObjects {
 	WebElement  FooterLogOut;
 
 	public void NavigateToLoginPage () throws InterruptedException{
-
 		Utilities.waitForAjaxToFinish(30, driver);//wait for page to be fully loaded
 
 		FooterLogin.click();
-		
-        
-
 	}
 	
 	public FooterObjects(WebDriver driver)
-
 	{
 		this.driver = driver;
-	  	PageFactory.initElements(driver, this);
-		
+	  	PageFactory.initElements(driver, this);		
 	}
 
-	public void FooterSignOut()
-	
+	public void FooterSignOut()	
 	{
 		Utilities.waitForAjaxToFinish(30, driver);//wait for page to be fully loaded
 
 		FooterLogOut.click();
 		Utilities.waitForAjaxToFinish(30, driver);//wait for page to be fully loaded
-
 	}
-	}
+}
 
 
 

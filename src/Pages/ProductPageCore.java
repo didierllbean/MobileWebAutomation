@@ -28,8 +28,8 @@ public class ProductPageCore {
 	@FindBy(id = "un_add_to_bag")
 	WebElement addToBagButton;
 	
-	@FindBy(xpath = "//select[@class = 'ppQutyCountSelect']/option[@selected]")
-	WebElement qtyDropDown;
+	//@FindBy(xpath = "//select[@class = 'ppQutyCountSelect']")
+	//WebElement qtyDropDown;
 	
 	@FindBy(id = "paypalExpress")
 	WebElement buyPPExpressButton;
@@ -84,6 +84,10 @@ public class ProductPageCore {
 	
 	/*-------------------------------------------------- Functions --------------------------------------------------*/
 	
+/*	public String getSelectedQty(WebDriver driver) {
+		return driver.findElement(By.xpath("//select[@class = 'ppQutyCountSelect']")).getText();
+	}
+	*/
 	private WebElement getProductPrice(WebDriver driver) {
 		if(productID.getAttribute("data-catalogid").toString().equals("PO"))
 			return driver.findElement(By.xpath("(id('swatchDiv')//span[not(contains(@class,'un_line_through')) and contains(.,'$')])[1]"));
@@ -224,6 +228,6 @@ public class ProductPageCore {
 		if(Utilities.isElementPresent(driver, By.id("llb_size")))
 			size = selectRandomSizeAttribute(driver);		
 		
-		return new ProductData(productID.getAttribute("itemid").toString(), productName.getText(), getProductPrice(driver).getText(), color, size, qtyDropDown.getText(), productSizeType.getText());
+		return new ProductData(productID.getAttribute("itemid").toString(), productName.getText(), getProductPrice(driver).getText(), color, size, "1", productSizeType.getText());
 	}
 }
