@@ -16,7 +16,7 @@ public class LoginPageObjects {
 
 	static final ExtentReports extent = ExtentReports.get(CreateAccountTestCases.class);
 	/* All WebElements are identified by @FindBy annotation */
-WebDriver driver;
+	WebDriver driver;
 	/* Common Elements *///available for both regular and checkout login pages
 	@FindBy(id = "loginEmail")
 	WebElement email;
@@ -127,7 +127,6 @@ WebDriver driver;
 			
 		     extent.log(LogStatus.PASS, "Email Address Verification", "Email Address Matches");
 
-				
 		password.sendKeys(Pass1);
 		
 		
@@ -138,7 +137,6 @@ WebDriver driver;
 
 		}
 		
-
 		loginBttn.click();
 	     
 	}

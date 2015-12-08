@@ -30,7 +30,10 @@ public class TestCaseConfiguration {
      protected ChromeDriver driver = null;
      protected HomePageObjects homePage = null;
      protected DesiredCapabilities  capabilities;
-	 static final ExtentReports extent = ExtentReports.get(CreateAccountTestCases.class);
+     
+    
+	 static final ExtentReports extent = ExtentReports.get(TestCaseConfiguration.class);
+     
 	 String FilePath = "C:/Users/ssafdar/git/MobileWebAutomation/Report/TestResults.html";
 
 
@@ -60,8 +63,8 @@ public class TestCaseConfiguration {
     
      @AfterMethod(alwaysRun = true)
      public void close() throws InterruptedException {         
-         driver.close();
-         driver.quit();
+        // driver.close();
+        // driver.quit();
      }
      
      @BeforeClass

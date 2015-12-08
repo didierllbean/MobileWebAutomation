@@ -9,15 +9,11 @@ import Pages.FooterObjects;
 import Pages.CreateAnAccount;
 import Tools.Utilities;
 
-
-
-
-
-
 public class CreateAccountTestCases extends TestCaseConfiguration
 {
 	@Test(groups = {"smokeTest"})
 	public void CreateNewAccount() throws InterruptedException{
+		
 		
 		  extent.startTest("CreateNewAccount");
           System.out.println("Running CreateAnAccount Test Case");
