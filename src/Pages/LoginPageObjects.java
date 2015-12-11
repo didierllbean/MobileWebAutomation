@@ -1,22 +1,20 @@
 package Pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterClass;
 
-import Test.CreateAccountTestCases;
+import Test.TestCaseConfiguration;
+import Tools.Constants;
+import Tools.ExtentManager;
+import Tools.Utilities;
 
-import com.relevantcodes.extentreports.Chart;
-import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class LoginPageObjects {
 
-	static final ExtentReports extent = ExtentReports.get(CreateAccountTestCases.class);
 	/* All WebElements are identified by @FindBy annotation */
-	WebDriver driver;
+	;
 	/* Common Elements *///available for both regular and checkout login pages
 	@FindBy(id = "loginEmail")
 	WebElement email;
@@ -51,11 +49,16 @@ public class LoginPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/30/2015
 	 */
-	public <T> T login(String email, String password, WebDriver driver, Class<T> expectedPage){
+	public <T> T login(String email, String password, Class<T> expectedPage){
+		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
+		
 		this.email.clear();
 		this.email.sendKeys(email);
 		this.password.sendKeys(password);
-		return PageFactory.initElements(driver, expectedPage);
+		loginBttn.click();
+
+		ExtentManager.getExtentTest().log(LogStatus.PASS, "Login "+Constants.NOCCACCOUNT+" accout", "Success");
+		return PageFactory.initElements(TestCaseConfiguration.driver.get(), expectedPage);
 	}
 	
 	
@@ -72,8 +75,8 @@ public class LoginPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/30/2015
 	 */
-	public CheckoutPageObjects loginAndContinueCheckout(String email, String password, WebDriver driver){
-		return login(email, password, driver, CheckoutPageObjects.class);
+	public CheckoutPageObjects loginAndContinueCheckout(String email, String password ){
+		return login(email, password, CheckoutPageObjects.class);
 	}
 	
 	/**
@@ -90,9 +93,10 @@ public class LoginPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/30/2015
 	 */
-	public <T> T continueAsGuest(WebDriver driver, Class<T> expectedPage){
+	public <T> T continueAsGuest(Class<T> expectedPage){
+		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 		continueAsAGuest.click();
-		return PageFactory.initElements(driver, expectedPage);
+		return PageFactory.initElements(TestCaseConfiguration.driver.get(), expectedPage);
 	}
 	
 	/**
@@ -106,41 +110,33 @@ public class LoginPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/30/2015
 	 */
-	public CheckoutPageObjects continueCheckoutAsGuest(WebDriver driver){
-		return continueAsGuest(driver, CheckoutPageObjects.class);
+	public CheckoutPageObjects continueCheckoutAsGuest(){
+		return continueAsGuest(CheckoutPageObjects.class);
 	}
 	
-	public LoginPageObjects(WebDriver driver)
+	/*public LoginPageObjects()
 	
 	{
 		
 		this.driver = driver;
 	  	PageFactory.initElements(driver, this);
 
-	}
+	}*/
 	
 	public void VerifyNewAccount(String Email1, String Pass1) throws InterruptedException
-	
 	{
-		if(Email1.equals(email.getAttribute("value")))
-				{
-			
-		     extent.log(LogStatus.PASS, "Email Address Verification", "Email Address Matches");
-
-		password.sendKeys(Pass1);
-		
-		
-				}
+		//Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
+		Utilities.explicitlyWait(2000);
+		if(Email1.equals(email.getAttribute("value")))	{			
+			ExtentManager.getExtentTest().log(LogStatus.PASS, "Email Address Verification", "Email Address Matches");
+			password.sendKeys(Pass1);		
+		}
 		else
 		{
-		     extent.log(LogStatus.FAIL, "Email Address Verification", "Email Address Does Not Match");
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "Email Address Verification", "Email Address Does Not Match");
 
 		}
 		
-		loginBttn.click();
-	     
+		loginBttn.click();	     
 	}
-	
-	
-	
 }

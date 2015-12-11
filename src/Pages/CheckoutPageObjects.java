@@ -2,17 +2,24 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 import DataObjects.AddressData;
+import Test.TestCaseConfiguration;
+import Tools.ExtentManager;
 import Tools.Utilities;
 
 public class CheckoutPageObjects {
 	
-	AddressData shippingData;
+	private AddressData shippingData;
+	public final String SHIPPINGSTEP = "shipping",
+						BILLINGSTEP = "Billing",
+						PAYMENTSTEP = "Payment",
+						REVIEWSTEP = "Review";
 	
 	/*
 	 * WebElements
@@ -245,8 +252,8 @@ public class CheckoutPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/24/2015
 	 */
-	protected void selectShippingPersonTitle(WebDriver driver, String title) { 
-		Utilities.selectDropDownOption (By.id( "shipPersonTitle" ),  title, driver, CheckoutPageObjects.class);
+	protected void selectShippingPersonTitle(String title) { 
+		Utilities.selectDropDownOption (By.id( "shipPersonTitle" ),  title, TestCaseConfiguration.driver.get(), CheckoutPageObjects.class);
 	}
 	
 	/**
@@ -258,8 +265,8 @@ public class CheckoutPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/24/2015
 	 */
-	protected void selectShippingCountry(WebDriver driver, String country) { 
-		Utilities.selectDropDownOption (By.id( "shipCountry" ),  country, driver, CheckoutPageObjects.class);
+	protected void selectShippingCountry(String country) { 
+		Utilities.selectDropDownOption (By.id( "shipCountry" ),  country, TestCaseConfiguration.driver.get(), CheckoutPageObjects.class);
 	}
 	
 	/**
@@ -271,8 +278,8 @@ public class CheckoutPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/24/2015
 	 */
-	protected void selectShippingState(WebDriver driver, String state) { 
-		Utilities.selectDropDownOption (By.id( "shipState" ),  state, driver, CheckoutPageObjects.class);
+	protected void selectShippingState(String state) { 
+		Utilities.selectDropDownOption (By.id( "shipState" ),  state, TestCaseConfiguration.driver.get(), CheckoutPageObjects.class);
 	}
 	
 	/**
@@ -284,6 +291,8 @@ public class CheckoutPageObjects {
 	 *  @version 1.0, 11/24/2015
 	 */
 	public AddressData fillDefaultShippingData() {
+		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
+		
 		shippingFirstNameTextfield.sendKeys("John");
 		shippingMiddleNameTextfield.sendKeys("MobileWebTest");
 		shippingLastNameTextfield.sendKeys("Doe");
@@ -311,8 +320,8 @@ public class CheckoutPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/24/2015
 	 */
-	protected void selectBillingPersonTitle(WebDriver driver, String title) { 
-		Utilities.selectDropDownOption (By.id( "billPersonTitle" ),  title, driver, CheckoutPageObjects.class);
+	protected void selectBillingPersonTitle(String title) { 
+		Utilities.selectDropDownOption (By.id( "billPersonTitle" ),  title, TestCaseConfiguration.driver.get(), CheckoutPageObjects.class);
 	}
 	
 	/**
@@ -324,8 +333,8 @@ public class CheckoutPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/24/2015
 	 */
-	protected void selectBillingCountry(WebDriver driver, String country) { 
-		Utilities.selectDropDownOption (By.id( "billCountry" ),  country, driver, CheckoutPageObjects.class);
+	protected void selectBillingCountry(String country) { 
+		Utilities.selectDropDownOption (By.id( "billCountry" ),  country, TestCaseConfiguration.driver.get(), CheckoutPageObjects.class);
 	}
 	
 	/**
@@ -337,8 +346,8 @@ public class CheckoutPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/24/2015
 	 */
-	protected void selectBillingState(WebDriver driver, String state) { 
-		Utilities.selectDropDownOption (By.id( "billState" ),  state, driver, CheckoutPageObjects.class);
+	protected void selectBillingState(String state) { 
+		Utilities.selectDropDownOption (By.id( "billState" ),  state, TestCaseConfiguration.driver.get(), CheckoutPageObjects.class);
 	}
 	
 	/**
@@ -349,7 +358,7 @@ public class CheckoutPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/24/2015
 	 */
-	public AddressData fillDefaultBillingData() {
+	public AddressData fillDefaultBillingData() {		
 		String email = "mobiletest@automation.com";
 		
 		billingEmailTextfield.sendKeys(email);
@@ -373,9 +382,9 @@ public class CheckoutPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/24/2015
 	 */
-	protected void selectPaymentCCExpirationDate(WebDriver driver, String month, String year) { 	
-		Utilities.selectDropDownOption (By.id( "ccExpMonth" ),  month, driver, CheckoutPageObjects.class);		
-		Utilities.selectDropDownOption (By.id( "ccExpYear" ),  year, driver, CheckoutPageObjects.class);	
+	protected void selectPaymentCCExpirationDate(String month, String year) { 	
+		Utilities.selectDropDownOption (By.id( "ccExpMonth" ),  month, TestCaseConfiguration.driver.get(), CheckoutPageObjects.class);		
+		Utilities.selectDropDownOption (By.id( "ccExpYear" ),  year, TestCaseConfiguration.driver.get(), CheckoutPageObjects.class);	
 	}
 	
 	/**
@@ -386,10 +395,10 @@ public class CheckoutPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/24/2015
 	 */
-	public void fillDefaultPaymentData(WebDriver driver) {
+	public void fillDefaultPaymentData() {
 		Utilities.explicitlyWait(2000);
 		paymentCreditCardTextfield.sendKeys("4444444444444448");
-		selectPaymentCCExpirationDate(driver, "12", "2030");
+		selectPaymentCCExpirationDate("12", "2030");
 		paymentContinueToReviewOrderButton.click();
 	}
 
@@ -404,8 +413,23 @@ public class CheckoutPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/24/2015
 	 */
-	public ThankYouPageObjects goToThankYouPage(WebDriver driver) {
+	public ThankYouPageObjects goToThankYouPage() {
+		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 		reviewPlaceOrderButton.click();
-		return PageFactory.initElements(driver, ThankYouPageObjects.class);
+		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ThankYouPageObjects.class);
+	}
+
+	public void validateLandingStep(String expectedTab) {
+		if(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.xpath("//div[contains(@class,'checkOutMenuTxt') and contains(@class,'SelectedTab') ]"))) {
+			WebElement selectedCheckoutTab = TestCaseConfiguration.driver.get().findElement(By.xpath("//div[contains(@class,'checkOutMenuTxt') and contains(@class,'SelectedTab') ]"));
+			
+			if(selectedCheckoutTab.getText().equals(expectedTab))
+				ExtentManager.getExtentTest().log(LogStatus.PASS, "CheckoutPaymentPage", "Success");
+			else
+				ExtentManager.getExtentTest().log(LogStatus.FAIL, "CheckoutPaymentPage", "Tab Title is not "+expectedTab);
+		}
+		else
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "CheckoutPaymentPage", "Payment Tab Not Found");
+		
 	}
 }

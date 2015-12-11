@@ -2,20 +2,20 @@ package Pages;
 
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.relevantcodes.extentreports.LogStatus;
+
+import Test.TestCaseConfiguration;
+import Tools.ExtentManager;
 import Tools.GenerateData;
 import Tools.Utilities;
 
 
 public class CreateAnAccount {
 	
-	
-
-	WebDriver driver;
 	@FindBy(id = "id_srfFNameTxt")
 	WebElement Fname;
 
@@ -43,73 +43,58 @@ public class CreateAnAccount {
 	@FindBy(xpath = "//input[contains(@value, 'Create an Account')]")
 	WebElement CreateMyAccount;
 
- @FindBy(xpath="//div[@class='srfCreatAccBtnTxt' and contains(text(), 'Create My Account')]")
- WebElement CreateMyAccount2;
-
-public CreateAnAccount(WebDriver driver)
-
-{
-	this.driver = driver;
-  	PageFactory.initElements(driver, this);
+	 @FindBy(xpath="//div[@class='srfCreatAccBtnTxt' and contains(text(), 'Create My Account')]")
+	 WebElement CreateMyAccount2;
 	
-}
-
-public void CreateAccClick()
-
-{
-	//Utilities.waitForAjaxToFinish(30, driver);//wait for page to be fully loaded
-	Utilities.explicitlyWait(10000);
-	CreateMyAccount.click();
-}
-
-public String CreateAndVerifyAccount() throws InterruptedException
-{
-
-	 GenerateData genData;
-	 genData=new GenerateData();
+	public CreateAnAccount()
+	{
+	  	PageFactory.initElements(TestCaseConfiguration.driver.get(), this);		
+	}
 	
-	 String Pass;
-	 
-
-	//Fname.sendKeys((CharSequence[]) dict1.get("Fname"));
-	Fname.sendKeys(genData.generateRandomString(10));
-	String FirstName = Fname.getAttribute("value");
-	System.out.println(FirstName);
+	public void CreateAccClick()
+	{
+		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
+		CreateMyAccount.click();
+		ExtentManager.getExtentTest().log(LogStatus.PASS, "NavigateToCreateAccountPage", "Success");
+	}
 	
-    Email.sendKeys(genData.generateEmail(15));
-	String EmailAddress = Email.getAttribute("value");
-    ReEnterEmail.sendKeys(EmailAddress);
-    
-    
-    Password.sendKeys(genData.generateRandomAlphaNumeric(10));
-    Pass= Password.getAttribute("value");
-    ReEnterPassword.sendKeys(Pass);
-    
-    
-    
-    SecurityQuestion.findElement(By.cssSelector("option[value=\"pet\"]")).click();
-    SecurityAnswer.sendKeys("Raja");
-    CreateMyAccount2.click();
-
-	Utilities.waitForAjaxToFinish(30, driver);//wait for page to be fully loaded
-
-
-if(driver.getPageSource().contains(FirstName+"'s"))
+	public String CreateAndVerifyAccount() throws InterruptedException
+	{
+		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
+		 GenerateData genData;
+		 genData=new GenerateData();
 		
-	{
-		System.out.println("Text is Present");
+		 String Pass;	 
+
+		Fname.sendKeys(genData.generateRandomString(10));
+		String FirstName = Fname.getAttribute("value");
 		System.out.println(FirstName);
-
+		
+	    Email.sendKeys(genData.generateEmail(15));
+		String EmailAddress = Email.getAttribute("value");
+	    ReEnterEmail.sendKeys(EmailAddress);
+	    
+	    
+	    Password.sendKeys(genData.generateRandomAlphaNumeric(10));
+	    Pass= Password.getAttribute("value");
+	    ReEnterPassword.sendKeys(Pass);
+	    
+	    SecurityQuestion.findElement(By.cssSelector("option[value=\"pet\"]")).click();
+	    SecurityAnswer.sendKeys("Raja");
+	    CreateMyAccount2.click();
+	
+		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
+	
+	
+		if(TestCaseConfiguration.driver.get().getPageSource().contains(FirstName+"'s"))	{
+			System.out.println("Text is Present");
+			System.out.println(FirstName);	
+		}
+		else
+		{
+			System.out.println("Text is not Present");
+		
+		}
+		return EmailAddress+";"+Pass;
 	}
-	else
-	{
-		System.out.println("Text is not Present");
-
-	}
-return EmailAddress+";"+Pass;
-
-
-}
-
-
 }

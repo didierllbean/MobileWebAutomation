@@ -3,12 +3,15 @@ package Pages;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 import DataObjects.ProductData;
+import Test.TestCaseConfiguration;
+import Tools.ExtentManager;
 import Tools.Utilities;
 
 public class ProductPageCore {
@@ -84,7 +87,7 @@ public class ProductPageCore {
 	
 	/*-------------------------------------------------- Functions --------------------------------------------------*/
 	
-/*	public String getSelectedQty(WebDriver driver) {
+/*	public String getSelectedQty() {
 		return driver.findElement(By.xpath("//select[@class = 'ppQutyCountSelect']")).getText();
 	}
 	*/
@@ -94,11 +97,11 @@ public class ProductPageCore {
 	 * @param driver current webdriver in use.
 	 * @return WebElement with the price text
 	 */
-	private WebElement getProductPrice(WebDriver driver) {
+	private WebElement getProductPrice() {
 		if(productID.getAttribute("data-catalogid").toString().equals("PO"))
-			return driver.findElement(By.xpath("(id('swatchDiv')//span[not(contains(@class,'un_line_through')) and contains(.,'$')])[1]"));
+			return TestCaseConfiguration.driver.get().findElement(By.xpath("(id('swatchDiv')//span[not(contains(@class,'un_line_through')) and contains(.,'$')])[1]"));
 		else
-			return driver.findElement(By.xpath("id('swatchDiv')//div/b"));
+			return TestCaseConfiguration.driver.get().findElement(By.xpath("id('swatchDiv')//div/b"));
 	}
 	
 	/**
@@ -111,6 +114,7 @@ public class ProductPageCore {
 	private void addToBag()
 	{
 		addToBagButton.click();
+		ExtentManager.getExtentTest().log(LogStatus.PASS, "AddedToBag", "Success");
 	}
 	
 	/**
@@ -123,9 +127,11 @@ public class ProductPageCore {
 	 * @LastUpdate Yohan Desanti G.
 	 * @version 1.0, 11/27/2015
 	 */
-	private ShoppingBagPage goToCheckout(WebDriver driver){
+	private ShoppingBagPage goToCheckout(){
 		pasbCheckoutButton.click();
-		return PageFactory.initElements(driver, ShoppingBagPage.class);
+
+		ExtentManager.getExtentTest().log(LogStatus.PASS, "GoToShoppingBag", "Success");
+		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);
 	}
 	
 	/**
@@ -150,9 +156,9 @@ public class ProductPageCore {
 	 * @LastUpdate Yohan Desanti G.
 	 * @version 1.0, 11/27/2015
 	 */
-	public ShoppingBagPage addToBagAndGoToSB(WebDriver driver){
+	public ShoppingBagPage addToBagAndGoToSB(){
 		addToBag();
-		return goToCheckout(driver);
+		return goToCheckout();
 	}
 	
 	/**
@@ -164,9 +170,10 @@ public class ProductPageCore {
 	 * @LastUpdate Yohan Desanti G.
 	 * @version 1.0, 11/27/2015
 	 */
-	public void addToBagAndContinueShopping(WebDriver driver){
+	public ShoppingBagPage addToBagAndContinueShopping(){
 		addToBag();
 		continueChopping();
+		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);
 	}
 	
 	/**
@@ -179,8 +186,8 @@ public class ProductPageCore {
 	 * @LastUpdate Yohan Desanti G.
 	 * @version 1.5, 12/02/2015
 	 */
-	public String selectRandomColorAttribute(WebDriver driver) {
-		if(Utilities.isElementPresent(driver, By.id("un_color_cont")))
+	public String selectRandomColorAttribute() {
+		if(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.id("un_color_cont")))
 		{
 			List <WebElement> colors = null;
 			colors = attributesSection.findElements(By.xpath("id('un_color_cont')//img[not(contains(@src, 'outofstock')) and not(contains(@class, 'soldOutSwatchImg'))]/.."));
@@ -202,8 +209,8 @@ public class ProductPageCore {
 	 * @LastUpdate Yohan Desanti G.
 	 * @version 1.1, 12/02/2015
 	 */
-	public String selectRandomSizeAttribute(WebDriver driver) {
-		if(Utilities.isElementPresent(driver, By.id("llb_size")))
+	public String selectRandomSizeAttribute() {
+		if(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.id("llb_size")))
 		{
 			List <WebElement> sizes = null;
 			sizes = attributesSection.findElements(By.xpath("id('llb_size')/div//input[not(contains(@class, 'outofstock'))]"));
@@ -226,14 +233,15 @@ public class ProductPageCore {
 	 * @LastUpdate Yohan Desanti G.
 	 * @version 1.2, 12/02/2015
 	 */
-	public ProductData selectRandomAttributes(WebDriver driver) {
+	public ProductData selectRandomAttributes() {
 		String color = null, size = null;
-		if(Utilities.isElementPresent(driver, By.id("un_color_cont")))
-			color = selectRandomColorAttribute(driver);
+		if(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.id("un_color_cont")))
+			color = selectRandomColorAttribute();
 		
-		if(Utilities.isElementPresent(driver, By.id("llb_size")))
-			size = selectRandomSizeAttribute(driver);		
+		if(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.id("llb_size")))
+			size = selectRandomSizeAttribute();		
 		
-		return new ProductData(productID.getAttribute("itemid").toString(), productName.getText(), getProductPrice(driver).getText(), color, size, "1", productSizeType.getText());
+		ExtentManager.getExtentTest().log(LogStatus.PASS, "ProductRandomAttributesSelection", "Success");
+		return new ProductData(productID.getAttribute("itemid").toString(), productName.getText(), getProductPrice().getText(), color, size, "1", productSizeType.getText());
 	}
 }

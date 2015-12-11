@@ -1,15 +1,11 @@
 package Pages;
 
-import org.apache.commons.lang3.text.WordUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-import com.relevantcodes.extentreports.LogStatus;
-
+import Test.TestCaseConfiguration;
 import Tools.Utilities;
 import DataObjects.AddressData;
 import DataObjects.ProductData;
@@ -51,10 +47,10 @@ public class ThankYouPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/24/2015
 	 */
-	private WebElement getProductInSB(String productID, WebDriver driver) {
+	private WebElement getProductInSB(String productID) {
 		By selector = By.xpath("//div[@class = 'chkout_Review_InputLabel' and contains(.,'"+productID+"')]/../../..");
-		Assert.assertTrue(Utilities.isElementPresent(driver, selector), "Product "+productID+" is not present on Thank You page");
-		return driver.findElement(selector);
+		Assert.assertTrue(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), selector), "Product "+productID+" is not present on Thank You page");
+		return TestCaseConfiguration.driver.get().findElement(selector);
 	}
 
 	/**
@@ -68,13 +64,13 @@ public class ThankYouPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 12/4/2015
 	 */
-	public void verifyProductBasicAttributes(ProductData productData, WebDriver driver) {	
-		Utilities.explicitlyWait(2000);
+	public void verifyProductBasicAttributes(ProductData productData) {			
+		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 		//Check if the product ID is present and if it is, create a new element based on it.
-		productOnList = getProductInSB(productData.getProductID(), driver);
+		productOnList = getProductInSB(productData.getProductID());
 		
 		//Verify the product name is correct
-		Assert.assertTrue(Utilities.isElementPresent(driver, By.xpath("//u[contains(.,'"+productData.getProductName()+"')]")), "Product Name added to Shopping Bag doesn't match the one displayed in Thank You page");
+		Assert.assertTrue(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.xpath("//u[contains(.,'"+productData.getProductName()+"')]")), "Product Name added to Shopping Bag doesn't match the one displayed in Thank You page");
 		
 		//Verify the product price is correct
 		Assert.assertEquals(productOnList.findElement(By.xpath("//div[contains(@class, 'itemPrice') and not(contains(@style, 'line-through'))]")).getText(), productData.getProductPrice(), "Product Price added to Shopping Bag for Product "+productData.getProductID()+" doesn't match the one displayed in Thank You page");
@@ -100,9 +96,10 @@ public class ThankYouPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 12/7/2015
 	 */
-	public void verifyShippingAddress(AddressData shippingAddress, ChromeDriver driver) {
+	public void verifyShippingAddress(AddressData shippingAddress) {		
+		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getAddress1()+"')]")).isDisplayed(), "Address Line 1 is not found for Shipping Address Summary");
-		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+WordUtils.capitalizeFully(shippingAddress.getCountry())+"')]")).isDisplayed(), "Country is not found for Shipping Address Summary");
+		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getCountry()+"')]")).isDisplayed(), "Country is not found for Shipping Address Summary");
 		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getZipCode()+"')]")).isDisplayed(), "Zip Code is not found for Shipping Address Summary");
 		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getDaytimePhone()+"')]")).isDisplayed(), "Daytime phone number is not found for Shipping Address Summary");
 	}
@@ -117,9 +114,10 @@ public class ThankYouPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 12/7/2015
 	 */
-	public void verifyBillingAddress(AddressData billingAddress, ChromeDriver driver) {
+	public void verifyBillingAddress(AddressData billingAddress) {		
+		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getAddress1()+"')]")).isDisplayed(), "Address Line 1 is not found for Billing Address Summary");
-		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+WordUtils.capitalizeFully(billingAddress.getCountry())+"')]")).isDisplayed(), "Country is not found for Billing Address Summary");
+		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getCountry()+"')]")).isDisplayed(), "Country is not found for Billing Address Summary");
 		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getZipCode()+"')]")).isDisplayed(), "Zip Code is not found for Billing Address Summary");
 		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getDaytimePhone()+"')]")).isDisplayed(), "Daytime phone number is not found for Billing Address Summary");
 		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getEmail()+"')]")).isDisplayed(), "Email address is not found for Billing Address Summary");	

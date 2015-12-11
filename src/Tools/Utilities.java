@@ -6,7 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 import Pages.ProductPageCore;
+import Test.TestCaseConfiguration;
 import Tools.Constants;
 
 public class Utilities {
@@ -28,7 +31,7 @@ public class Utilities {
           driver.findElement(selector);    
           return true;    
        } catch (Exception e) {
-           return false ;
+           return false;
 	   }
 	}
 	
@@ -79,35 +82,34 @@ public class Utilities {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/26/2015
 	 */
-	public static ProductPageCore goToPDP(String pdpType, WebDriver driver){
+	public static ProductPageCore goToPDP(String pdpType){
 		switch(pdpType)
 		{
 			case Constants.FULLPRICEPDP:
-				driver.get(Constants.PDPURL+Constants.FULLPRICEPDP);	
+				TestCaseConfiguration.driver.get().get(Constants.PDPURL+Constants.FULLPRICEPDP);	
 			break;
 			case Constants.SALEPRICEPDP:
-				driver.get(Constants.PDPURL+Constants.SALEPRICEPDP);	
+				TestCaseConfiguration.driver.get().get(Constants.PDPURL+Constants.SALEPRICEPDP);	
 			break;				
-		}
-		
-		return PageFactory.initElements(driver, ProductPageCore.class);
+		}		
+
+		ExtentManager.getExtentTest().log(LogStatus.PASS, "NavigateToProductPage", "Success");
+		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ProductPageCore.class);
 	}
 	
 	/**
 	 * Wait until the JQuery process is done. Continue the process as soon the JQuery is ready.
-	 * 
-	 * @param timeToWait   Number of seconds that the automation needs to wait. 
-	 * @param driver	Current WebDriver in use. 
+	 *  @param Time on seconds you want to wait.
 	 *  
 	 *  @author Yohan Desanti G.
 	 *  @LastUpdate Yohan Desanti G.
-	 *  @version 1.0, 11/26/2015
+	 *  @version 1.5, 12/11/2015
 	 */
-	public static void waitForAjaxToFinish(final int timeToWait, WebDriver driver) {
+	public static void waitForAjaxToFinish(final int timeToWait) {
 		int timeout = 0;
 		 
 		while(timeout < timeToWait) {
-		    boolean ajaxFinished = (boolean) ((JavascriptExecutor) driver)
+		    boolean ajaxFinished = (boolean) ((JavascriptExecutor) TestCaseConfiguration.driver.get())
 		            .executeScript("return !!jQuery && jQuery.active == 0");
 		    
 		    if(ajaxFinished) 
@@ -118,6 +120,17 @@ public class Utilities {
 		}
 		 
 		throw new AssertionError("Ajax haven't finished its job in "+timeToWait+" sec");
+	}
+	
+	/**
+	 * Wait until the JQuery process is done. Continue the process as soon the JQuery is ready.
+	 *  
+	 *  @author Yohan Desanti G.
+	 *  @LastUpdate Yohan Desanti G.
+	 *  @version 1.5, 12/11/2015
+	 */
+	public static void waitForAjaxToFinish() {
+		waitForAjaxToFinish(20);
 	}
 	
 	/**
