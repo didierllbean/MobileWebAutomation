@@ -69,20 +69,20 @@ public class TestCaseConfiguration {
 		 homePage = PageFactory.initElements(driver.get(), HomePageObjects.class);
      }
     
-     @AfterMethod(alwaysRun = true)
-     public void close(/*ITestResult result*/) throws InterruptedException {   
+     @AfterMethod
+     public void close(ITestResult result) throws InterruptedException {   
 
  		driver.get().close();
  		driver.get().quit();
  		
-		/*if (!result.isSuccess()) {
+		if (!result.isSuccess()) {
 			REPORT.log(LogStatus.FAIL, result.getThrowable());
-		}*/
+		}
     	        
 		REPORTMANAGER.endTest(ExtentManager.getExtentTest());// ending test  
  		REPORTMANAGER.flush();// writing everything to document 		   
      }
-     
+    /* 
      @AfterClass
      public void afterClass() {  	 
      }
@@ -90,5 +90,5 @@ public class TestCaseConfiguration {
      @AfterSuite
      public void afterSuite() {    	   
  		REPORTMANAGER.close();// write any pending data and close the report 
-     }
+     }*/
 }

@@ -129,8 +129,8 @@ public class ProductPageCore {
 	 */
 	private ShoppingBagPage goToCheckout(){
 		pasbCheckoutButton.click();
-
 		ExtentManager.getExtentTest().log(LogStatus.PASS, "GoToShoppingBag", "Success");
+		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);
 	}
 	

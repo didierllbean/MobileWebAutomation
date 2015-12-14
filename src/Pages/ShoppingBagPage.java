@@ -93,8 +93,7 @@ public class ShoppingBagPage {
 	public CheckoutPageObjects startCheckoutProcess() {
 		Utilities.waitForAjaxToFinish();
 		
-		if(sbMergeMessagePopipTitle.isDisplayed())
-			closeMergeMessage();
+		closeMergeMessage();
 		
 		sbCheckoutButton.click();
 		ExtentManager.getExtentTest().log(LogStatus.PASS, "StartCheckout", "Success");

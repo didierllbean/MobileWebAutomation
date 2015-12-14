@@ -291,8 +291,7 @@ public class CheckoutPageObjects {
 	 *  @version 1.0, 11/24/2015
 	 */
 	public AddressData fillDefaultShippingData() {
-		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
-		
+		Utilities.explicitlyWait(2000);
 		shippingFirstNameTextfield.sendKeys("John");
 		shippingMiddleNameTextfield.sendKeys("MobileWebTest");
 		shippingLastNameTextfield.sendKeys("Doe");
@@ -358,7 +357,8 @@ public class CheckoutPageObjects {
 	 *  @LastUpdate Yohan Desanti G.
 	 *  @version 1.0, 11/24/2015
 	 */
-	public AddressData fillDefaultBillingData() {		
+	public AddressData fillDefaultBillingData() {	
+		Utilities.explicitlyWait(2000);	
 		String email = "mobiletest@automation.com";
 		
 		billingEmailTextfield.sendKeys(email);
@@ -396,7 +396,7 @@ public class CheckoutPageObjects {
 	 *  @version 1.0, 11/24/2015
 	 */
 	public void fillDefaultPaymentData() {
-		Utilities.explicitlyWait(2000);
+		Utilities.explicitlyWait(10000);
 		paymentCreditCardTextfield.sendKeys("4444444444444448");
 		selectPaymentCCExpirationDate("12", "2030");
 		paymentContinueToReviewOrderButton.click();
@@ -414,7 +414,7 @@ public class CheckoutPageObjects {
 	 *  @version 1.0, 11/24/2015
 	 */
 	public ThankYouPageObjects goToThankYouPage() {
-		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
+		Utilities.explicitlyWait(2000);
 		reviewPlaceOrderButton.click();
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ThankYouPageObjects.class);
 	}
@@ -429,7 +429,6 @@ public class CheckoutPageObjects {
 				ExtentManager.getExtentTest().log(LogStatus.FAIL, "CheckoutPaymentPage", "Tab Title is not "+expectedTab);
 		}
 		else
-			ExtentManager.getExtentTest().log(LogStatus.FAIL, "CheckoutPaymentPage", "Payment Tab Not Found");
-		
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "CheckoutPaymentPage", "Payment Tab Not Found");		
 	}
 }
