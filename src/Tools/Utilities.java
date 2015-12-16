@@ -28,6 +28,7 @@ public class Utilities {
 	 */
 	public static boolean isElementPresent(WebDriver driver, By selector) {
        try {
+    	  
           driver.findElement(selector);    
           return true;    
        } catch (Exception e) {
@@ -93,7 +94,7 @@ public class Utilities {
 			break;				
 		}		
 
-		ExtentManager.getExtentTest().log(LogStatus.PASS, "NavigateToProductPage", "Success");
+		//ExtentManager.getExtentTest().log(LogStatus.PASS, "NavigateToProductPage", "Success");
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ProductPageCore.class);
 	}
 	

@@ -14,6 +14,7 @@ import Tools.Utilities;
 
 public class ShoppingBagPage {
 
+
 	private WebElement aux;
 	
 	/*--------------------------------------------------* WebElements *--------------------------------------------------*/	
@@ -61,6 +62,39 @@ public class ShoppingBagPage {
 	@FindBy(xpath  = "id('un_popup_wrapper')//input")
 	WebElement sbMergePopipOkButton;
 
+	@FindBy(xpath  = "//div[@class = 'sbItemAttributes']")
+	WebElement ItemPrice;
+	
+	@FindBy(name ="un_jtt_promocodeinput")
+	WebElement EnterPromo;
+	
+	@FindBy(name = "un_jtt_promocode1_promoNumber")
+	WebElement ClickRedeem;
+	
+	@FindBy (xpath ="//div[@class ='un_float_right']")
+	WebElement Priceb4Promo;
+	
+	@FindBy (xpath ="//div[@id='wlsb_rtSBButton']/div/div/div[2]/div[7]/div[2]")
+	WebElement PriceAfterPromo;
+	
+	@FindBy(id = "un_shiptoAll")
+	WebElement AddRecDropDown;
+	
+	@FindBy(linkText = "Add New Recipient")
+	WebElement AddNewRecipient;
+	
+	@FindBy(id="id_newRecipientName1")
+	WebElement PopTextEnter;
+	
+	@FindBy(css = "div.un_wid100 > input[name=\"un_jtt_addnewrec_0\"]")
+	WebElement SaveNewRecipient;
+	
+	@FindBy(id = "un_shipto_All1")
+	WebElement SavedRecipient;
+	
+	@FindBy(id= "un_title_text un_wid50")
+	WebElement SBTitle;
+	
 	/*-------------------------------------------------- functions --------------------------------------------------*/
 	
 	private WebElement getProductInSB(String productID ) {
@@ -154,4 +188,136 @@ public class ShoppingBagPage {
 		else
 			ExtentManager.getExtentTest().log(LogStatus.FAIL, "SBIsEmpty ", "Missing Clear SB Layer");
 	}
+	
+	public void FullPriceItem()
+	{
+	    String AlphaCode1 = ItemPrice.getText();
+		
+	    if(AlphaCode1.contains("PF"))
+	    {
+			ExtentManager.getExtentTest().log(LogStatus.PASS, "FullPrice Item Number Contains PF AlphaCode");
+
+	    	
+	    }
+	    else
+	    {
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "FullPrice Item Number Does Not Contain PF AlphaCode");
+
+	    }
+	    
+	    
+	}
+	
+	public void SalePriceItem()
+	{
+	    String AlphaCode2 = ItemPrice.getText();
+		
+	    if(AlphaCode2.contains("PO"))
+	    {
+			ExtentManager.getExtentTest().log(LogStatus.PASS, "SalePrice Item Number Contains PO AlphaCode");
+	    	
+	    }
+	    else
+	    {
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "SalePrice Item Number Does Not Contain PO AlphaCode");
+
+	    }
+	}
+	
+	public void PromoCodeVerification()
+	{
+		
+		String FirstPrice = Priceb4Promo.getText();
+		String BeforeRedeem = FirstPrice.substring(1, 6);
+		double b = Double.parseDouble(BeforeRedeem);
+		
+		System.out.println(b);
+		EnterPromo.sendKeys("EXCLNOTH");
+		ClickRedeem.click();
+		
+		Utilities.explicitlyWait(7000);
+		
+		String SecondPrice = PriceAfterPromo.getText();
+		String AfterRedeem = SecondPrice.substring(1, 6);
+		double c = Double.parseDouble(AfterRedeem);
+		System.out.println(c);
+
+	    if(b>c)
+	    {
+			ExtentManager.getExtentTest().log(LogStatus.PASS, "PromoCode Successfully Applied");
+	    }
+	    else
+	    {
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "PromoCode Failed To Apply");
+
+	    }
+	}
+	
+	public void AddNewRecipient()
+	
+	{
+		
+		AddRecDropDown.click();
+		Utilities.explicitlyWait(2000);
+		AddNewRecipient.click();
+		Utilities.explicitlyWait(2000);
+		PopTextEnter.sendKeys("Dave");
+		SaveNewRecipient.click();
+		Utilities.explicitlyWait(3000);	
+		String RecipientName = SavedRecipient.getText();
+		System.out.println(RecipientName);
+	
+	
+		if(RecipientName.equals("Dave"))
+		{
+			ExtentManager.getExtentTest().log(LogStatus.PASS, " New Recipient Successfully Added");
+
+		}
+		else
+		{
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, " New Recipient Not Added");
+
+		}		
+
+	}
+	
+	public void ShoppingBagTitleVerification()
+	
+	{
+		String Title = SBTitle.getText();
+		
+		if(Title.equals("Shopping Bag"))
+		{
+			ExtentManager.getExtentTest().log(LogStatus.PASS, " Shopping Bag Title Is Present");
+		}
+		else
+		{
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, " Shopping Bag Title Is Not Present");
+
+		}
+	}
+	
+	public void ClickCheckOut()
+	{
+		sbCheckoutButton.click();
+		Utilities.explicitlyWait(3000);	
+
+		
+		if(TestCaseConfiguration.driver.get().getPageSource().contains("Have an llbean.com account?"))
+				{
+			ExtentManager.getExtentTest().log(LogStatus.PASS, " Login Page Loaded");
+
+				}
+		else
+		{
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, " Login Page Failed To Load");
+
+		}
+
+	}
+	
+	
+	
+	
+	
 }

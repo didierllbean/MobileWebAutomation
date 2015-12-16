@@ -1,6 +1,11 @@
 package Test;
 
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import Pages.CheckoutPageObjects;
@@ -13,12 +18,16 @@ import Tools.Constants;
 import Tools.ExtentManager;
 import Tools.Utilities;
 
+import java.util.*;
 public class ShoppingBagTestCases extends TestCaseConfiguration {
 	private CheckoutPageObjects checkout;
 	private ProductPageCore prodPage;
 	private ShoppingBagPage shoppingbag;
 	private LoginPageObjects login;
+	
+	
 
+	
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUMergeAndCheckoutWithNOCC() {
 		ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -62,4 +71,42 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 		shoppingbag.clearSB()
 					.isSBEmpty();	
 	}
+
+	@Test(groups = { "smokeTest"})
+	public void ShoppingBagGu(){
+		
+		
+		ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
+		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
+		prodPage.selectRandomAttributes();
+		Utilities.explicitlyWait(5000);
+		shoppingbag = prodPage.addToBagAndGoToSB();
+		shoppingbag.FullPriceItem();
+		Utilities.explicitlyWait(2000);
+		
+		prodPage = Utilities.goToPDP(Constants.SALEPRICEPDP);		
+		prodPage.selectRandomAttributes();
+		shoppingbag = prodPage.addToBagAndGoToSB();
+		shoppingbag.SalePriceItem();
+		Utilities.explicitlyWait(2000);
+		shoppingbag.PromoCodeVerification();
+		Utilities.explicitlyWait(5000);
+		shoppingbag.AddNewRecipient();
+		
+		shoppingbag.ShoppingBagTitleVerification();
+		
+		shoppingbag.ClickCheckOut();
+		
+		
+		
+		
+
+		
+        
+         
+		
+        }
+					
+	
+		
 }

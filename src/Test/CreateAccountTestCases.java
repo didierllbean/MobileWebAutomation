@@ -5,8 +5,8 @@ import org.testng.annotations.Test;
 import Pages.LoginPageObjects;
 import Pages.FooterObjects;
 import Pages.CreateAnAccount;
-
 import Tools.ExtentManager;
+import Tools.Utilities;
 
 public class CreateAccountTestCases extends TestCaseConfiguration
 {
@@ -19,6 +19,8 @@ public class CreateAccountTestCases extends TestCaseConfiguration
 		CreateAnAccount Create = new CreateAnAccount();
 		
 		footer.NavigateToLoginPage();
+		Utilities.explicitlyWait(5000);
+
 		Create.CreateAccClick();
         
 		String EmPass= Create.CreateAndVerifyAccount();
@@ -27,7 +29,6 @@ public class CreateAccountTestCases extends TestCaseConfiguration
 		footer.FooterSignOut();
 
 		footer.NavigateToLoginPage();
-		
 		Login.VerifyNewAccount(Part[0], Part[1]);
 	}
 }

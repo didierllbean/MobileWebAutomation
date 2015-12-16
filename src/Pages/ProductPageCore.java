@@ -114,7 +114,7 @@ public class ProductPageCore {
 	private void addToBag()
 	{
 		addToBagButton.click();
-		ExtentManager.getExtentTest().log(LogStatus.PASS, "AddedToBag", "Success");
+		//ExtentManager.getExtentTest().log(LogStatus.PASS, "AddedToBag", "Success");
 	}
 	
 	/**
@@ -129,7 +129,7 @@ public class ProductPageCore {
 	 */
 	private ShoppingBagPage goToCheckout(){
 		pasbCheckoutButton.click();
-		ExtentManager.getExtentTest().log(LogStatus.PASS, "GoToShoppingBag", "Success");
+		//ExtentManager.getExtentTest().log(LogStatus.PASS, "GoToShoppingBag", "Success");
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);
 	}
@@ -241,7 +241,7 @@ public class ProductPageCore {
 		if(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.id("llb_size")))
 			size = selectRandomSizeAttribute();		
 		
-		ExtentManager.getExtentTest().log(LogStatus.PASS, "ProductRandomAttributesSelection", "Success");
+		//ExtentManager.getExtentTest().log(LogStatus.PASS, "ProductRandomAttributesSelection", "Success");
 		return new ProductData(productID.getAttribute("itemid").toString(), productName.getText(), getProductPrice().getText(), color, size, "1", productSizeType.getText());
 	}
 }

@@ -61,8 +61,8 @@ public class CreateAnAccount {
 	public String CreateAndVerifyAccount() throws InterruptedException
 	{
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
-		 GenerateData genData;
-		 genData=new GenerateData();
+		GenerateData genData;
+		genData=new GenerateData();
 		
 		 String Pass;	 
 
@@ -74,7 +74,6 @@ public class CreateAnAccount {
 		String EmailAddress = Email.getAttribute("value");
 	    ReEnterEmail.sendKeys(EmailAddress);
 	    
-	    
 	    Password.sendKeys(genData.generateRandomAlphaNumeric(10));
 	    Pass= Password.getAttribute("value");
 	    ReEnterPassword.sendKeys(Pass);
@@ -85,14 +84,15 @@ public class CreateAnAccount {
 	
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 	
-	
 		if(TestCaseConfiguration.driver.get().getPageSource().contains(FirstName+"'s"))	{
-			System.out.println("Text is Present");
-			System.out.println(FirstName);	
+			ExtentManager.getExtentTest().log(LogStatus.PASS, "New Account Has Been Successfully Created");
+
+			ExtentManager.getExtentTest().log(LogStatus.PASS, "UserName Is Present");
 		}
 		else
 		{
-			System.out.println("Text is not Present");
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "UserName Is Not Present");
+
 		
 		}
 		return EmailAddress+";"+Pass;

@@ -1,12 +1,14 @@
 package Pages;
 
 import org.openqa.selenium.WebDriver;
-
 import org.openqa.selenium.WebElement;
-
 import org.openqa.selenium.support.FindBy;
-
 import org.openqa.selenium.support.PageFactory;
+
+import com.relevantcodes.extentreports.LogStatus;
+
+import Test.TestCaseConfiguration;
+import Tools.ExtentManager;
 
 public class ProductListPageObjects {
 
@@ -17,7 +19,7 @@ public class ProductListPageObjects {
 
 	WebDriver driver;
 
-	@FindBy(xpath = "//div[@id='id_scfContent_productlistpage']/div[1]/div[6]")
+	@FindBy(xpath = "//div[@id='id_scfContent_searchpage']/div[1]/div[7]")
 	WebElement PLPSearchRsName;
 
 	@FindBy(xpath = "//div[@class='llbFilterResTxt' and contains(text(), 'Filter Results')]")
@@ -44,11 +46,27 @@ public class ProductListPageObjects {
 	@FindBy(xpath = "//div[@class='facetCatWFiltersResetAllTxt' and contains(text(), 'Reset All')]")
 	WebElement PLPResetAllFilter;
 
-	public String PLPVerification(WebDriver driver) {
+	public ProductListPageObjects()
+	{
+	  	PageFactory.initElements(TestCaseConfiguration.driver.get(), this);		
+	}
+	
+	public String PLPVerification() {
 
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
 		String text1 = PLPSearchRsName.getText();
+		System.out.println(text1);
+
+		if(text1.contains("S"))
+		{
+			ExtentManager.getExtentTest().log(LogStatus.PASS, "Search Text Displays On Product List Page");
+
+		}
+		else
+		{
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "Search Text Displays On Product List Page");
+		}
 		return text1;
+
+		
 	}
 }

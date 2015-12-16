@@ -15,6 +15,18 @@ public class HeaderObjects {
 	@FindBy(xpath ="id('cart-section')/div[contains(@class, 'cart-div')]")
     WebElement ShoppingBagImg;
 	
+	@FindBy(xpath = "//div[@class = 'llb_headerBagCount']")
+	WebElement ShoppingBagCount;
+	
+	@FindBy(xpath ="//input[@id='search-string']")
+	WebElement SeachBar;
+	
+	@FindBy(xpath = "//div[@id='search_button']")
+	WebElement ClickSearchButton;
+	
+	@FindBy(xpath = "//div[@class='searchAutoCompleteDropdown']")
+	WebElement SearchAutoCompleteDropDown;
+	
 	public HeaderObjects()	{
 	  	PageFactory.initElements(TestCaseConfiguration.driver.get(), this);		
 	}
@@ -27,6 +39,29 @@ public class HeaderObjects {
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);
 	}
+	
+	public void SBCount()
+	{
+		String Count = ShoppingBagCount.getText();
+		System.out.println(Count);
+
+	}
+	
+	public void EnterSearchTerm()
+	{
+		SeachBar.sendKeys("S");
+		//ClickSearchButton.click();
+		String text = SearchAutoCompleteDropDown.getAttribute("innerHTML");
+		String text1 = text.replaceAll("<div class=\"searchAutoCompleteDropdownList\"", " ");
+		
+		System.out.println(text1);
+		
+	
+
+		
+	}
+	
+		
 }
 
 

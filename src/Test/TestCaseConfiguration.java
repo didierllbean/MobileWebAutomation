@@ -44,7 +44,6 @@ public class TestCaseConfiguration {
     	 capabilities = DesiredCapabilities.chrome();
      	 Map<String, String> mobileEmulation = new HashMap<String, String>();
      	 mobileEmulation.put("deviceName", Constants.DEVICE);
-     	 
      	 Map<String, Object> chromeOptions = new HashMap<String, Object>();
    	  	 chromeOptions.put("mobileEmulation", mobileEmulation);
    	  	 
@@ -72,8 +71,9 @@ public class TestCaseConfiguration {
      @AfterMethod
      public void close(ITestResult result) throws InterruptedException {   
 
- 		driver.get().close();
- 		driver.get().quit();
+    	 
+    	 driver.get().close();
+    	 driver.get().quit();
  		
 		if (!result.isSuccess()) {
 			REPORT.log(LogStatus.FAIL, result.getThrowable());
@@ -82,7 +82,7 @@ public class TestCaseConfiguration {
 		REPORTMANAGER.endTest(ExtentManager.getExtentTest());// ending test  
  		REPORTMANAGER.flush();// writing everything to document 		   
      }
-    /* 
+    
      @AfterClass
      public void afterClass() {  	 
      }
@@ -90,5 +90,5 @@ public class TestCaseConfiguration {
      @AfterSuite
      public void afterSuite() {    	   
  		REPORTMANAGER.close();// write any pending data and close the report 
-     }*/
+     }
 }
