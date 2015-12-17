@@ -27,7 +27,7 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 	
 	
 
-	
+	/*
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUMergeAndCheckoutWithNOCC() {
 		ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -71,7 +71,7 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 		shoppingbag.clearSB()
 					.isSBEmpty();	
 	}
-
+*/
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagGu(){
 		
@@ -82,29 +82,20 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 		Utilities.explicitlyWait(5000);
 		shoppingbag = prodPage.addToBagAndGoToSB();
 		shoppingbag.FullPriceItem();
-		Utilities.explicitlyWait(2000);
+		Utilities.explicitlyWait(2000);	
 		
 		prodPage = Utilities.goToPDP(Constants.SALEPRICEPDP);		
 		prodPage.selectRandomAttributes();
 		shoppingbag = prodPage.addToBagAndGoToSB();
 		shoppingbag.SalePriceItem();
 		Utilities.explicitlyWait(2000);
+		
 		shoppingbag.PromoCodeVerification();
 		Utilities.explicitlyWait(5000);
-		shoppingbag.AddNewRecipient();
-		
-		shoppingbag.ShoppingBagTitleVerification();
-		
+		shoppingbag.AddNewRecipient();		
+		shoppingbag.ShoppingBagTitleVerification();	
 		shoppingbag.ClickCheckOut();
-		
-		
-		
-		
-
-		
-        
-         
-		
+			
         }
 					
 	

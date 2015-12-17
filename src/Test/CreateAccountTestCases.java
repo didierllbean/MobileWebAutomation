@@ -30,5 +30,11 @@ public class CreateAccountTestCases extends TestCaseConfiguration
 
 		footer.NavigateToLoginPage();
 		Login.VerifyNewAccount(Part[0], Part[1]);
+		
+		TestCaseConfiguration.driver.get().close();
+		
+		System.out.println("hello");
+		TestCaseConfiguration.driver.get().navigate().to("http://www.m-ecwebs01.llbean.com");
+		
 	}
 }

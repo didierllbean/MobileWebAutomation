@@ -21,19 +21,14 @@ public class SearchTestCases extends TestCaseConfiguration {
 @Test(groups = {"smokeTest"})
   public void Search() throws InterruptedException {
 	
-
-    
 	ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
 
 	HeaderObjects header = new HeaderObjects();
 	ProductListPageObjects ProductListPage = new ProductListPageObjects();
 	header.EnterSearchTerm();
-	Utilities.explicitlyWait(5000);
+	//header.ProductListPageVerification();
 	//header.SearchResultVerification();
-   
+	header.QuickShopCatalogVerification();
 	
-	
-	
-	  
   }
 }

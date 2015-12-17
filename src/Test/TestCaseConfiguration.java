@@ -74,6 +74,7 @@ public class TestCaseConfiguration {
     	 
     	 driver.get().close();
     	 driver.get().quit();
+    	 
  		
 		if (!result.isSuccess()) {
 			REPORT.log(LogStatus.FAIL, result.getThrowable());
@@ -82,6 +83,7 @@ public class TestCaseConfiguration {
 		REPORTMANAGER.endTest(ExtentManager.getExtentTest());// ending test  
  		REPORTMANAGER.flush();// writing everything to document 		   
      }
+    
     
      @AfterClass
      public void afterClass() {  	 

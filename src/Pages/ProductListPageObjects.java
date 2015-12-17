@@ -1,5 +1,7 @@
 package Pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +11,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import Test.TestCaseConfiguration;
 import Tools.ExtentManager;
+import Tools.Utilities;
 
 public class ProductListPageObjects {
 
@@ -45,6 +48,8 @@ public class ProductListPageObjects {
 
 	@FindBy(xpath = "//div[@class='facetCatWFiltersResetAllTxt' and contains(text(), 'Reset All')]")
 	WebElement PLPResetAllFilter;
+	
+	
 
 	public ProductListPageObjects()
 	{
@@ -69,4 +74,6 @@ public class ProductListPageObjects {
 
 		
 	}
+	
+
 }
