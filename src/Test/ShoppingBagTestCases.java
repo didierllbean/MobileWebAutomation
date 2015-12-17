@@ -30,7 +30,7 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 	/*
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUMergeAndCheckoutWithNOCC() {
-		ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
+		//ExtentManager.setExtentTest(REPORTMANAGER, "Shopping Bag RU Merge And Checkout With NO CC");
 		
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
 		prodPage.selectRandomAttributes();		
@@ -46,7 +46,7 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 	
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUCheckoutWithAllData() {
-		ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
+		//ExtentManager.setExtentTest(REPORTMANAGER, "Shopping Bag RU Checkout With All Data");
 		
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
 		prodPage.selectRandomAttributes();		
@@ -61,7 +61,7 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 	
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUClearSB() {
-		ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
+		//ExtentManager.setExtentTest(REPORTMANAGER, "Shopping Bag RU Clear SB");
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
 		prodPage.selectRandomAttributes();
 		shoppingbag = prodPage.addToBagAndGoToSB();

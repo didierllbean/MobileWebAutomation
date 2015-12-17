@@ -40,7 +40,7 @@ public class HeaderObjects {
 		Utilities.waitForAjaxToFinish();
 		
 		ShoppingBagImg.click();	
-		ExtentManager.getExtentTest().log(LogStatus.PASS, "GoToSB", "Success");
+		//ExtentManager.getExtentTest().log(LogStatus.PASS, "GoToSB", "Success");
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);
 	}

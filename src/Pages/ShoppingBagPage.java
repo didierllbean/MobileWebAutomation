@@ -118,9 +118,14 @@ public class ShoppingBagPage {
 	}
 	
 	public LoginPageObjects startCheckoutProcessAsGuest(){
-		sbCheckoutButton.click();
+		if(sbCheckoutButton.isDisplayed()) {
+			sbCheckoutButton.click();
+			//ExtentManager.getExtentTest().log(LogStatus.PASS, "StartCheckout", "Success");
+		}
+		/*else 
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "StartCheckout", "Failed");
 
-		ExtentManager.getExtentTest().log(LogStatus.PASS, "StartCheckout", "Success");
+		ExtentManager.getExtentTest().log(LogStatus.PASS, "StartCheckout", "Success");*/
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), LoginPageObjects.class);
 	}	
 	
@@ -129,8 +134,13 @@ public class ShoppingBagPage {
 		
 		closeMergeMessage();
 		
-		sbCheckoutButton.click();
-		ExtentManager.getExtentTest().log(LogStatus.PASS, "StartCheckout", "Success");
+		if(sbCheckoutButton.isDisplayed()) {
+			sbCheckoutButton.click();
+			//ExtentManager.getExtentTest().log(LogStatus.PASS, "StartCheckout", "Success");
+		}
+		/*else 
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "StartCheckout", "Failed");*/
+		
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), CheckoutPageObjects.class);
 	}
@@ -139,18 +149,18 @@ public class ShoppingBagPage {
 	public void validateMergeMessage() {
 		if(sbMergeMessagePopipTitle.isDisplayed())
 		{
-			ExtentManager.getExtentTest().log(LogStatus.PASS, "MergeMessageDisplay", "Success");
+			//ExtentManager.getExtentTest().log(LogStatus.PASS, "MergeMessageDisplay", "Success");
 			closeMergeMessage();
-		} else
-			ExtentManager.getExtentTest().log(LogStatus.FAIL, "MergeMessageDisplay", "MissingElement");
+		} /*else
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "MergeMessageDisplay", "MissingElement");*/
 	}
 	
 	public void closeMergeMessage(){		
 		try {
 			if(sbMergePopipOkButton.isDisplayed())		
 				sbMergePopipOkButton.click();
-			else
-				ExtentManager.getExtentTest().log(LogStatus.FAIL, "MergeMessageOkButton", "MissingElement");
+			/*else
+				ExtentManager.getExtentTest().log(LogStatus.FAIL, "MergeMessageOkButton", "MissingElement");*/
 		
 		} catch (Exception e) {}
 	}
@@ -165,16 +175,16 @@ public class ShoppingBagPage {
 			
 			sbClearSBLink.click();
 			if(sbClearLayerRemoveAll.isDisplayed()){
-				ExtentManager.getExtentTest().log(LogStatus.PASS, "ClearSBLayerDisplayed ", "Success");
+				//ExtentManager.getExtentTest().log(LogStatus.PASS, "ClearSBLayerDisplayed ", "Success");
 				sbClearLayerRemoveAll.click();
 			}
-			else
-				ExtentManager.getExtentTest().log(LogStatus.FAIL, "ClearSBLayerDisplayed ", "Missing Clear SB Layer");
+			/*else
+				ExtentManager.getExtentTest().log(LogStatus.FAIL, "ClearSBLayerDisplayed ", "Missing Clear SB Layer");*/
 		}
-		else {
+		/*else {
 			ExtentManager.getExtentTest().log(LogStatus.FAIL, "SBAlredyEmpty", "There Are No Products To Remove");
 			Assert.assertTrue(notEmpty, "There Are No Products To Remove, the SB is already empty");
-		}
+		}*/
 		
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);
@@ -183,10 +193,10 @@ public class ShoppingBagPage {
 	public void isSBEmpty() {
 		Utilities.waitForAjaxToFinish();
 		
-		if(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.id("un_cartempty")))
+		/*if(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.id("un_cartempty")))
 			ExtentManager.getExtentTest().log(LogStatus.PASS, "SBIsEmpty ", "Success");
 		else
-			ExtentManager.getExtentTest().log(LogStatus.FAIL, "SBIsEmpty ", "Missing Clear SB Layer");
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "SBIsEmpty ", "Missing Clear SB Layer");*/
 	}
 	
 	public void FullPriceItem()

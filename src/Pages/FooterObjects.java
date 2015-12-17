@@ -72,7 +72,7 @@ public class FooterObjects {
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 
 		FooterLogin.click();
-		ExtentManager.getExtentTest().log(LogStatus.PASS, "GoToLogin", "Success");
+		//ExtentManager.getExtentTest().log(LogStatus.PASS, "GoToLogin", "Success");
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), LoginPageObjects.class);	
 	}
@@ -86,6 +86,6 @@ public class FooterObjects {
 	{
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 		FooterLogOut.click();
-		ExtentManager.getExtentTest().log(LogStatus.PASS, "Logout", "Success");
+		//ExtentManager.getExtentTest().log(LogStatus.PASS, "Logout", "Success");
 	}
 }

@@ -55,7 +55,7 @@ public class CreateAnAccount {
 	{
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 		CreateMyAccount.click();
-		ExtentManager.getExtentTest().log(LogStatus.PASS, "NavigateToCreateAccountPage", "Success");
+		//ExtentManager.getExtentTest().log(LogStatus.PASS, "NavigateToCreateAccountPage", "Success");
 	}
 	
 	public String CreateAndVerifyAccount() throws InterruptedException

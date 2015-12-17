@@ -98,10 +98,23 @@ public class ThankYouPageObjects {
 	 */
 	public void verifyShippingAddress(AddressData shippingAddress) {		
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
-		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getAddress1()+"')]")).isDisplayed(), "Address Line 1 is not found for Shipping Address Summary");
-		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getCountry()+"')]")).isDisplayed(), "Country is not found for Shipping Address Summary");
-		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getZipCode()+"')]")).isDisplayed(), "Zip Code is not found for Shipping Address Summary");
-		Assert.assertTrue(tyShippingAddressSection.findElement(By.xpath("//div[contains(.,'"+shippingAddress.getDaytimePhone()+"')]")).isDisplayed(), "Daytime phone number is not found for Shipping Address Summary");
+		Assert.assertTrue(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.xpath("//div[@class = 'shipDisplayWrapper_review un_ckOutReviewBlockCont']//div[contains(.,'"+shippingAddress.getAddress1()+"')]")), "Address Line 1 is not found for Shipping Address Summary");
+		Assert.assertTrue(
+				Utilities.isElementPresent(
+						TestCaseConfiguration.driver.get(), 
+						By.xpath("//div[@class = 'shipDisplayWrapper_review un_ckOutReviewBlockCont']"
+								+ "//div["
+									+ "contains("
+										+ "translate(., 'ABCDEFGHJIKLMNOPQRSTUVWXYZ', 'abcdefghjiklmnopqrstuvwxyz'),"
+										+ "translate('"+shippingAddress.getCountry()+"', 'ABCDEFGHJIKLMNOPQRSTUVWXYZ', 'abcdefghjiklmnopqrstuvwxyz')"
+										+ ")"
+									+ "]"
+								)
+				), 
+				"Country is not found for Shipping Address Summary"
+		);
+		Assert.assertTrue(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.xpath("//div[@class = 'shipDisplayWrapper_review un_ckOutReviewBlockCont']//div[contains(.,'"+shippingAddress.getZipCode()+"')]")), "Zip Code is not found for Shipping Address Summary");
+		Assert.assertTrue(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.xpath("//div[@class = 'shipDisplayWrapper_review un_ckOutReviewBlockCont']//div[contains(.,'"+shippingAddress.getDaytimePhone()+"')]")), "Daytime phone number is not found for Shipping Address Summary");
 	}
 
 	/**
@@ -116,10 +129,10 @@ public class ThankYouPageObjects {
 	 */
 	public void verifyBillingAddress(AddressData billingAddress) {		
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
-		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getAddress1()+"')]")).isDisplayed(), "Address Line 1 is not found for Billing Address Summary");
-		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getCountry()+"')]")).isDisplayed(), "Country is not found for Billing Address Summary");
-		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getZipCode()+"')]")).isDisplayed(), "Zip Code is not found for Billing Address Summary");
-		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getDaytimePhone()+"')]")).isDisplayed(), "Daytime phone number is not found for Billing Address Summary");
-		Assert.assertTrue(tyBillingAddressSection.findElement(By.xpath("//div[contains(.,'"+billingAddress.getEmail()+"')]")).isDisplayed(), "Email address is not found for Billing Address Summary");	
+		Assert.assertTrue(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.xpath("//div[@class = 'billDisplayWrapper un_ckOutReviewBlockCont']//div[contains(.,'"+billingAddress.getAddress1()+"')]")), "Address Line 1 is not found for Billing Address Summary");
+		Assert.assertTrue(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.xpath("//div[@class = 'billDisplayWrapper un_ckOutReviewBlockCont']//div[contains(  translate(., 'ABCDEFGHJIKLMNOPQRSTUVWXYZ', 'abcdefghjiklmnopqrstuvwxyz'),    translate('"+billingAddress.getCountry()+"', 'ABCDEFGHJIKLMNOPQRSTUVWXYZ', 'abcdefghjiklmnopqrstuvwxyz'))]")), "Country is not found for Billing Address Summary");
+		Assert.assertTrue(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.xpath("//div[@class = 'billDisplayWrapper un_ckOutReviewBlockCont']//div[contains(.,'"+billingAddress.getZipCode()+"')]")), "Zip Code is not found for Billing Address Summary");
+		Assert.assertTrue(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.xpath("//div[@class = 'billDisplayWrapper un_ckOutReviewBlockCont']//div[contains(.,'"+billingAddress.getDaytimePhone()+"')]")), "Daytime phone number is not found for Billing Address Summary");
+		Assert.assertTrue(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.xpath("//div[@class = 'billDisplayWrapper un_ckOutReviewBlockCont']//div[contains(.,'"+billingAddress.getEmail()+"')]")), "Email address is not found for Billing Address Summary");	
 	}
 }

@@ -21,7 +21,7 @@ public class ExtentManager {
         return extentReport;
     }
     
-    public synchronized static ExtentTest setExtentTest(ExtentReports report, String testName) {
+    public static ExtentTest setExtentTest(ExtentReports report, String testName) {
         if (extentTest == null) {
         	extentTest = report.startTest(testName);
         }
@@ -29,7 +29,7 @@ public class ExtentManager {
         return extentTest;
     }
         
-    public synchronized static ExtentTest getExtentTest() {
+    public static ExtentTest getExtentTest() {
        return extentTest;
     }
 }

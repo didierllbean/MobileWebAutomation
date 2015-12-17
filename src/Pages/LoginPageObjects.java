@@ -57,7 +57,7 @@ public class LoginPageObjects {
 		this.password.sendKeys(password);
 		loginBttn.click();
 
-		ExtentManager.getExtentTest().log(LogStatus.PASS, "Login "+Constants.NOCCACCOUNT+" accout", "Success");
+		//ExtentManager.getExtentTest().log(LogStatus.PASS, "Login "+Constants.NOCCACCOUNT+" accout", "Success");
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), expectedPage);
 	}
 	
@@ -95,6 +95,7 @@ public class LoginPageObjects {
 	 */
 	public <T> T continueAsGuest(Class<T> expectedPage){
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
+		Utilities.explicitlyWait(2000);
 		continueAsAGuest.click();
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), expectedPage);
 	}
@@ -128,15 +129,15 @@ public class LoginPageObjects {
 		//Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 		Utilities.explicitlyWait(2000);
 		if(Email1.equals(email.getAttribute("value")))	{			
-			ExtentManager.getExtentTest().log(LogStatus.PASS, "Email Address Verification", "Email Address Matches");
+			//ExtentManager.getExtentTest().log(LogStatus.PASS, "Email Address Verification", "Email Address Matches");
 			password.sendKeys(Pass1);		
 		}
-		else
+		/*else
 		{
 			ExtentManager.getExtentTest().log(LogStatus.FAIL, "Email Address Verification", "Email Address Does Not Match");
 
 		}
-		
+		*/
 		loginBttn.click();	     
 	}
 }

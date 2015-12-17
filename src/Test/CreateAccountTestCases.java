@@ -12,7 +12,7 @@ public class CreateAccountTestCases extends TestCaseConfiguration
 {
 	@Test(groups = {"smokeTest", "brokenOrDevelopment"})
 	public void CreateNewAccount() throws InterruptedException{
-		ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
+		//ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
 		
 		FooterObjects footer = new FooterObjects();
 		LoginPageObjects Login = new LoginPageObjects();
