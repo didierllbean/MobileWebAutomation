@@ -1,16 +1,9 @@
 package Test;
 
-
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import Pages.CheckoutPageObjects;
 import Pages.FooterObjects;
-import Pages.HeaderObjects;
 import Pages.LoginPageObjects;
 import Pages.ProductPageCore;
 import Pages.ShoppingBagPage;
@@ -18,20 +11,15 @@ import Tools.Constants;
 import Tools.ExtentManager;
 import Tools.Utilities;
 
-import java.util.*;
 public class ShoppingBagTestCases extends TestCaseConfiguration {
 	private CheckoutPageObjects checkout;
 	private ProductPageCore prodPage;
 	private ShoppingBagPage shoppingbag;
 	private LoginPageObjects login;
 	
-	
 
-	/*
 	@Test(groups = { "smokeTest"})
-	public void ShoppingBagRUMergeAndCheckoutWithNOCC() {
-		//ExtentManager.setExtentTest(REPORTMANAGER, "Shopping Bag RU Merge And Checkout With NO CC");
-		
+	public void ShoppingBagRUMergeAndCheckoutWithNOCC() {		
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
 		prodPage.selectRandomAttributes();		
 		shoppingbag = prodPage.addToBagAndGoToSB();
@@ -45,9 +33,7 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 	}
 	
 	@Test(groups = { "smokeTest"})
-	public void ShoppingBagRUCheckoutWithAllData() {
-		//ExtentManager.setExtentTest(REPORTMANAGER, "Shopping Bag RU Checkout With All Data");
-		
+	public void ShoppingBagRUCheckoutWithAllData() {		
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
 		prodPage.selectRandomAttributes();		
 		shoppingbag = prodPage.addToBagAndGoToSB();
@@ -61,7 +47,6 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 	
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUClearSB() {
-		//ExtentManager.setExtentTest(REPORTMANAGER, "Shopping Bag RU Clear SB");
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
 		prodPage.selectRandomAttributes();
 		shoppingbag = prodPage.addToBagAndGoToSB();
@@ -71,12 +56,9 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 		shoppingbag.clearSB()
 					.isSBEmpty();	
 	}
-*/
+
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagGu(){
-		
-		
-		ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
 		prodPage.selectRandomAttributes();
 		Utilities.explicitlyWait(5000);
@@ -96,8 +78,5 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 		shoppingbag.ShoppingBagTitleVerification();	
 		shoppingbag.ClickCheckOut();
 			
-        }
-					
-	
-		
+        }	
 }
