@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.EventController">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </VBox>
+   </top>
+   <left>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Select the desired environment" />
+            <ComboBox id="environmentCB" fx:id="environmentCB" prefWidth="150.0" />
+            <Label layoutX="10.0" layoutY="10.0" text="Device Type" />
+            <ComboBox fx:id="deviceCB" layoutX="10.0" layoutY="27.0" prefWidth="150.0" />
+            <Separator prefWidth="200.0">
+               <padding>
+                  <Insets bottom="3.0" top="6.0" />
+               </padding>
+            </Separator>
+            <Label layoutX="10.0" layoutY="94.0" text="Suite" />
+            <Group>
+               <children>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="21.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <CheckBox fx:id="fullRegressionChkBox" mnemonicParsing="false" text="Full Regresion" />
+                        <CheckBox fx:id="checkoutChkBox" layoutX="10.0" layoutY="17.0" mnemonicParsing="false" text="Checkout" GridPane.columnIndex="1" />
+                        <CheckBox fx:id="smokeTestChkBox" layoutX="110.0" layoutY="17.0" mnemonicParsing="false" text="Smoke Test" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="odsChkBox" layoutX="10.0" layoutY="47.0" mnemonicParsing="false" text="ODS " GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="rioChkBox" layoutX="110.0" layoutY="47.0" mnemonicParsing="false" text="RIO" GridPane.rowIndex="2" />
+                        <CheckBox fx:id="accountChkBox" layoutX="110.0" layoutY="47.0" mnemonicParsing="false" text="Accounts" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+            </Group>
+            <Button fx:id="startRunBttn" mnemonicParsing="false" onAction="#startTest" text="Execute Regression" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <bottom>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Mobile Web Automation" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
