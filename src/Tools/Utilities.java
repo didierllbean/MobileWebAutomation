@@ -91,7 +91,10 @@ public class Utilities {
 			break;
 			case Constants.SALEPRICEPDP:
 				TestCaseConfiguration.driver.get().get(Constants.PDPURL+Constants.SALEPRICEPDP);	
-			break;				
+			break;
+			case Constants.MONOGRAM:
+			TestCaseConfiguration.driver.get().get(Constants.PDPURL+Constants.MONOGRAM);	
+
 		}		
 
 		//ExtentManager.getExtentTest().log(LogStatus.PASS, "NavigateToProductPage", "Success");

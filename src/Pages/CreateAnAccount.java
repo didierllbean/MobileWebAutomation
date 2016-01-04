@@ -85,13 +85,13 @@ public class CreateAnAccount {
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 	
 		if(TestCaseConfiguration.driver.get().getPageSource().contains(FirstName+"'s"))	{
-			ExtentManager.getExtentTest().log(LogStatus.PASS, "New Account Has Been Successfully Created");
+		System.out.println("New Account Has Been Successfully Created");
 
-			ExtentManager.getExtentTest().log(LogStatus.PASS, "UserName Is Present");
+		System.out.println("UserName Is Present");
 		}
 		else
 		{
-			ExtentManager.getExtentTest().log(LogStatus.FAIL, "UserName Is Not Present");
+			System.out.println("UserName Is Not Present");
 
 		
 		}

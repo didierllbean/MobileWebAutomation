@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -63,6 +64,8 @@ public class ProductPageCore {
 	@FindBy(xpath = "//a[contains(.,'Want it faster?')]")
 	WebElement adqNeedFasterLink;
 		
+	@FindBy(xpath = "//div[@class = 'orderDetCont']")
+	WebElement adqCityName;
 	/*-------------------------------------------------- Monogramming --------------------------------------------------*/
 	
 	@FindBy(id = "monogramCheckboxCnt")
@@ -161,6 +164,24 @@ public class ProductPageCore {
 		return goToCheckout();
 	}
 	
+	
+	public MonogramConfigurationPage goToMonogramPage()
+	{
+		addToBag();
+		return PageFactory.initElements(TestCaseConfiguration.driver.get(), MonogramConfigurationPage.class);	
+	}
+	
+	public ShoppingBagPage addMonogramToBagGoToSB()
+	{
+		
+		 Assert.assertTrue(pasbCheckoutButton.isDisplayed());
+
+		 goToCheckout();
+		 
+			return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);	
+
+	}
+	
 	/**
 	 * Makes click on the Add to Bag button and click on the Continue Shopping Link
 	 * 
@@ -222,6 +243,7 @@ public class ProductPageCore {
 		return "";
 	}
 	
+	
 	/**
 	 * Verify which attributes are present for the current product page and select a ramdon available swatch for each one. 
 	 * Also save and return this selected values in a Product object 
@@ -241,7 +263,67 @@ public class ProductPageCore {
 		if(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.id("llb_size")))
 			size = selectRandomSizeAttribute();		
 		
+		
+		
 		//ExtentManager.getExtentTest().log(LogStatus.PASS, "ProductRandomAttributesSelection", "Success");
 		return new ProductData(productID.getAttribute("itemid").toString(), productName.getText(), getProductPrice().getText(), color, size, "1", productSizeType.getText());
+	}
+	
+	public void checkMonogramming()
+	{
+		monogramCheckbox.click();
+		
+	}
+	
+	public void AdqVerification()
+	{
+		
+		Assert.assertTrue(addADQZipCodeLink.isDisplayed());
+		addADQZipCodeLink.click();
+		adqZipCodeTextField.sendKeys("11235");
+		adqSubmitZipCodeButton.click();
+		Utilities.explicitlyWait(3000);
+		String text = adqCityName.getText();
+		System.out.println(text);
+		Assert.assertTrue(text.startsWith("Shipping")|text.endsWith("?"));
+		Assert.assertTrue(text.contains("Brooklyn"));
+		Assert.assertTrue(adqNeedFasterLink.isDisplayed());
+		Utilities.explicitlyWait(3000);
+		adqChangeZipCodeButton.click();
+		adqZipCodeTextField.clear();
+		adqZipCodeTextField.sendKeys("11412");
+		adqSubmitZipCodeButton.click();
+		Utilities.explicitlyWait(3000);
+
+		String text2 = adqCityName.getText();
+
+		System.out.println(text2);
+
+		Assert.assertTrue(text2.contains("Saint Albans"));
+
+
+	}
+	
+	
+	
+	
+	public void FullPriceItem()
+	{
+	    String AlphaCode1 = productID.getText();	    
+	    System.out.println(AlphaCode1);	    
+	    Assert.assertTrue(AlphaCode1.contains("PF"));
+	  	       
+	}
+	
+	public void SalePriceItem()
+	{
+	    String AlphaCode2 = productID.getText();	
+	    Assert.assertTrue(AlphaCode2.contains("PO"));
+
+	}
+	
+	public void DailyMarkDownVerification()
+	{
+		
 	}
 }

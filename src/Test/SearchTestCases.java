@@ -25,9 +25,9 @@ public class SearchTestCases extends TestCaseConfiguration {
 
 	HeaderObjects header = new HeaderObjects();
 	ProductListPageObjects ProductListPage = new ProductListPageObjects();
-	header.EnterSearchTerm();
-	//header.ProductListPageVerification();
-	//header.SearchResultVerification();
+	//header.EnterSearchTerm();
+	header.ProductListPageVerification();
+	header.SearchSuggestionVerification();;
 	header.QuickShopCatalogVerification();
 	
   }

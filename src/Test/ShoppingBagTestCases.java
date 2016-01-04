@@ -18,7 +18,7 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 	private LoginPageObjects login;
 	
 
-	@Test(groups = { "smokeTest"})
+	/*@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUMergeAndCheckoutWithNOCC() {		
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
 		prodPage.selectRandomAttributes();		
@@ -55,7 +55,7 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 		shoppingbag = login.login(Constants.FULLINFOACCOUNT, Constants.PASSWORD, ShoppingBagPage.class);
 		shoppingbag.clearSB()
 					.isSBEmpty();	
-	}
+	}*/
 
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagGu(){

@@ -116,17 +116,12 @@ public class LoginPageObjects {
 	
 	public void VerifyNewAccount(String Email1, String Pass1) throws InterruptedException
 	{
-		Utilities.explicitlyWait(2000);
-		if(Email1.equals(email.getAttribute("value")))	{			
-			//ExtentManager.getExtentTest().log(LogStatus.PASS, "Email Address Verification", "Email Address Matches");
+		Utilities.explicitlyWait(3000);
+		if(Email1.equals(email.getAttribute("value")))
+		{			
 			password.sendKeys(Pass1);		
 		}
-		/*else
-		{
-			ExtentManager.getExtentTest().log(LogStatus.FAIL, "Email Address Verification", "Email Address Does Not Match");
-
-		}
-		*/
+		
 		loginBttn.click();	     
 	}
 }

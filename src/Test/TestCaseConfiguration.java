@@ -58,7 +58,7 @@ public class TestCaseConfiguration {
     
      @AfterMethod(alwaysRun = true)
      public void close() throws InterruptedException {       	 
- 		driver.get().close();
- 		driver.get().quit();  
+ 		//driver.get().close();
+ 		//driver.get().quit();  
      }
 }
