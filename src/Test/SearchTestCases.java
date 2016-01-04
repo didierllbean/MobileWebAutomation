@@ -13,22 +13,43 @@ import Tools.ExtentManager;
 import Tools.Utilities;
 import Pages.HeaderObjects;
 import Pages.ProductListPageObjects;
+import Pages.ProductPageCore;
+import Pages.QuickShopPageObjects;
+import Pages.SavedCreditCardsPageObjects;
 import Tools.Constants;
-
 
 public class SearchTestCases extends TestCaseConfiguration {
 
 @Test(groups = {"smokeTest"})
   public void Search() throws InterruptedException {
 	
-	ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
-
+	ProductPageCore ProdPage;
 	HeaderObjects header = new HeaderObjects();
-	ProductListPageObjects ProductListPage = new ProductListPageObjects();
-	header.EnterSearchTerm();
+	ProductListPageObjects productListpage = new ProductListPageObjects();
+	QuickShopPageObjects quickshop = new QuickShopPageObjects();
+	
+	header.SearchSuggestionVerification();
+	header.NavigateToHp();
+    Utilities.explicitlyWait(3000);
+    
+    header.SearchSuggestionClick();
 	//header.ProductListPageVerification();
-	//header.SearchResultVerification();
+	
+	Utilities.explicitlyWait(8000);
 	header.QuickShopCatalogVerification();
 	
   }
+
+@Test(groups = {"smokeTest"})
+public void QuickShop()
+{
+	ProductPageCore ProdPage;
+	QuickShopPageObjects quickshop = new QuickShopPageObjects();
+
+	ProdPage = quickshop.QSOptionVerification();
+	ProdPage = quickshop.QSOption2();
+	ProdPage = quickshop.QSOptionVerification();
+	ProdPage = quickshop.QSOption2();
+	ProdPage.SalePriceItem();	
+}
 }

@@ -17,34 +17,34 @@ import Tools.Utilities;
 public class CreateAnAccount {
 	
 	@FindBy(id = "id_srfFNameTxt")
-	WebElement Fname;
+	WebElement fName;
 
 	@FindBy(name = "srfEmail")
-	WebElement Email;
+	WebElement email;
 
 	@FindBy(name = "srfVeriEmail")
-	WebElement ReEnterEmail;
+	WebElement reEnterEmail;
 
 
 	@FindBy(name = "srfPwd")
-	WebElement Password;
+	WebElement password;
 
 	@FindBy(name = "srfVeriPwd")
-	WebElement ReEnterPassword;
+	WebElement reEnterPassword;
 
 
 	@FindBy(id = "id_srfSecuQusSelect")
-	WebElement SecurityQuestion;
+	WebElement securityQuestion;
 	
 	@FindBy(id = "id_srfSecuAnsTxt")
-	WebElement SecurityAnswer;
+	WebElement securityAnswer;
 
 	
 	@FindBy(xpath = "//input[contains(@value, 'Create an Account')]")
-	WebElement CreateMyAccount;
+	WebElement createMyAccount;
 
 	 @FindBy(xpath="//div[@class='srfCreatAccBtnTxt' and contains(text(), 'Create My Account')]")
-	 WebElement CreateMyAccount2;
+	 WebElement createMyAccount2;
 	
 	public CreateAnAccount()
 	{
@@ -54,7 +54,7 @@ public class CreateAnAccount {
 	public void CreateAccClick()
 	{
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
-		CreateMyAccount.click();
+		createMyAccount.click();
 		//ExtentManager.getExtentTest().log(LogStatus.PASS, "NavigateToCreateAccountPage", "Success");
 	}
 	
@@ -66,32 +66,31 @@ public class CreateAnAccount {
 		
 		 String Pass;	 
 
-		Fname.sendKeys(genData.generateRandomString(10));
-		String FirstName = Fname.getAttribute("value");
+		fName.sendKeys(genData.generateRandomString(10));
+		String FirstName = fName.getAttribute("value");
 		System.out.println(FirstName);
 		
-	    Email.sendKeys(genData.generateEmail(15));
-		String EmailAddress = Email.getAttribute("value");
-	    ReEnterEmail.sendKeys(EmailAddress);
+	    email.sendKeys(genData.generateEmail(15));
+		String EmailAddress = email.getAttribute("value");
+	    reEnterEmail.sendKeys(EmailAddress);
 	    
-	    Password.sendKeys(genData.generateRandomAlphaNumeric(10));
-	    Pass= Password.getAttribute("value");
-	    ReEnterPassword.sendKeys(Pass);
+	    password.sendKeys(genData.generateRandomAlphaNumeric(10));
+	    Pass= password.getAttribute("value");
+	    reEnterPassword.sendKeys(Pass);
 	    
-	    SecurityQuestion.findElement(By.cssSelector("option[value=\"pet\"]")).click();
-	    SecurityAnswer.sendKeys("Raja");
-	    CreateMyAccount2.click();
+	    securityQuestion.findElement(By.cssSelector("option[value=\"pet\"]")).click();
+	    securityAnswer.sendKeys("Raja");
+	    createMyAccount2.click();
 	
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 	
 		if(TestCaseConfiguration.driver.get().getPageSource().contains(FirstName+"'s"))	{
-			ExtentManager.getExtentTest().log(LogStatus.PASS, "New Account Has Been Successfully Created");
 
-			ExtentManager.getExtentTest().log(LogStatus.PASS, "UserName Is Present");
-		}
+			System.out.println("User Name Is Present");
+}
 		else
 		{
-			ExtentManager.getExtentTest().log(LogStatus.FAIL, "UserName Is Not Present");
+			System.out.println("User Name Is Not Present");
 
 		
 		}

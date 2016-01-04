@@ -2,9 +2,11 @@ package Pages;
 
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -14,23 +16,30 @@ import Tools.Utilities;
 
 public class HeaderObjects {
 	
+	
+	@FindBy(id ="un_logo")
+	WebElement headerLLbeanLogo;
+	
 	@FindBy(xpath ="id('cart-section')/div[contains(@class, 'cart-div')]")
-    WebElement ShoppingBagImg;
+    WebElement shoppingBagImg;
 	
 	@FindBy(xpath = "//div[@class = 'llb_headerBagCount']")
-	WebElement ShoppingBagCount;
+	WebElement shoppingBagCount;
 	
 	@FindBy(xpath ="//input[@id='search-string']")
-	WebElement SeachBar;
+	WebElement seachBar;
 	
 	@FindBy(xpath = "//div[@id='search_button']")
-	WebElement ClickSearchButton;
+	WebElement clickSearchButton;
 	
 	@FindBy(xpath = "//div[@class='searchAutoCompleteDropdown']")
-	WebElement SearchAutoCompleteDropDown;
+	WebElement searchAutoCompleteDropDown;
 	
 	@FindBy(xpath = "//a[@class='llb_productListTitle']")
-	List<WebElement> ProductTitle;
+	List<WebElement> productTitle;
+	
+	@FindBy(xpath = "//div[contains(text(), 'socks')]")
+	WebElement sweatPantsSrchSuggestion;
 	
 	public HeaderObjects()	{
 	  	PageFactory.initElements(TestCaseConfiguration.driver.get(), this);		
@@ -39,84 +48,80 @@ public class HeaderObjects {
 	public ShoppingBagPage goToSB(){	
 		Utilities.waitForAjaxToFinish();
 		
-		ShoppingBagImg.click();	
+		shoppingBagImg.click();	
 		//ExtentManager.getExtentTest().log(LogStatus.PASS, "GoToSB", "Success");
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);
 	}
 	
+	public void NavigateToHp()
+	
+	{
+		headerLLbeanLogo.click();
+		
+	}
 	public void SBCount()
 	{
-		String Count = ShoppingBagCount.getText();
+		String Count = shoppingBagCount.getText();
 		System.out.println(Count);
 
 	}
 	
-	public void EnterSearchTerm()
+	public void SearchSuggestionVerification()
 	{
-		SeachBar.sendKeys("S");
-		String text = SearchAutoCompleteDropDown.getAttribute("innerHTML");
-		String text1 = text.replaceAll("<div class=\"searchAutoCompleteDropdownList\"", " ");
-		System.out.println(text1);
-		if(text1.contains("socks")|text1.contains("signature boots")|text1.contains("sweat pants"))
-			
-		{
-			System.out.println("Pass");
+		seachBar.sendKeys("S");
 
-		}
+		Utilities.explicitlyWait(5000);
+		String text = searchAutoCompleteDropDown.getAttribute("innerHTML");
 		
-		else
-		{
+		String text1 = text.replaceAll("<div class=\"searchAutoCompleteDropdownList\"", " ");
 		
-		System.out.println("Fail");
-		}
+		Assert.assertTrue(text1.contains("sock")|text1.contains("signature boots")|text1.contains("sweat pants"));
+		
+	}
+	
+	public void SearchSuggestionClick()
+	
+	{
+		seachBar.sendKeys("S");
+		Utilities.explicitlyWait(7000);
+		sweatPantsSrchSuggestion.click();
+		
+	}
+	
+	public void SearchForShirts()
+	{
+		seachBar.sendKeys("Shirts");
+		clickSearchButton.click();
+
+		
 	}
 	
 public void ProductListPageVerification()
 	
 	{
-		SeachBar.sendKeys("Bluetooth");
-		ClickSearchButton.click();
+		seachBar.sendKeys("Bluetooth");
+		clickSearchButton.click();
 		
 		Utilities.explicitlyWait(5000);
 		
-		for(WebElement ele: ProductTitle)
+		for(WebElement ele: productTitle)
 		{
 			System.out.println(ele.getText());
 			
-			if(ele.getText().contains("Bluetooth"))
-			{
-				System.out.println("Pass");
-			}
-			else
-			{
-				System.out.println("Fail");
-
-			}
-		}
-		
+			Assert.assertTrue(ele.getText().contains("Bluetooth"));
+		}	
 		
 	}
 
 public void QuickShopCatalogVerification()
 
 {
-	SeachBar.sendKeys("296574");
-	ClickSearchButton.click();
+	seachBar.sendKeys("266127");
+	clickSearchButton.click();
 	Utilities.explicitlyWait(3000);
-	if(TestCaseConfiguration.driver.get().getPageSource().contains("We found more than one match for the item number(s) you entered."))
-	{
-
-		System.out.println("Pass");
-
-}
 	
-	else
-	{
-		System.out.println("Fail");
+	Assert.assertTrue(TestCaseConfiguration.driver.get().getPageSource().contains("We found more than one match for the item number(s) you entered."));
 
-	}
-	
-	
 }
 }

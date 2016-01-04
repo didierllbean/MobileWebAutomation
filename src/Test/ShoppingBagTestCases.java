@@ -27,7 +27,7 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 	
 	
 
-	/*
+	
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUMergeAndCheckoutWithNOCC() {
 		//ExtentManager.setExtentTest(REPORTMANAGER, "Shopping Bag RU Merge And Checkout With NO CC");
@@ -44,6 +44,7 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 		checkout.validateLandingStep(checkout.PAYMENTSTEP);
 	}
 	
+	
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUCheckoutWithAllData() {
 		//ExtentManager.setExtentTest(REPORTMANAGER, "Shopping Bag RU Checkout With All Data");
@@ -55,10 +56,11 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 		login = shoppingbag.startCheckoutProcessAsGuest();		
 		shoppingbag = login.login(Constants.FULLINFOACCOUNT, Constants.PASSWORD, ShoppingBagPage.class);				
 		
+		
 		checkout = shoppingbag.startCheckoutProcess();
 		checkout.validateLandingStep(checkout.REVIEWSTEP);
 	}
-	
+	/*
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUClearSB() {
 		//ExtentManager.setExtentTest(REPORTMANAGER, "Shopping Bag RU Clear SB");
@@ -71,12 +73,11 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 		shoppingbag.clearSB()
 					.isSBEmpty();	
 	}
-*/
+
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagGu(){
 		
 		
-		ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
 		prodPage.selectRandomAttributes();
 		Utilities.explicitlyWait(5000);
@@ -92,12 +93,15 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 		
 		shoppingbag.PromoCodeVerification();
 		Utilities.explicitlyWait(5000);
-		shoppingbag.AddNewRecipient();		
+		shoppingbag.AddNewRecipient();	
+		Utilities.explicitlyWait(5000);
+
 		shoppingbag.ShoppingBagTitleVerification();	
 		shoppingbag.ClickCheckOut();
 			
         }
+       
 					
 	
-		
+		*/
 }
