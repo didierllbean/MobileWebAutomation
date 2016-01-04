@@ -20,6 +20,7 @@ public class CheckoutTestCases extends TestCaseConfiguration
 	
 	@Test(groups = { "smokeTest", "checkoutOnly" })
 	public void fullGuestCheckout(){
+		//ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
 		
 		ProductPageCore prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);	    
 		productData = prodPage.selectRandomAttributes();

@@ -1,12 +1,12 @@
 package Pages;
 
 import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
-import Test.TestCaseConfiguration;
 
 public class AccountPageObjects {
 
@@ -18,61 +18,39 @@ public class AccountPageObjects {
 	WebDriver driver;
 
 	@FindBy(name = "logonId")
-	WebElement llbnLogin;
+	WebElement LLBLogin;
 
 	@FindBy(name = "logonPassword")
-	WebElement llbnPassword;
+	WebElement LLBPassword;
 
 	@FindBy(name = "un_jtt_login")
-	WebElement loginButton;
+	WebElement LoginBttn;
 
 	@FindBy(xpath = "//div[contains(@class, 'llbMAMainVCName matoplistname') and text() = 'L.L.Bean Visa Coupons']")
-	WebElement llbeanVisaCoupons;
+	WebElement LLBEANVISACOUPONS;
 
 	@FindBy(xpath = "//div[contains(@class, 'llbMAMLMyProfileTxt mabottomlistname') and text() = 'My Profile']")
-	WebElement myProfile;
+	WebElement MyProfile;
 
 	@FindBy(xpath = "//div[contains(@class, 'llbMAMLGiftCardsAndPromoCodesTxt mabottomlistname') and text() = 'Gift Cards and Promo Codes']")
-	WebElement giftCardsAndPromoCodes;
+	WebElement GiftCardAndPromoCodes;
 
 	@FindBy(xpath = "//div[contains(@class, 'llbMAMLSavedCreditCardsTxt mabottomlistname') and text() = 'Saved Credit Cards']")
-	WebElement savedCreditCards;
+	WebElement SavedCreditCards;
 
 	@FindBy(xpath = "//div[contains(@class, 'llbMAMLSavedAddressesTxt mabottomlistname') and text() = 'Saved Addresses']")
-	WebElement savedAddress;
+	WebElement SavedAddresses;
 
 	@FindBy(xpath = "//div[contains(@class, 'llbMAMLWishListTxt mabottomlistname') and text() = 'Wish List']")
-	WebElement wishlist;
+	WebElement WishList;
 
 	@FindBy(xpath = "//div[contains(@class, 'llbMAMLAccessMyVisaAccTxt mabottomlistname') and text() = 'Access My L.L.Bean Visa Account']")
-	WebElement accessMyllbnVisaAccount;
+	WebElement AccessMyLLBVisaAcount;
 
-	public AccountPageObjects() {
+	public void Login(WebDriver driver) throws InterruptedException {
 
-	  	PageFactory.initElements(TestCaseConfiguration.driver.get(), this);		
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
 
 	}
-	
-	public void ClickSavedCC()
-	{
-		savedCreditCards.click();
-		
-	}
-	
-	public void LinkVerification()
-	{
-		Assert.assertTrue(llbeanVisaCoupons.getText().equals("L.L.Bean Visa Coupons"));
-		
-		Assert.assertTrue(myProfile.getText().equals("My Profile"));
-		
-		Assert.assertTrue(giftCardsAndPromoCodes.getText().equals("Gift Cards and Promo Codes"));
-				
-		Assert.assertTrue(savedCreditCards.getText().equals("Saved Credit Cards"));
-		
-		Assert.assertTrue(wishlist.getText().equals("Wish List"));
-		
-		Assert.assertTrue(accessMyllbnVisaAccount.getText().equals("Access My L.L.Bean Visa Account"));
-		
-	}
-	
 }

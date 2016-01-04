@@ -74,9 +74,8 @@ public class TestCaseConfiguration {
      public void close(/*ITestResult result*/) throws InterruptedException {   
 
     	 
- 		//driver.get().close();
- 		//driver.get().quit();
-    	
+ 		driver.get().close();
+ 		driver.get().quit();
     	 
  		
 		/*if (!result.isSuccess()) {
@@ -86,9 +85,6 @@ public class TestCaseConfiguration {
 		//REPORTMANAGER.endTest(ExtentManager.getExtentTest());// ending test  
      }
      /*
-=======
-    
->>>>>>> Stashed changes
      @AfterClass
      public void afterClass() {  	 
      }

@@ -5,62 +5,29 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import Test.TestCaseConfiguration;
-import Tools.Utilities;
-
 public class MenuPageObjects {
 
 	WebDriver driver;
 
 	@FindBy(xpath = "//div[@id='llb_header']/div[2]/div/div[2]")
-	WebElement menShopMenu;
+	WebElement MNShopMenu;
 
 	@FindBy(xpath = "//div/div[2]/div[@name='Shirts']")
-	WebElement menShirt;
+	WebElement MNMenShirt;
 
 	@FindBy(xpath = "//div[4]//div[@name='Polos']")
-	WebElement menPolos;
+	WebElement MNMenPolos;
 
 	@FindBy(xpath = "/html/body/div[13]/div/div/div[11]/div[2]/h3")
-	WebElement menCat;
-	
-	@FindBy(xpath = "//h3[contains(text(),'Sale')]")
-	WebElement Sale;
-	
-	@FindBy(xpath = "//div[@class='CategoryWgetContSet expand']/div[@name= '2-A-Day Daily Markdown']")
-	WebElement TwoADay;
-	
-	
+	WebElement MNMensCat;
 
-	
-	public MenuPageObjects()
-	{
-	  	PageFactory.initElements(TestCaseConfiguration.driver.get(), this);		
-	} 
+	public void NavigateToPlp(WebDriver driver) {
 
-	public void NavigateToPlp() {
-
-		Utilities.waitForAjaxToFinish();
-
-		menShopMenu.click();
-		Utilities.explicitlyWait(3000);
-		menCat.click();
-		menShirt.click();
-
-	}
-	
-	public void NavigateToDailyMarkDownPage()
-	
-	{
-		Utilities.waitForAjaxToFinish();
-		menShopMenu.click();
-		Utilities.explicitlyWait(3000);
-
-		Sale.click();
-		Utilities.explicitlyWait(3000);
-
-		TwoADay.click();
-		
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+		MNShopMenu.click();
+		MNMensCat.click();
+		MNMenShirt.click();
 
 	}
 

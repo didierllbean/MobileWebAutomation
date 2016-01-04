@@ -1,7 +1,5 @@
 package Pages;
 
-import org.testng.Assert;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -15,56 +13,56 @@ import Tools.Utilities;
 
 public class FooterObjects {
 
-	@FindBy(linkText = "Customer Service")
-	WebElement custServlink;
+	@FindBy(xpath = "//div[@class='llb_ftCustServTxt' and contains(text(), 'Customer Service")
+	WebElement FTCustServlink;
 
 	@FindBy(linkText="L.L.Bean® Visa® Apply Now")
-	WebElement llbVisaApply;
+	WebElement FTLbVisaApply;
 
 	@FindBy(linkText="L.L.Bean® Visa® Card Coupon Lookup")
-	WebElement llbVisaCoupLkUp;
+	WebElement FTLbVisaCoupLkUp;
 
 	@FindBy(linkText="Purchase History & Order Tracking")
-	WebElement purchaseHistOrdTrk;
+	WebElement FTPrcHistOrdTrk;
 
 
 	@FindBy(xpath="//div[@class='llb_ftLogInStatusTxt' and contains(text(), 'Log In')]")
-	WebElement ftlogin;
+	WebElement FTLogin;
 
 	@FindBy(linkText="Security")
-	WebElement security;
+	WebElement FTSecurity;
 
 	@FindBy(linkText="Privacy")
-	WebElement privacy;
+	WebElement FTPrivacy;
 
 	@FindBy(linkText="Recalls")
-	WebElement recalls;
+	WebElement FTRecalls;
 
 	@FindBy(linkText="Promotional Terms")
-	WebElement promotionalTerms;
+	WebElement FTPromotionalTerms;
 
 	@FindBy(linkText="888-797-3880")
-	WebElement phoneNumber;
+	WebElement FTPhoneNumber;
 
 	@FindBy(linkText="Full Site")
-	WebElement fullSite;
+	WebElement FTFullSite;
 
 	@FindBy(linkText="Download the Mobile App")
-	WebElement downLdApp;
+	WebElement FTDownLdApp;
 
 	@FindBy(name="emailaddress")
-	WebElement emailAddFld;
+	WebElement FTEmailAddFld;
 
 	@FindBy(id="llb_ftSignUpBtn")
-	WebElement signUpBtn;
+	WebElement SignUpBtn;
 
 	@FindBy(id="search-string")
-	WebElement searchBar;
+	WebElement FTSrchBar;
 
 	@FindBy(xpath = "//div[@class='llb_ftLogInStatusTxt' and contains(text(), 'Log In')]")
 	WebElement  FooterLogin;
 
-	@FindBy(xpath = "//div[@id='llb_footer']/div[4]")
+	@FindBy(xpath = "//div/div[@id='llb_footer']/div[4]")
 	WebElement UserAccount;
 
 	@FindBy(xpath = "//div[@class='llb_ftLogInStatusTxt' and contains(text(), 'Log Out')]")
@@ -74,6 +72,7 @@ public class FooterObjects {
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 
 		FooterLogin.click();
+		//ExtentManager.getExtentTest().log(LogStatus.PASS, "GoToLogin", "Success");
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), LoginPageObjects.class);	
 	}
@@ -89,48 +88,4 @@ public class FooterObjects {
 		FooterLogOut.click();
 		//ExtentManager.getExtentTest().log(LogStatus.PASS, "Logout", "Success");
 	}
-	
-	public void EmailSignUp()
-	
-	{
-		emailAddFld.sendKeys("testing121@gmail.com");
-		Utilities.explicitlyWait(3000);
-
-		signUpBtn.click();
-		
-		
-	}
-	
-	public void ClickUserAccountName()
-	{
-		UserAccount.click();
-	}
-	
-	public void FooterLinkVerification()
-	
-	{
-		
-		
-		Utilities.waitForAjaxToFinish();
-		Assert.assertTrue(custServlink.isDisplayed());
-		Assert.assertTrue(llbVisaApply.isDisplayed());
-		Assert.assertTrue(llbVisaCoupLkUp.isDisplayed());
-		Assert.assertTrue(purchaseHistOrdTrk.isDisplayed());
-		Assert.assertTrue(security.isDisplayed());
-		Assert.assertTrue(privacy.isDisplayed());
-		Assert.assertTrue(recalls.isDisplayed());
-		Assert.assertTrue(promotionalTerms.isDisplayed());
-		Assert.assertTrue(phoneNumber.isDisplayed());
-		Assert.assertTrue(fullSite.isDisplayed());
-		Assert.assertTrue(emailAddFld.isDisplayed());
-		Assert.assertTrue(signUpBtn.isDisplayed());
-		Assert.assertTrue(searchBar.isDisplayed());
-		Assert.assertTrue(FooterLogin.isDisplayed());
-		Assert.assertTrue(downLdApp.isDisplayed());
-		Assert.assertTrue(UserAccount.isDisplayed());	
-
-	}
-	
-	
-	
 }

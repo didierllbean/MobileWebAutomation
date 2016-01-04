@@ -15,23 +15,26 @@ public class CreateAccountTestCases extends TestCaseConfiguration
 		//ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
 		
 		FooterObjects footer = new FooterObjects();
-		LoginPageObjects login;
-		CreateAnAccount create = new CreateAnAccount();
+		LoginPageObjects Login = new LoginPageObjects();
+		CreateAnAccount Create = new CreateAnAccount();
 		
 		footer.NavigateToLoginPage();
 		Utilities.explicitlyWait(5000);
 
-		create.CreateAccClick();
+		Create.CreateAccClick();
         
-		String EmPass= create.CreateAndVerifyAccount();
+		String EmPass= Create.CreateAndVerifyAccount();
 		String Part[] = EmPass.split(";");
 
 		footer.FooterSignOut();
 
-		login = footer.NavigateToLoginPage();
-		login.VerifyNewAccount(Part[0], Part[1]);
+		footer.NavigateToLoginPage();
+		Login.VerifyNewAccount(Part[0], Part[1]);
 		
-	
+		TestCaseConfiguration.driver.get().close();
+		
+		System.out.println("hello");
+		TestCaseConfiguration.driver.get().navigate().to("http://www.m-ecwebs01.llbean.com");
 		
 	}
 }

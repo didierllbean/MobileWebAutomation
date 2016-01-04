@@ -1,7 +1,5 @@
 package Pages;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -65,7 +63,7 @@ public class ShoppingBagPage {
 	WebElement sbMergePopipOkButton;
 
 	@FindBy(xpath  = "//div[@class = 'sbItemAttributes']")
-	WebElement ProductID;
+	WebElement ItemPrice;
 	
 	@FindBy(name ="un_jtt_promocodeinput")
 	WebElement EnterPromo;
@@ -96,15 +94,6 @@ public class ShoppingBagPage {
 	
 	@FindBy(id= "un_title_text un_wid50")
 	WebElement SBTitle;
-	
-	@FindBy(xpath = "//div[@class='sel_attributes']")
-	List<WebElement> sBMonogramOptions ;
-	
-	
-	
-	
-	
-	 /*"//div[2]/div[2]/span[@class='un_bold']"*/
 	
 	/*-------------------------------------------------- functions --------------------------------------------------*/
 	
@@ -143,6 +132,7 @@ public class ShoppingBagPage {
 	public CheckoutPageObjects startCheckoutProcess() {
 		Utilities.waitForAjaxToFinish();
 		
+		closeMergeMessage();
 		
 		if(sbCheckoutButton.isDisplayed()) {
 			sbCheckoutButton.click();
@@ -211,15 +201,37 @@ public class ShoppingBagPage {
 	
 	public void FullPriceItem()
 	{
+	    String AlphaCode1 = ItemPrice.getText();
 		
-		Assert.assertTrue(ProductID.getText().contains("PF"));
-   
+	    if(AlphaCode1.contains("PF"))
+	    {
+			ExtentManager.getExtentTest().log(LogStatus.PASS, "FullPrice Item Number Contains PF AlphaCode");
+
+	    	
+	    }
+	    else
+	    {
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "FullPrice Item Number Does Not Contain PF AlphaCode");
+
+	    }
+	    
+	    
 	}
 	
 	public void SalePriceItem()
 	{
+	    String AlphaCode2 = ItemPrice.getText();
 		
-		Assert.assertTrue(ProductID.getText().contains("PO"));  
+	    if(AlphaCode2.contains("PO"))
+	    {
+			ExtentManager.getExtentTest().log(LogStatus.PASS, "SalePrice Item Number Contains PO AlphaCode");
+	    	
+	    }
+	    else
+	    {
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "SalePrice Item Number Does Not Contain PO AlphaCode");
+
+	    }
 	}
 	
 	public void PromoCodeVerification()
@@ -230,7 +242,7 @@ public class ShoppingBagPage {
 		double b = Double.parseDouble(BeforeRedeem);
 		
 		System.out.println(b);
-		EnterPromo.sendKeys("QATHANKS15");
+		EnterPromo.sendKeys("EXCLNOTH");
 		ClickRedeem.click();
 		
 		Utilities.explicitlyWait(7000);
@@ -238,9 +250,17 @@ public class ShoppingBagPage {
 		String SecondPrice = PriceAfterPromo.getText();
 		String AfterRedeem = SecondPrice.substring(1, 6);
 		double c = Double.parseDouble(AfterRedeem);
-		System.out.println(c);	
-		Assert.assertTrue(b>c);
-	
+		System.out.println(c);
+
+	    if(b>c)
+	    {
+			ExtentManager.getExtentTest().log(LogStatus.PASS, "PromoCode Successfully Applied");
+	    }
+	    else
+	    {
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, "PromoCode Failed To Apply");
+
+	    }
 	}
 	
 	public void AddNewRecipient()
@@ -254,20 +274,37 @@ public class ShoppingBagPage {
 		PopTextEnter.sendKeys("Dave");
 		SaveNewRecipient.click();
 		Utilities.explicitlyWait(3000);	
-		
-		System.out.println(SavedRecipient);
+		String RecipientName = SavedRecipient.getText();
+		System.out.println(RecipientName);
 	
-		Assert.assertTrue(SavedRecipient.getText().equals("Dave"));
+	
+		if(RecipientName.equals("Dave"))
+		{
+			ExtentManager.getExtentTest().log(LogStatus.PASS, " New Recipient Successfully Added");
+
+		}
+		else
+		{
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, " New Recipient Not Added");
+
+		}		
 
 	}
 	
 	public void ShoppingBagTitleVerification()
 	
 	{
+		String Title = SBTitle.getText();
 		
-		
-		Assert.assertTrue(SBTitle.getText().equals("Shopping Bag"));
+		if(Title.equals("Shopping Bag"))
+		{
+			ExtentManager.getExtentTest().log(LogStatus.PASS, " Shopping Bag Title Is Present");
+		}
+		else
+		{
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, " Shopping Bag Title Is Not Present");
 
+		}
 	}
 	
 	public void ClickCheckOut()
@@ -275,20 +312,22 @@ public class ShoppingBagPage {
 		sbCheckoutButton.click();
 		Utilities.explicitlyWait(3000);	
 
-		Assert.assertTrue(TestCaseConfiguration.driver.get().getPageSource().contains("Have an llbean.com account?"));
+		
+		if(TestCaseConfiguration.driver.get().getPageSource().contains("Have an llbean.com account?"))
+				{
+			ExtentManager.getExtentTest().log(LogStatus.PASS, " Login Page Loaded");
 
+				}
+		else
+		{
+			ExtentManager.getExtentTest().log(LogStatus.FAIL, " Login Page Failed To Load");
 
-	}	
+		}
+
+	}
 	
-public void MonogramVerification()
-
-{
 	
-	for(WebElement E1: sBMonogramOptions)
-    {
-    	System.out.println(E1.getText());
-    	
-    }
-	    
-}
+	
+	
+	
 }
