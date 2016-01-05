@@ -12,13 +12,13 @@ import Tools.Utilities;
 
 public class ShopHome extends TestCaseConfiguration {
 	
-/* @Test
+@Test
   public void EmailSignUp() {
 	  
 	FooterObjects footer = new FooterObjects();
 	EmailSignUpPageObjects emailsingup = new EmailSignUpPageObjects();
 
-	footer.EmailSignUp();
+	footer.emailSignUp();
 	 
 	Utilities.explicitlyWait(8000);
 	  
@@ -30,9 +30,9 @@ public class ShopHome extends TestCaseConfiguration {
  
   {
 		FooterObjects footer = new FooterObjects();
-		footer.FooterLinkVerification();
+		footer.footerLinkVerification();
   }
-  */
+  
  @Test 
  public void DailyMarkDown()
  

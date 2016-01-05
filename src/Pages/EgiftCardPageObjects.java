@@ -45,7 +45,7 @@ public class EgiftCardPageObjects {
 	  	PageFactory.initElements(TestCaseConfiguration.driver.get(), this);		
 	}
 	
-	public void SelectEgc()
+	public ShoppingBagPage selectEgc()
 	
 	{
 		EgcType.click();
@@ -57,7 +57,10 @@ public class EgiftCardPageObjects {
 		EgcATB.click();
 		Utilities.explicitlyWait(5000);
 		EgcCheckout.click();
-		EgcRemove.click();	
+		//EgcRemove.click();	
+		
+		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);
+
 	}
 	
 }

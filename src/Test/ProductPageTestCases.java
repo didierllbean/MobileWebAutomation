@@ -1,5 +1,7 @@
 package Test;
 
+import org.testng.Assert;
+
 import org.testng.annotations.Test;
 
 import Pages.FooterObjects;
@@ -12,7 +14,7 @@ import Tools.Utilities;
 public class ProductPageTestCases extends TestCaseConfiguration {
 	
 	private ProductPageCore prodPage;
- @Test
+ /*@Test
   public void PdpAdq() {
 	  
 	  
@@ -21,21 +23,28 @@ public class ProductPageTestCases extends TestCaseConfiguration {
 	  prodPage.AdqVerification();  
   }
   
-  
+  */
   @Test
   public void PdpMonogrammming()
   
   {
-	  ShoppingBagPage shoppingbag = new ShoppingBagPage();
+	  ShoppingBagPage shoppingbag;
 	  MonogramConfigurationPage monogram = new MonogramConfigurationPage();
 	  prodPage = Utilities.goToPDP(Constants.MONOGRAM);		
 	  prodPage.selectRandomAttributes();
-	  prodPage.checkMonogramming();
+	  prodPage.selectMonogramming();
 	  prodPage.goToMonogramPage();
 	  Utilities.explicitlyWait(7000);
-	  monogram.singleLetterMonogram();
-	  prodPage.addMonogramToBagGoToSB();
-	  Utilities.explicitlyWait(18000);
-	  shoppingbag.MonogramVerification();
+	  String expected = monogram.singleLetterMonogram();
+	  shoppingbag = prodPage.addMonogramToBagGoToSB();
+	  Utilities.explicitlyWait(8000);
+	  Utilities.waitForAjaxToFinish();
+	  String actual = shoppingbag.MonogramVerification();
+	  Assert.assertEquals(expected.split(";")[1], actual.split(";")[2]);
+	  Assert.assertEquals(expected.split(";")[2], actual.split(";")[1]);
+	  Assert.assertEquals(expected.split(";")[3], actual.split(";")[3]);
+
+
   }
+  
 }

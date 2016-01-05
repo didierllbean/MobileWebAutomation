@@ -22,7 +22,7 @@ public class GiftCardPageObjects {
 	}
 
 	
-	public void ClickEGc()
+	public void clickEGc()
 	
 	{
 		

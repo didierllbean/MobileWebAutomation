@@ -168,6 +168,7 @@ public class ProductPageCore {
 	public MonogramConfigurationPage goToMonogramPage()
 	{
 		addToBag();
+		Utilities.waitForAjaxToFinish(40000);
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), MonogramConfigurationPage.class);	
 	}
 	
@@ -269,7 +270,7 @@ public class ProductPageCore {
 		return new ProductData(productID.getAttribute("itemid").toString(), productName.getText(), getProductPrice().getText(), color, size, "1", productSizeType.getText());
 	}
 	
-	public void checkMonogramming()
+	public void selectMonogramming()
 	{
 		monogramCheckbox.click();
 		
@@ -283,12 +284,14 @@ public class ProductPageCore {
 		adqZipCodeTextField.sendKeys("11235");
 		adqSubmitZipCodeButton.click();
 		Utilities.explicitlyWait(3000);
+		
 		String text = adqCityName.getText();
-		System.out.println(text);
 		Assert.assertTrue(text.startsWith("Shipping")|text.endsWith("?"));
 		Assert.assertTrue(text.contains("Brooklyn"));
 		Assert.assertTrue(adqNeedFasterLink.isDisplayed());
 		Utilities.explicitlyWait(3000);
+		
+		
 		adqChangeZipCodeButton.click();
 		adqZipCodeTextField.clear();
 		adqZipCodeTextField.sendKeys("11412");
@@ -296,9 +299,6 @@ public class ProductPageCore {
 		Utilities.explicitlyWait(3000);
 
 		String text2 = adqCityName.getText();
-
-		System.out.println(text2);
-
 		Assert.assertTrue(text2.contains("Saint Albans"));
 
 
@@ -307,23 +307,21 @@ public class ProductPageCore {
 	
 	
 	
-	public void FullPriceItem()
+	public void fullPriceAlphaCodeVerification()
 	{
-	    String AlphaCode1 = productID.getText();	    
-	    System.out.println(AlphaCode1);	    
-	    Assert.assertTrue(AlphaCode1.contains("PF"));
-	  	       
+
+	    
+	    String AlphaCode1 =  productID.getText();
+	    Assert.assertTrue(AlphaCode1.contains("PF"));  
+	
 	}
 	
-	public void SalePriceItem()
+	public void salePriceAlphaCodeVerification()
 	{
 	    String AlphaCode2 = productID.getText();	
 	    Assert.assertTrue(AlphaCode2.contains("PO"));
 
 	}
 	
-	public void DailyMarkDownVerification()
-	{
-		
-	}
+	
 }

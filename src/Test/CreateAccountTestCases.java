@@ -15,20 +15,21 @@ public class CreateAccountTestCases extends TestCaseConfiguration
 		//ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
 		
 		FooterObjects footer = new FooterObjects();
-		LoginPageObjects Login = new LoginPageObjects();
+		LoginPageObjects Login;
 		CreateAnAccount Create = new CreateAnAccount();
 		
 		footer.NavigateToLoginPage();
 		Utilities.explicitlyWait(5000);
+		Utilities.waitForAjaxToFinish();
 
 		Create.CreateAccClick();
         
-		String EmPass= Create.CreateAndVerifyAccount();
+		String EmPass= Create.createAndVerifyAccount();
 		String Part[] = EmPass.split(";");
 
-		footer.FooterSignOut();
+		footer.footerSignOut();
 
-		footer.NavigateToLoginPage();
+		Login = footer.NavigateToLoginPage();
 		Utilities.explicitlyWait(5000);
 
 		Login.VerifyNewAccount(Part[0], Part[1]);

@@ -46,7 +46,8 @@ public class SavedCreditCardsPageObjects {
 	
 	{
 		
-		Assert.assertTrue(storedCC.getText().equals("American Express *4815"));	
+		Assert.assertEquals(storedCC.getText(), "American Express *4815");
+		//Assert.assertTrue(storedCC.getText().equals("American Express *4815"));	
 	}
 	
 	public void DeleteCC()
@@ -55,7 +56,8 @@ public class SavedCreditCardsPageObjects {
 		deleteCC.click();
 		Utilities.explicitlyWait(3000);
 		delete.click();
-		Assert.assertTrue(noCC.getText().equals("You don't currently have any credit cards associated with your account."));	
+		Assert.assertEquals(noCC.getText(), "You don't currently have any credit cards associated with your account.");
+		//Assert.assertTrue(noCC.getText().equals("You don't currently have any credit cards associated with your account."));	
 		
 	}
 }

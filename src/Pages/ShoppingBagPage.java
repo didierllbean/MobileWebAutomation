@@ -98,14 +98,29 @@ public class ShoppingBagPage {
 	WebElement SBTitle;
 	
 	@FindBy(xpath = "//div[@class='sel_attributes']")
-	List<WebElement> sBMonogramOptions ;
+	List<WebElement> sBMonogramOptions;
+	
+	@FindBy(xpath ="//div[@class='giftCardMessageDiv']")
+	WebElement sbgiftCardMessage;
+	
+	@FindBy(xpath = "//div[@class='sbItemAttributes']/div[2]")
+	WebElement sbgiftcardValue;
+	
+	@FindBy(xpath ="//div[@class='wlsb_giftCardEmail']/div[1]")
+	WebElement sbgiftcardRecepientName;
+	
+	@FindBy(xpath ="//div[@class='wlsb_giftCardEmail']/div[2]")
+	WebElement sbgiftcardRecepientEmail;
+	
+	@FindBy(xpath ="//a[@class='sb_itemNameAnc  ']")
+	WebElement sbgiftcardName;
+	
+	@FindBy(xpath ="//div[@class='sbItemAttributes']/div[4]")
+	WebElement sbgiftcardDeliveryDate;
 	
 	
 	
-	
-	
-	 /*"//div[2]/div[2]/span[@class='un_bold']"*/
-	
+		
 	/*-------------------------------------------------- functions --------------------------------------------------*/
 	
 	private WebElement getProductInSB(String productID ) {
@@ -229,16 +244,18 @@ public class ShoppingBagPage {
 		double b = Double.parseDouble(BeforeRedeem);
 		
 		System.out.println(b);
-		EnterPromo.sendKeys("QATHANKS15");
+		EnterPromo.sendKeys("EXCLNOTH");
 		ClickRedeem.click();
 		
 		Utilities.explicitlyWait(7000);
+		Utilities.waitForAjaxToFinish();
 		
 		String SecondPrice = PriceAfterPromo.getText();
 		String AfterRedeem = SecondPrice.substring(1, 6);
 		double c = Double.parseDouble(AfterRedeem);
 		System.out.println(c);	
 		Assert.assertTrue(b>c);
+		//Assert.assertEquals(c, "331.2");
 	
 	}
 	
@@ -257,6 +274,7 @@ public class ShoppingBagPage {
 		System.out.println(SavedRecipient);
 	
 		Assert.assertTrue(SavedRecipient.getText().equals("Dave"));
+		
 
 	}
 	
@@ -279,15 +297,52 @@ public class ShoppingBagPage {
 
 	}	
 	
-public void MonogramVerification()
+	
+public void sBgiftCardVerification()
+{
+	String[] s1= sbgiftCardMessage.getText().split(": ");
+	String[] s2= sbgiftcardValue.getText().split(": ");
+    String[] s3 = sbgiftcardRecepientName.getText().split(": ");
+    String s4 = sbgiftcardRecepientEmail.getText();
+    String s5 =sbgiftcardName.getText();
+    String[] s6 = sbgiftcardDeliveryDate.getText().split(": ");
+
+	Assert.assertEquals(s1[1], "Happy New Year");
+	Assert.assertEquals(s2[1], "$10.00");
+	Assert.assertEquals(s3[1], "David");
+	Assert.assertEquals(s4, "dave123@gmail.com");
+	Assert.assertEquals(s5, "Wreath e-Gift Card");
+	Assert.assertEquals(s6[1], "Tuesday, January 05, 2016");
+}
+	
+public String MonogramVerification()
 
 {
 	
-	for(WebElement E1: sBMonogramOptions)
+
+	int icount = 0;
+	String returntext = "";
+	for(WebElement E2: sBMonogramOptions)
+		
     {
-    	System.out.println(E1.getText());
-    	
+		if(icount>2)
+		{
+		if(E2.getText().contains(": "))
+		{
+		String[] s1= E2.getText().split(": ");
+		
+    	System.out.println(s1[1]);
+    	returntext = returntext + ";" + s1[1];
+
+		}
+		
+
+		}
+		icount = icount+1;
+		
     }
+
+	return returntext;
 	    
 }
 }

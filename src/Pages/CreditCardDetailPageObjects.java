@@ -24,7 +24,7 @@ public class CreditCardDetailPageObjects {
 	@FindBy(id = "myacAddrBookSaveAddrBtn")
 	WebElement saveCC;
 	
-	public void EnterNewCC()
+	public void enterNewCreditCard()
 	{
 		enterCCNumber.sendKeys("3454 5421 1544 815");
 		enterMonth.sendKeys("02");

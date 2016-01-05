@@ -14,9 +14,9 @@ public class FiltersAndRatingsTestCases extends TestCaseConfiguration {
 	  
 	  ProductListPageObjects productlistpage = new ProductListPageObjects();
 
-	  header.SearchForShirts();
+	  header.searchForShirts();
 	  Utilities.explicitlyWait(5000);
-	  productlistpage.ApplyFilters();
+	  productlistpage.applyFilters();
 	  
   }
   

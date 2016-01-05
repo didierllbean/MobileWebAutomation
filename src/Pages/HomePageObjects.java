@@ -33,7 +33,7 @@ public class HomePageObjects
     public HomePageObjects()	{
 	  	PageFactory.initElements(TestCaseConfiguration.driver.get(), this);		
 	}
-    public void ClickGC()
+    public void clickGC()
     
     {
     	giftCard.click();

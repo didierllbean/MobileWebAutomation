@@ -2,6 +2,8 @@ package Pages;
 
 import java.util.List;
 
+import org.testng.Assert;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -51,7 +53,7 @@ public class MonogramConfigurationPage {
 	WebElement monogramSkipButton;
 	
 	@FindBy(xpath = "//span[@class='selMonogramOption']")
-	List<WebElement> MonogramOptions;
+	List<WebElement> monogramOptionsTxt;
 	
 	
 	
@@ -60,26 +62,45 @@ public class MonogramConfigurationPage {
 	  	PageFactory.initElements(TestCaseConfiguration.driver.get(), this);		
 	} 
 
-	public void singleLetterMonogram()
+	public String singleLetterMonogram()
 	{
-		Utilities.waitForAjaxToFinish();
+		
+		
+		 Assert.assertTrue(monogramStyles.isDisplayed());
+		 Assert.assertTrue(monogramPreviewImage.isDisplayed());
+		 Assert.assertTrue(monogramColorsTable.isDisplayed());
+		 Assert.assertTrue(monogramTypes.isDisplayed());
+
+		
         singleLetter.click();
         heirLoom.click();
     
         monogramSingleLetterTextField.sendKeys("S");
         
-        for(WebElement E1: MonogramOptions)
+        int icount = 0;
+        
+        String returntext = "";
+       
+        for(WebElement E1: monogramOptionsTxt)
         {
         	
-        	
+        	if(icount>0)
+        	{
         	String text = E1.getText();
         	
-        	System.out.println(text.replace("Single Letter", ""));
+        	System.out.println(text);
         	
+        	returntext = returntext + ";" + text;
         	
         
         }
-        
+    		icount = icount+1;
+
+        }
+                
         monogramAddToBagButton.click();	
+        
+        return returntext;
+
 	}
 }

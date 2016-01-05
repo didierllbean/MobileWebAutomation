@@ -54,25 +54,25 @@ public class AccountPageObjects {
 
 	}
 	
-	public void ClickSavedCC()
+	public void clickSavedCC()
 	{
 		savedCreditCards.click();
 		
 	}
 	
-	public void LinkVerification()
+	public void linkVerification()
+	
+	
 	{
-		Assert.assertTrue(llbeanVisaCoupons.getText().equals("L.L.Bean Visa Coupons"));
 		
-		Assert.assertTrue(myProfile.getText().equals("My Profile"));
+		Assert.assertEquals(llbeanVisaCoupons.getText(), "L.L.Bean Visa Coupons");
+		Assert.assertEquals(myProfile.getText(), "My Profile");
+		Assert.assertEquals(giftCardsAndPromoCodes.getText(), "Gift Cards and Promo Codes");
+		Assert.assertEquals(savedCreditCards.getText(), "Saved Credit Cards");
+		Assert.assertEquals(wishlist.getText(), "Wish List");
+		Assert.assertEquals(accessMyllbnVisaAccount.getText(), "Access My L.L.Bean Visa Account");
+
 		
-		Assert.assertTrue(giftCardsAndPromoCodes.getText().equals("Gift Cards and Promo Codes"));
-				
-		Assert.assertTrue(savedCreditCards.getText().equals("Saved Credit Cards"));
-		
-		Assert.assertTrue(wishlist.getText().equals("Wish List"));
-		
-		Assert.assertTrue(accessMyllbnVisaAccount.getText().equals("Access My L.L.Bean Visa Account"));
 		
 	}
 	

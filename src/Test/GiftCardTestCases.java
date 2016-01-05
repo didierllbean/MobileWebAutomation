@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import Pages.EgiftCardPageObjects;
 import Pages.GiftCardPageObjects;
 import Pages.HomePageObjects;
+import Pages.ShoppingBagPage;
 import Tools.Utilities;
 
 public class GiftCardTestCases extends TestCaseConfiguration {
@@ -14,12 +15,17 @@ public class GiftCardTestCases extends TestCaseConfiguration {
 	  HomePageObjects homepage = new HomePageObjects();
 	  GiftCardPageObjects giftcard = new GiftCardPageObjects();
 	  EgiftCardPageObjects egiftcard = new EgiftCardPageObjects();
+	  ShoppingBagPage shoppingbag;
+	  homepage.clickGC();
+	  Utilities.waitForAjaxToFinish();
+	  giftcard.clickEGc();
+	  Utilities.waitForAjaxToFinish();
+
+	  shoppingbag = egiftcard.selectEgc();
+	  Utilities.waitForAjaxToFinish();
+
 	  
-	  homepage.ClickGC();
-	  Utilities.explicitlyWait(3000);
-	  giftcard.ClickEGc();
-	  Utilities.explicitlyWait(3000);
-	  egiftcard.SelectEgc();
+	  shoppingbag.sBgiftCardVerification();
 	  
   }
 }

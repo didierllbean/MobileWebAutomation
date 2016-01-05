@@ -82,13 +82,13 @@ public class FooterObjects {
 	  	PageFactory.initElements(TestCaseConfiguration.driver.get(), this);		
 	}
 
-	public void FooterSignOut()	
+	public void footerSignOut()	
 	{
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 		FooterLogOut.click();
 	}
 	
-	public void EmailSignUp()
+	public void emailSignUp()
 	
 	{
 		emailAddFld.sendKeys("testing121@gmail.com");
@@ -99,12 +99,12 @@ public class FooterObjects {
 		
 	}
 	
-	public void ClickUserAccountName()
+	public void clickUserAccountName()
 	{
 		UserAccount.click();
 	}
 	
-	public void FooterLinkVerification()
+	public void footerLinkVerification()
 	
 	{
 		

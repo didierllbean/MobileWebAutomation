@@ -77,7 +77,7 @@ public class ProductListPageObjects {
 	  	PageFactory.initElements(TestCaseConfiguration.driver.get(), this);		
 	}
 	
-	public void PLPVerification() {
+	public void plpVerification() {
 
 		
 		Assert.assertTrue(plpSearchRsName.getText().contains("PO"));
@@ -85,62 +85,85 @@ public class ProductListPageObjects {
 	}
 	
 	
-	public void SearchTermVerification()
+	public void searchTermVerification()
 	 {
 		
-		Assert.assertTrue(plpSearchRsName.getText().contains("sweat pants"));
+		Assert.assertTrue(plpSearchRsName.getText().contains("socks"));
 
 		
 		 
 	 }
 	
-	public void ApplyFilters()
+	public void applyFilters()
 	{
 		plpFilterRst.click();
 		Utilities.explicitlyWait(3000);
+		Utilities.waitForAjaxToFinish();
 
 		plpFLSizeRng.click();
 		Utilities.explicitlyWait(3000);
+		Utilities.waitForAjaxToFinish();
+
 
 		plpFLSizeRngReg.click();
 		Utilities.explicitlyWait(3000);
+		Utilities.waitForAjaxToFinish();
+
 		String text1 = regular.getText();
-        Assert.assertTrue(text1.equals("Regular"));	
+		
+		Assert.assertEquals(text1, "Regular");
         System.out.println(filterCount.size());
         
         
 		plpFilterRst.click();
 		Utilities.explicitlyWait(3000);
+		Utilities.waitForAjaxToFinish();
+
 
 		plpFLFeature.click();
 		Utilities.explicitlyWait(3000);
+		Utilities.waitForAjaxToFinish();
+
 
 		plpFLFeatureAbrasionRstnt.click();
 		Utilities.explicitlyWait(3000);
+		Utilities.waitForAjaxToFinish();
+
 		String text2 = Fade.getText();
-        Assert.assertTrue(text2.equals("Fade-Resistant"));		
+		Assert.assertEquals(text2, "Fade-Resistant");
 		Utilities.explicitlyWait(3000);
+		Utilities.waitForAjaxToFinish();
+
         System.out.println(filterCount.size());
 
 
         plpFilterRst.click();
 		Utilities.explicitlyWait(3000);
+		Utilities.waitForAjaxToFinish();
+
 
         plpFLFabric.click();
 		Utilities.explicitlyWait(3000);
+		Utilities.waitForAjaxToFinish();
+
 
         plpFabricCtnBlend.click();
 		Utilities.explicitlyWait(3000);
+		Utilities.waitForAjaxToFinish();
+
 		String text3 = Cotton.getText();
-        Assert.assertTrue(text3.equals("Cotton"));
+		Assert.assertEquals(text3, "Cotton");
+
         System.out.println(filterCount.size());
 
 		plpFilterRst.click();
 		Utilities.explicitlyWait(5000);
+		Utilities.waitForAjaxToFinish();
+
 		plpResetAllFilter.click();
-		
+		Utilities.waitForAjaxToFinish();
+
 		Utilities.explicitlyWait(3000);
-		
 		Assert.assertEquals(0, filterCount.size());
 
         System.out.println(filterCount.size());

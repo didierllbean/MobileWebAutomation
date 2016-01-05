@@ -38,8 +38,10 @@ public class HeaderObjects {
 	List<WebElement> productTitle;
 	
 	@FindBy(xpath = "//div[contains(text(), 'socks')]")
-	WebElement sweatPantsSrchSuggestion;
+	WebElement socks;
 	
+	@FindBy(id = "headerSearchCloseBtnSymbol")
+    WebElement removeSearchTerm;	
 	public HeaderObjects()	{
 	  	PageFactory.initElements(TestCaseConfiguration.driver.get(), this);		
 	}
@@ -53,20 +55,20 @@ public class HeaderObjects {
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);
 	}
 	
-	public void NavigateToHp()
+	public void navigateToHp()
 	
 	{
 		headerLLbeanLogo.click();
 		
 	}
-	public void SBCount()
+	public void sBCount()
 	{
 		String Count = shoppingBagCount.getText();
 		System.out.println(Count);
 
 	}
 	
-	public void SearchSuggestionVerification()
+	public void searchSuggestionVerification()
 	{
 		seachBar.sendKeys("S");
 
@@ -76,19 +78,19 @@ public class HeaderObjects {
 		String text1 = text.replaceAll("<div class=\"searchAutoCompleteDropdownList\"", " ");
 		
 		Assert.assertTrue(text1.contains("sock")|text1.contains("signature boots")|text1.contains("sweat pants"));
-		
+		removeSearchTerm.click();
 	}
 	
-	public void SearchSuggestionClick()
+	public void searchSuggestionClick()
 	
 	{
 		seachBar.sendKeys("S");
 		Utilities.explicitlyWait(7000);
-		sweatPantsSrchSuggestion.click();
+		socks.click();
 		
 	}
 	
-	public void SearchForShirts()
+	public void searchForShirts()
 	{
 		seachBar.sendKeys("Shirts");
 		clickSearchButton.click();
@@ -96,7 +98,7 @@ public class HeaderObjects {
 		
 	}
 	
-public void ProductListPageVerification()
+public void productListPageVerification()
 	
 	{
 		seachBar.sendKeys("Bluetooth");
@@ -106,19 +108,19 @@ public void ProductListPageVerification()
 		
 		for(WebElement ele: productTitle)
 		{
-			System.out.println(ele.getText());
 			
 			Assert.assertTrue(ele.getText().contains("Bluetooth"));
 		}	
 		
 	}
 
-public void QuickShopCatalogVerification()
+public void quickShopCatalogVerification()
 
 {
 	seachBar.sendKeys("266127");
 	clickSearchButton.click();
 	Utilities.explicitlyWait(3000);
+	Utilities.waitForAjaxToFinish();
 	
 	Assert.assertTrue(TestCaseConfiguration.driver.get().getPageSource().contains("We found more than one match for the item number(s) you entered."));
 
