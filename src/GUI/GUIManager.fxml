@@ -61,7 +61,7 @@
                      <children>
                         <CheckBox fx:id="fullRegressionChkBox" mnemonicParsing="false" text="Full Regresion" />
                         <CheckBox fx:id="checkoutChkBox" layoutX="10.0" layoutY="17.0" mnemonicParsing="false" text="Checkout" GridPane.columnIndex="1" />
-                        <CheckBox fx:id="smokeTestChkBox" layoutX="110.0" layoutY="17.0" mnemonicParsing="false" text="Smoke Test" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="smokeTestChkBox" layoutX="110.0" layoutY="17.0" mnemonicParsing="false" selected="true" text="Smoke Test" GridPane.rowIndex="1" />
                         <CheckBox fx:id="odsChkBox" layoutX="10.0" layoutY="47.0" mnemonicParsing="false" text="ODS " GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <CheckBox fx:id="rioChkBox" layoutX="110.0" layoutY="47.0" mnemonicParsing="false" text="RIO" GridPane.rowIndex="2" />
                         <CheckBox fx:id="accountChkBox" layoutX="110.0" layoutY="47.0" mnemonicParsing="false" text="Accounts" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -70,6 +70,7 @@
                </children>
             </Group>
             <Button fx:id="startRunBttn" mnemonicParsing="false" onAction="#startTest" text="Execute Regression" />
+            <Label fx:id="warningLabel" textFill="#ee0a19" />
          </children>
          <opaqueInsets>
             <Insets />
