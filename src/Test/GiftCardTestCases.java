@@ -9,7 +9,8 @@ import Pages.ShoppingBagPage;
 import Tools.Utilities;
 
 public class GiftCardTestCases extends TestCaseConfiguration {
-  @Test
+
+	@Test(groups = {"smokeTest"})
   public void EGC() {
 	  
 	  HomePageObjects homepage = new HomePageObjects();

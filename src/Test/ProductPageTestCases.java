@@ -14,26 +14,38 @@ import Tools.Utilities;
 public class ProductPageTestCases extends TestCaseConfiguration {
 	
 	private ProductPageCore prodPage;
- /*@Test
+	@Test(groups = {"smokeTest"})
   public void PdpAdq() {
 	  
 	  
-	  prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
+	  prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);	
+	  Utilities.waitForAjaxToFinish();
+
 	  prodPage.selectRandomAttributes();
+	  Utilities.waitForAjaxToFinish();
+
 	  prodPage.AdqVerification();  
   }
   
-  */
-  @Test
+  
+	@Test(groups = {"smokeTest"})
   public void PdpMonogrammming()
   
   {
 	  ShoppingBagPage shoppingbag;
 	  MonogramConfigurationPage monogram = new MonogramConfigurationPage();
-	  prodPage = Utilities.goToPDP(Constants.MONOGRAM);		
+	  prodPage = Utilities.goToPDP(Constants.MONOGRAM);	
+	  Utilities.waitForAjaxToFinish();
+
 	  prodPage.selectRandomAttributes();
+	  Utilities.waitForAjaxToFinish();
+
 	  prodPage.selectMonogramming();
+	  Utilities.waitForAjaxToFinish();
+
 	  prodPage.goToMonogramPage();
+	  Utilities.waitForAjaxToFinish();
+
 	  Utilities.explicitlyWait(7000);
 	  String expected = monogram.singleLetterMonogram();
 	  shoppingbag = prodPage.addMonogramToBagGoToSB();

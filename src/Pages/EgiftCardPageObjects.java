@@ -35,7 +35,7 @@ public class EgiftCardPageObjects {
 	@FindBy(xpath ="//input[@value='Add to shopping bag']")
 	WebElement EgcATB;
 	
-	@FindBy(xpath = ("//a[@class='un_wlorange']"))
+	@FindBy(xpath = "//a[@class='un_wlorange']")
 	WebElement EgcCheckout;
 	
 	@FindBy(xpath = "//input[@value='Remove']")
@@ -55,6 +55,7 @@ public class EgiftCardPageObjects {
 		EgcEmail.sendKeys("dave123@gmail.com");
 		EgcReEnterEmail.sendKeys("dave123@gmail.com");
 		EgcATB.click();
+		Utilities.waitForAjaxToFinish();
 		Utilities.explicitlyWait(5000);
 		EgcCheckout.click();
 		//EgcRemove.click();	

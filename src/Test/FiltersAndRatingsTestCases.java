@@ -7,7 +7,8 @@ import Pages.ProductListPageObjects;
 import Tools.Utilities;
 
 public class FiltersAndRatingsTestCases extends TestCaseConfiguration {
-  @Test
+
+@Test(groups = {"smokeTest"})
   public void filters() {
 	  
 	  HeaderObjects header = new HeaderObjects();

@@ -23,7 +23,8 @@ public class EmailSignUpPageObjects {
 		String text = welcomeText.getText();
 		System.out.print(text);
 		
-		Assert.assertTrue(welcomeText.getText().equals("Thank you for signing up to receive L.L.Bean email updates."));
+		Assert.assertEquals(welcomeText.getText(), "Thank you for signing up to receive L.L.Bean email updates.");
+		//Assert.assertTrue(welcomeText.getText().equals("Thank you for signing up to receive L.L.Bean email updates."));
 
 	}
 	

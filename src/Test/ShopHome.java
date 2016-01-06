@@ -12,7 +12,7 @@ import Tools.Utilities;
 
 public class ShopHome extends TestCaseConfiguration {
 	
-@Test
+@Test(groups = {"smokeTest"})
   public void EmailSignUp() {
 	  
 	FooterObjects footer = new FooterObjects();
@@ -25,7 +25,7 @@ public class ShopHome extends TestCaseConfiguration {
 	emailsingup.ThankYouTextVerification();	  	  	 
   }
  
- @Test
+@Test(groups = {"smokeTest"})
   public void FooterLinks()
  
   {
@@ -33,7 +33,7 @@ public class ShopHome extends TestCaseConfiguration {
 		footer.footerLinkVerification();
   }
   
- @Test 
+@Test(groups = {"smokeTest"})
  public void DailyMarkDown()
  
  {
