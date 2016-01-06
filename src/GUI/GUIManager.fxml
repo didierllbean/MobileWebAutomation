@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -70,7 +71,7 @@
                </children>
             </Group>
             <Button fx:id="startRunBttn" mnemonicParsing="false" onAction="#startTest" text="Execute Regression" />
-            <Label fx:id="warningLabel" textFill="#ee0a19" />
+            <Label fx:id="warningLabel" prefHeight="35.0" prefWidth="190.0" textFill="#ee0a19" wrapText="true" />
          </children>
          <opaqueInsets>
             <Insets />
@@ -92,9 +93,25 @@
    </bottom>
    <center>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-        </content>
+         <content>
+            <VBox alignment="TOP_CENTER" prefHeight="346.0" prefWidth="371.0">
+               <children>
+                  <WebView fx:id="reportView" prefHeight="343.0" prefWidth="376.0" />
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="371.0">
+                     <children>
+                        <Button fx:id="loadReport" mnemonicParsing="false" onAction="#displayReport" text="Load Report" />
+                        <Button mnemonicParsing="false" text="Refresh" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </ScrollPane>
    </center>
 </BorderPane>

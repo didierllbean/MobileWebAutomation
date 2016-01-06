@@ -3,16 +3,12 @@ package GUI;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
-import org.testng.collections.Lists;
-import org.testng.xml.XmlGroups;
 import org.testng.xml.XmlPackage;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlSuite.ParallelMode;
 import org.testng.xml.XmlTest;
 
-import Tools.ExtentReporterNG;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,21 +16,27 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 public class EventController {
 	
 	ObservableList<String> environmentList = FXCollections
 			.observableArrayList("QAE", "Stage", "Production");
 	ObservableList<String> devicesList = FXCollections
-			.observableArrayList("iPhone 4", "iPhone 5", "iPhone 6", "iPhone 6+", "Samsung Galaxy S4");
+			.observableArrayList("Apple iPhone 4", "Apple iPhone 5", "Apple iPhone 6", "Samsung Galaxy S4");
 
 	@FXML
-	private ComboBox environmentCB;	
+	private ComboBox<String> environmentCB;	
 	@FXML
-	private ComboBox deviceCB;
+	private ComboBox<String> deviceCB;
 	
 	@FXML
 	private Button startRunBttn;
+	@FXML
+	private Button loadReport;
+	@FXML
+	private Button refreshReport;
 	@FXML
 	private Label warningLabel;	
 	
@@ -52,20 +54,47 @@ public class EventController {
 	private CheckBox checkoutChkBox;
 	
 	@FXML
+	private WebView reportView;
+	
+	@FXML
 	private void startTest(){
-		warningLabel.setPrefSize(150, 50);
-		try {
-			TestNG tng = new TestNG();
-			generateVirtualTestNGXML(tng);
+		warningLabel.setText("...");
+		warningLabel.setText(" ");
+		try {			
 			if(getSelectedGroups().isEmpty())
-				warningLabel.setText("Warning: You need to select \\n at least one Suite group");
-			else
+				warningLabel.setText("Warning: You need to select at least one Suite group");
+			else {
+				setBasicConfValues();
+				
+				TestNG tng = new TestNG();
+				generateVirtualTestNGXML(tng);
 				tng.run();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	private void setBasicConfValues() {
+		Tools.Constants.DEVICE = deviceCB.getValue().toString();
+		String selectedDomain = "";
+		
+		switch(environmentCB.getValue().toString()) {
+			case "QAE":
+				selectedDomain = "http://m-ecwebq.llbean.com";
+				break;
+			case "Stage":
+				selectedDomain = "http://m-ecwebs01.llbean.com";
+				break;
+			case "Production":
+				selectedDomain = "http://m.llbean.com/";
+				break;
+		}
+		Tools.Constants.DOMAIN = selectedDomain;
+		System.out.println("domain "+Tools.Constants.DOMAIN+" device "+Tools.Constants.DEVICE);
+		
+	}
+
 	private void generateVirtualTestNGXML(TestNG tng) throws Exception {
 		XmlSuite suite = new XmlSuite();
 		suite.setName("MobileAutomationSuite");
@@ -138,4 +167,12 @@ public class EventController {
 		deviceCB.setValue(devicesList.get(1));
 		deviceCB.setItems(devicesList);
 	}	
+
+	@FXML
+	private void displayReport() {
+		System.out.println("display report");
+		reportView.getEngine().load("https://www.google.com");	
+		//reportView.getEngine().executeScript("window.location = \"file:///C:/MobileWebAutomation/Report/TestResults.html\";");
+		
+	}
 }

@@ -18,7 +18,7 @@ public class CheckoutTestCases extends TestCaseConfiguration
 	private ProductData productData;
 	private AddressData shippingAddress, billingAddress;
 	
-	@Test(groups = { "smokeTest", "checkoutOnly" })
+	@Test(groups = { "smokeTest", "checkoutOnly" })//Related Issue LLBN-4975 is present for billing address step, This test will fail until the mentioned issue is fixed 
 	public void fullGuestCheckout(){
 		//ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
 		

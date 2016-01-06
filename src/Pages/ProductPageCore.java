@@ -209,6 +209,7 @@ public class ProductPageCore {
 	 * @version 1.5, 12/02/2015
 	 */
 	public String selectRandomColorAttribute() {
+		Utilities.explicitlyWait(2000);
 		if(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.id("un_color_cont")))
 		{
 			List <WebElement> colors = null;

@@ -144,6 +144,7 @@ public class ShoppingBagPage {
 	}
 	
 	public LoginPageObjects startCheckoutProcessAsGuest(){
+		Utilities.waitForAjaxToFinish();
 		if(sbCheckoutButton.isDisplayed()) {
 			sbCheckoutButton.click();
 			//ExtentManager.getExtentTest().log(LogStatus.PASS, "StartCheckout", "Success");
@@ -155,8 +156,7 @@ public class ShoppingBagPage {
 	}	
 	
 	public CheckoutPageObjects startCheckoutProcess() {
-		Utilities.waitForAjaxToFinish();
-		
+		Utilities.waitForAjaxToFinish();		
 		
 		if(sbCheckoutButton.isDisplayed()) {
 			sbCheckoutButton.click();
