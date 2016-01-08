@@ -3,12 +3,14 @@ package GUI;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.testng.SkipException;
 import org.testng.TestNG;
 import org.testng.xml.XmlPackage;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlSuite.ParallelMode;
 import org.testng.xml.XmlTest;
 
+import Tools.Constants;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,7 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.web.WebEngine;
+import javafx.scene.control.MenuItem;
 import javafx.scene.web.WebView;
 
 public class EventController {
@@ -26,6 +28,9 @@ public class EventController {
 	ObservableList<String> devicesList = FXCollections
 			.observableArrayList("Apple iPhone 4", "Apple iPhone 5", "Apple iPhone 6", "Samsung Galaxy S4");
 
+	/*@FXML
+	private MenuItem close;
+	*/
 	@FXML
 	private ComboBox<String> environmentCB;	
 	@FXML
@@ -98,8 +103,8 @@ public class EventController {
 	private void generateVirtualTestNGXML(TestNG tng) throws Exception {
 		XmlSuite suite = new XmlSuite();
 		suite.setName("MobileAutomationSuite");
-		//suite.setParallel(ParallelMode.None);
-		//suite.setThreadCount(4);
+		suite.setParallel(ParallelMode.CLASSES);
+		suite.setThreadCount(4);
 		suite.addListener("Tools.ExtentReporterNG");
 		
 		XmlTest test = new XmlTest(suite);
@@ -174,5 +179,10 @@ public class EventController {
 		//reportView.getEngine().load("https://www.google.com");	
 		//reportView.getEngine().executeScript("window.location = \"file:///C:/MobileWebAutomation/Report/TestResults.html\";");
 		reportView.getEngine().load("file:///C:/MobileWebAutomation/Report/TestResults.html");	
+	}
+
+	@FXML
+	private void closeUI(){
+		System.exit(0);
 	}
 }
