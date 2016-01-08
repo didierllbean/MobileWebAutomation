@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -157,13 +158,18 @@ public class ShoppingBagPage {
 	
 	public CheckoutPageObjects startCheckoutProcess() {
 		Utilities.waitForAjaxToFinish();		
+		Utilities.explicitlyWait(2000);
 		
 		if(sbCheckoutButton.isDisplayed()) {
-			sbCheckoutButton.click();
+			//sbCheckoutButton.click();
 			//ExtentManager.getExtentTest().log(LogStatus.PASS, "StartCheckout", "Success");
+			
+			Actions actions = new Actions(TestCaseConfiguration.driver.get());
+			actions.moveToElement(sbCheckoutButton).click().perform();
 		}
-		/*else 
-			ExtentManager.getExtentTest().log(LogStatus.FAIL, "StartCheckout", "Failed");*/
+		else 
+			Assert.assertTrue(false, "Checkout button was not displayed");
+			//ExtentManager.getExtentTest().log(LogStatus.FAIL, "StartCheckout", "Failed");
 		
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), CheckoutPageObjects.class);

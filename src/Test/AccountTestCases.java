@@ -15,7 +15,7 @@ import Tools.Utilities;
 
 public class AccountTestCases extends TestCaseConfiguration {
 	
-	@Test(groups = {"smokeTest"})
+	@Test(groups = {"smokeTest", "brokenOrDevelopment"})
 	  public void AccountAU() {
 		  
 		  FooterObjects footer = new FooterObjects();
@@ -53,7 +53,6 @@ public class AccountTestCases extends TestCaseConfiguration {
 		  Utilities.waitForAjaxToFinish();
 
 
-		  paymentmethods.DeleteCC();
-		    	  
+		  paymentmethods.DeleteCC();		    	  
 	  }
 	}

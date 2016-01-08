@@ -98,8 +98,8 @@ public class EventController {
 	private void generateVirtualTestNGXML(TestNG tng) throws Exception {
 		XmlSuite suite = new XmlSuite();
 		suite.setName("MobileAutomationSuite");
-		suite.setParallel(ParallelMode.CLASSES);
-		suite.setThreadCount(4);
+		//suite.setParallel(ParallelMode.None);
+		//suite.setThreadCount(4);
 		suite.addListener("Tools.ExtentReporterNG");
 		
 		XmlTest test = new XmlTest(suite);
@@ -171,8 +171,8 @@ public class EventController {
 	@FXML
 	private void displayReport() {
 		System.out.println("display report");
-		reportView.getEngine().load("https://www.google.com");	
+		//reportView.getEngine().load("https://www.google.com");	
 		//reportView.getEngine().executeScript("window.location = \"file:///C:/MobileWebAutomation/Report/TestResults.html\";");
-		
+		reportView.getEngine().load("file:///C:/MobileWebAutomation/Report/TestResults.html");	
 	}
 }

@@ -20,7 +20,7 @@ import Tools.Constants;
 
 public class SearchTestCases extends TestCaseConfiguration {
 
-@Test(groups = {"smokeTest"})
+@Test(groups = {"smokeTest", "brokenOrDevelopment"})
   public void Search() throws InterruptedException {
 	
 

@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -397,8 +398,8 @@ public class CheckoutPageObjects {
 	 *  @version 1.0, 11/24/2015
 	 */
 	public void fillDefaultPaymentData() {
+		Utilities.explicitlyWait(3000);
 		Utilities.waitForAjaxToFinish();
-		Utilities.explicitlyWait(10000);
 		paymentCreditCardTextfield.sendKeys("4444444444444448");
 		selectPaymentCCExpirationDate("12", "2030");
 		paymentContinueToReviewOrderButton.click();
@@ -425,10 +426,7 @@ public class CheckoutPageObjects {
 		if(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.xpath("//div[contains(@class,'checkOutMenuTxt') and contains(@class,'SelectedTab') ]"))) {
 			WebElement selectedCheckoutTab = TestCaseConfiguration.driver.get().findElement(By.xpath("//div[contains(@class,'checkOutMenuTxt') and contains(@class,'SelectedTab') ]"));
 			
-			/*if(selectedCheckoutTab.getText().equals(expectedTab))
-				ExtentManager.getExtentTest().log(LogStatus.PASS, "CheckoutPaymentPage", "Success");
-			else
-				ExtentManager.getExtentTest().log(LogStatus.FAIL, "CheckoutPaymentPage", "Tab Title is not "+expectedTab);*/
+			Assert.assertEquals(selectedCheckoutTab.getText(), expectedTab);			
 		}
 		/*else
 			ExtentManager.getExtentTest().log(LogStatus.FAIL, "CheckoutPaymentPage", "Payment Tab Not Found");	*/	

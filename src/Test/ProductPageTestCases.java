@@ -28,7 +28,7 @@ public class ProductPageTestCases extends TestCaseConfiguration {
   }
   
   
-	@Test(groups = {"smokeTest"})
+	@Test(groups = {"smokeTest", "brokenOrDevelopment"})
   public void PdpMonogrammming()
   
   {

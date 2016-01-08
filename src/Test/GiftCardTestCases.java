@@ -10,7 +10,7 @@ import Tools.Utilities;
 
 public class GiftCardTestCases extends TestCaseConfiguration {
 
-	@Test(groups = {"smokeTest"})
+	@Test(groups = {"smokeTest", "brokenOrDevelopment"})
   public void EGC() {
 	  
 	  HomePageObjects homepage = new HomePageObjects();

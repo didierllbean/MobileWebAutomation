@@ -209,14 +209,15 @@ public class ProductPageCore {
 	 * @version 1.5, 12/02/2015
 	 */
 	public String selectRandomColorAttribute() {
-		Utilities.explicitlyWait(2000);
+		Utilities.explicitlyWait(1000);
 		if(Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.id("un_color_cont")))
 		{
 			List <WebElement> colors = null;
 			colors = attributesSection.findElements(By.xpath("id('un_color_cont')//img[not(contains(@src, 'outofstock')) and not(contains(@class, 'soldOutSwatchImg'))]/.."));
 						
 			colors.get((int)(Math.random()*colors.size())).click();		
-			
+
+			Utilities.explicitlyWait(1500);
 			return attributesSection.findElement(By.xpath("id('colorNameContainer0_0_0')/div/span")).getText();
 		}
 		return "";

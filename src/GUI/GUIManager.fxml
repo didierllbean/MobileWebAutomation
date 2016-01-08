@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.EventController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.EventController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -92,11 +92,11 @@
       </HBox>
    </bottom>
    <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ScrollPane BorderPane.alignment="CENTER">
          <content>
-            <VBox alignment="TOP_CENTER" prefHeight="346.0" prefWidth="371.0">
+            <VBox alignment="TOP_CENTER">
                <children>
-                  <WebView fx:id="reportView" prefHeight="343.0" prefWidth="376.0" />
+                  <WebView fx:id="reportView" />
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="371.0">
                      <children>
                         <Button fx:id="loadReport" mnemonicParsing="false" onAction="#displayReport" text="Load Report" />
