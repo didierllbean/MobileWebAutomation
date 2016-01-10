@@ -6,10 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.relevantcodes.extentreports.LogStatus;
-
 import Test.TestCaseConfiguration;
-import Tools.ExtentManager;
 import Tools.GenerateData;
 import Tools.Utilities;
 

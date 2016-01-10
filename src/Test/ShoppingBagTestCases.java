@@ -8,7 +8,6 @@ import Pages.LoginPageObjects;
 import Pages.ProductPageCore;
 import Pages.ShoppingBagPage;
 import Tools.Constants;
-import Tools.ExtentManager;
 import Tools.Utilities;
 
 public class ShoppingBagTestCases extends TestCaseConfiguration {

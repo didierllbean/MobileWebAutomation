@@ -5,11 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import Test.TestCaseConfiguration;
-import Tools.Constants;
-import Tools.ExtentManager;
 import Tools.Utilities;
-
-import com.relevantcodes.extentreports.LogStatus;
 
 public class LoginPageObjects {
 

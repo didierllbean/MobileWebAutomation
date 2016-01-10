@@ -1,7 +1,6 @@
 package Test;
 
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import Pages.DailyMarkDownPageObjects;

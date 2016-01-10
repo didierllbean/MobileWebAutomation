@@ -4,7 +4,6 @@ import org.testng.Assert;
 
 import org.testng.annotations.Test;
 
-import Pages.FooterObjects;
 import Pages.MonogramConfigurationPage;
 import Pages.ProductPageCore;
 import Pages.ShoppingBagPage;

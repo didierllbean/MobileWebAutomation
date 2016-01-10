@@ -19,11 +19,6 @@
                     <MenuItem mnemonicParsing="false" onAction="#closeUI" text="Close" />
                   </items>
                 </Menu>
-                <Menu disable="true" mnemonicParsing="false" text="Edit" visible="false">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
                 <Menu disable="true" mnemonicParsing="false" text="Help">
                   <items>
                     <MenuItem mnemonicParsing="false" text="About" />
@@ -72,38 +67,6 @@
             </Group>
             <Button fx:id="startRunBttn" mnemonicParsing="false" onAction="#startTest" text="Execute Regression" />
             <Label fx:id="warningLabel" prefHeight="35.0" prefWidth="190.0" textFill="#ee0a19" wrapText="true" />
-            <Label text="Execution Type" visible="false">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Label>
-            <HBox prefHeight="100.0" prefWidth="200.0" visible="false">
-               <children>
-                  <ToggleButton mnemonicParsing="false" selected="true" text="Parallel">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="execType" />
-                     </toggleGroup>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" text="Sequential" toggleGroup="$execType">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ToggleButton>
-               </children>
-               <opaqueInsets>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </HBox>
-            <Button mnemonicParsing="false" onAction="#stopExecution" text="Stop Automation" visible="false" />
          </children>
          <opaqueInsets>
             <Insets />

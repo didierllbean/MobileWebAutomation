@@ -5,14 +5,12 @@ import org.testng.annotations.Test;
 import Pages.LoginPageObjects;
 import Pages.FooterObjects;
 import Pages.CreateAnAccount;
-import Tools.ExtentManager;
 import Tools.Utilities;
 
 public class CreateAccountTestCases extends TestCaseConfiguration
 {
 	@Test(groups = {"smokeTest", "brokenOrDevelopment"})
 	public void CreateNewAccount() throws InterruptedException{
-		//ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
 		
 		FooterObjects footer = new FooterObjects();
 		LoginPageObjects Login;
@@ -33,8 +31,5 @@ public class CreateAccountTestCases extends TestCaseConfiguration
 		Utilities.explicitlyWait(5000);
 
 		Login.VerifyNewAccount(Part[0], Part[1]);
-		
-		
-		
 	}
 }

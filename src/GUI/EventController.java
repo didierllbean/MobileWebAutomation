@@ -3,14 +3,12 @@ package GUI;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.testng.SkipException;
 import org.testng.TestNG;
 import org.testng.xml.XmlPackage;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlSuite.ParallelMode;
 import org.testng.xml.XmlTest;
 
-import Tools.Constants;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,7 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.web.WebView;
 
 public class EventController {
@@ -28,9 +25,6 @@ public class EventController {
 	ObservableList<String> devicesList = FXCollections
 			.observableArrayList("Apple iPhone 4", "Apple iPhone 5", "Apple iPhone 6", "Samsung Galaxy S4");
 
-	/*@FXML
-	private MenuItem close;
-	*/
 	@FXML
 	private ComboBox<String> environmentCB;	
 	@FXML

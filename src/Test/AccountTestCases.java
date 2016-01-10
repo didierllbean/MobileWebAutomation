@@ -3,14 +3,12 @@ package Test;
 import org.testng.annotations.Test;
 
 import Pages.AccountPageObjects;
-import Pages.CreateAnAccount;
 import Pages.CreditCardDetailPageObjects;
 import Pages.FooterObjects;
 import Pages.HomePageObjects;
 import Pages.LoginPageObjects;
 import Pages.SavedCreditCardsPageObjects;
 import Tools.Constants;
-import Tools.ExtentManager;
 import Tools.Utilities;
 
 public class AccountTestCases extends TestCaseConfiguration {

@@ -9,7 +9,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import Test.TestCaseConfiguration;
-import Tools.Utilities;
 
 public class MonogramConfigurationPage {
 

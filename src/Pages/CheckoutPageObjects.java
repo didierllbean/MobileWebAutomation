@@ -7,11 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import com.relevantcodes.extentreports.LogStatus;
-
 import DataObjects.AddressData;
 import Test.TestCaseConfiguration;
-import Tools.ExtentManager;
 import Tools.Utilities;
 
 public class CheckoutPageObjects {
