@@ -14,9 +14,7 @@ public class ProductPageTestCases extends TestCaseConfiguration {
 	
 	private ProductPageCore prodPage;
 	@Test(groups = {"smokeTest"})
-  public void PdpAdq() {
-	  
-	  
+  public void PdpAdq() {	  
 	  prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);	
 	  Utilities.waitForAjaxToFinish();
 
@@ -27,9 +25,8 @@ public class ProductPageTestCases extends TestCaseConfiguration {
   }
   
   
-	@Test(groups = {"smokeTest", "brokenOrDevelopment"})
-  public void PdpMonogrammming()
-  
+	@Test(groups = {"smokeTest"})
+  public void PdpMonogrammming()  
   {
 	  ShoppingBagPage shoppingbag;
 	  MonogramConfigurationPage monogram = new MonogramConfigurationPage();
@@ -54,8 +51,5 @@ public class ProductPageTestCases extends TestCaseConfiguration {
 	  Assert.assertEquals(expected.split(";")[1], actual.split(";")[2]);
 	  Assert.assertEquals(expected.split(";")[2], actual.split(";")[1]);
 	  Assert.assertEquals(expected.split(";")[3], actual.split(";")[3]);
-
-
-  }
-  
+  }  
 }

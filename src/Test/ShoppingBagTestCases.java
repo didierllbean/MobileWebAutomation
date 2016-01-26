@@ -16,8 +16,12 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 	private ShoppingBagPage shoppingbag;
 	private LoginPageObjects login;
 	
-
-	@Test(groups = { "smokeTest", "brokenOrDevelopment"})
+	/**
+	 * @author ydesanti
+	 * @version 1.0
+	 * @lastUpdate 01/26/2016
+	 */
+	@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUMergeAndCheckoutWithNOCC() {		
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
 		prodPage.selectRandomAttributes();		
@@ -31,6 +35,11 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 		checkout.validateLandingStep(checkout.PAYMENTSTEP);
 	}
 	
+	/**
+	 * @author ydesanti
+	 * @version 1.0
+	 * @lastUpdate 01/26/2016
+	 */
 	@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUCheckoutWithAllData() {		
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
@@ -44,7 +53,12 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 		checkout.validateLandingStep(checkout.REVIEWSTEP);
 	}
 	
-	@Test(groups = { "smokeTest", "brokenOrDevelopment"})
+	/**
+	 * @author ydesanti
+	 * @version 1.0
+	 * @lastUpdate 01/26/2016
+	 */
+	@Test(groups = { "smokeTest"})
 	public void ShoppingBagRUClearSB() {
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
 		prodPage.selectRandomAttributes();
@@ -56,7 +70,7 @@ public class ShoppingBagTestCases extends TestCaseConfiguration {
 					.isSBEmpty();	
 	}
 
-	@Test(groups = { "smokeTest", "brokenOrDevelopment"})
+	@Test(groups = { "smokeTest"})
 	public void ShoppingBagGu(){
 		prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);		
 		prodPage.selectRandomAttributes();

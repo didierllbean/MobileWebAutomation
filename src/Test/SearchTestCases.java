@@ -11,7 +11,7 @@ import Pages.QuickShopPageObjects;
 
 public class SearchTestCases extends TestCaseConfiguration {
 
-@Test(groups = {"smokeTest", "brokenOrDevelopment"})
+@Test(groups = {"smokeTest"})
   public void Search() throws InterruptedException {
 	
 
@@ -52,8 +52,6 @@ public class SearchTestCases extends TestCaseConfiguration {
 	Utilities.explicitlyWait(3000);
 	
 	
-	prodPage.salePriceAlphaCodeVerification();
-	
-	
+	prodPage.salePriceAlphaCodeVerification();	
   }
 }

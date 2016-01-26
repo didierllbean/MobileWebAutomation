@@ -1,7 +1,9 @@
 package Test;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Cookie;
@@ -25,7 +27,9 @@ public class TestCaseConfiguration {
   	 protected ExtentReports REPORTMANAGER;
   	 protected ExtentTest REPORT;
 
-  	public static ThreadLocal<ChromeDriver> driver;
+  	 public static ThreadLocal<ChromeDriver> driver;
+  	 private static Set<ChromeDriver> drivers = new HashSet<ChromeDriver>();
+     
   	 @BeforeSuite(alwaysRun = true)
      public void initDriver() {
         System.setProperty("webdriver.chrome.driver", "src/Tools/chromedriver.exe");//chrome driver version 2.20 | We need to have a relative path since no all the user will have the driver on C:
@@ -47,6 +51,8 @@ public class TestCaseConfiguration {
                 return new ChromeDriver(capabilities);
             }
         };
+        
+        drivers.add(driver.get());
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -60,9 +66,16 @@ public class TestCaseConfiguration {
     
     @AfterSuite(alwaysRun = true)
     public void closeBrowser() throws InterruptedException {  
-    	System.out.println("close");
- 		driver.get().close();
- 		driver.get().quit();       
+    	
+    	for (ChromeDriver chromeDriver : drivers) {
+            try {
+            	chromeDriver.close();
+                chromeDriver.quit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    	       
     	System.gc();
     }
 }

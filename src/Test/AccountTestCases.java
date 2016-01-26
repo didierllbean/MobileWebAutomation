@@ -13,7 +13,7 @@ import Tools.Utilities;
 
 public class AccountTestCases extends TestCaseConfiguration {
 	
-	@Test(groups = {"smokeTest", "brokenOrDevelopment"})
+	@Test(groups = {"smokeTest"})
 	  public void AccountAU() {
 		  
 		  FooterObjects footer = new FooterObjects();

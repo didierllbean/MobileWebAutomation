@@ -10,8 +10,8 @@ import Tools.Utilities;
 
 public class GiftCardTestCases extends TestCaseConfiguration {
 
-	@Test(groups = {"smokeTest", "brokenOrDevelopment"})
-  public void EGC() {
+	@Test(groups = {"smokeTest"})
+	public void EGC() {
 	  
 	  HomePageObjects homepage = new HomePageObjects();
 	  GiftCardPageObjects giftcard = new GiftCardPageObjects();
@@ -24,9 +24,7 @@ public class GiftCardTestCases extends TestCaseConfiguration {
 
 	  shoppingbag = egiftcard.selectEgc();
 	  Utilities.waitForAjaxToFinish();
-
 	  
-	  shoppingbag.sBgiftCardVerification();
-	  
+	  shoppingbag.sBgiftCardVerification();	  
   }
 }

@@ -289,8 +289,8 @@ public class CheckoutPageObjects {
 	 *  @version 1.0, 11/24/2015
 	 */
 	public AddressData fillDefaultShippingData() {
-		Utilities.explicitlyWait(4000);
 		Utilities.waitForAjaxToFinish();
+		Utilities.explicitlyWait(4000);
 		shippingFirstNameTextfield.sendKeys("John");
 		shippingMiddleNameTextfield.sendKeys("MobileWebTest");
 		shippingLastNameTextfield.sendKeys("Doe");
@@ -357,6 +357,7 @@ public class CheckoutPageObjects {
 	 *  @version 1.0, 11/24/2015
 	 */
 	public AddressData fillDefaultBillingData() {	
+		Utilities.waitForAjaxToFinish();
 		Utilities.explicitlyWait(3000);	
 		String email = "mobiletest@automation.com";
 		

@@ -9,7 +9,7 @@ import Tools.Utilities;
 
 public class CreateAccountTestCases extends TestCaseConfiguration
 {
-	@Test(groups = {"smokeTest", "brokenOrDevelopment"})
+	@Test(groups = {"smokeTest"})
 	public void CreateNewAccount() throws InterruptedException{
 		
 		FooterObjects footer = new FooterObjects();

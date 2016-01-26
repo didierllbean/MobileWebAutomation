@@ -17,9 +17,13 @@ public class CheckoutTestCases extends TestCaseConfiguration
 	private ProductData productData;
 	private AddressData shippingAddress, billingAddress;
 	
+	/**
+	 * @author ydesanti
+	 * @version 1.0
+	 * @lastUpdate 01/26/2016
+	 */
 	@Test(groups = { "smokeTest", "checkoutOnly" })//Related Issue LLBN-4975 is present for billing address step, This test will fail until the mentioned issue is fixed 
 	public void fullGuestCheckout(){
-		//ExtentManager.setExtentTest(REPORTMANAGER, Thread.currentThread().getStackTrace()[1].getMethodName());
 		
 		ProductPageCore prodPage = Utilities.goToPDP(Constants.FULLPRICEPDP);	    
 		productData = prodPage.selectRandomAttributes();

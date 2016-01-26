@@ -25,16 +25,14 @@ public class ShopHome extends TestCaseConfiguration {
   }
  
 @Test(groups = {"smokeTest"})
-  public void FooterLinks()
- 
+  public void FooterLinks() 
   {
 		FooterObjects footer = new FooterObjects();
 		footer.footerLinkVerification();
   }
   
 @Test(groups = {"smokeTest"})
- public void DailyMarkDown()
- 
+ public void DailyMarkDown() 
  {
 	 MenuPageObjects menupage = new MenuPageObjects();
 	 DailyMarkDownPageObjects markdown = new DailyMarkDownPageObjects();
@@ -48,9 +46,5 @@ public class ShopHome extends TestCaseConfiguration {
 	 String DailyMarkDownTitleProd = markdown.getDailyMarkDownTitleTextsProd();
 	 
 	 Assert.assertEquals(DailyMarkDownTitlePreProd, DailyMarkDownTitleProd);
-	 
- }
- 
- 
-  
+} 
 }

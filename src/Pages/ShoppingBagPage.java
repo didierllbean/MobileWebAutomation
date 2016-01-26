@@ -158,16 +158,11 @@ public class ShoppingBagPage {
 		Utilities.explicitlyWait(2000);
 		
 		if(sbCheckoutButton.isDisplayed()) {
-			//sbCheckoutButton.click();
-			//ExtentManager.getExtentTest().log(LogStatus.PASS, "StartCheckout", "Success");
-			
 			Actions actions = new Actions(TestCaseConfiguration.driver.get());
 			actions.moveToElement(sbCheckoutButton).click().perform();
 		}
 		else 
-			Assert.assertTrue(false, "Checkout button was not displayed");
-			//ExtentManager.getExtentTest().log(LogStatus.FAIL, "StartCheckout", "Failed");
-		
+			Assert.assertTrue(false, "Checkout button was not displayed");		
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), CheckoutPageObjects.class);
 	}
@@ -176,10 +171,8 @@ public class ShoppingBagPage {
 	public void validateMergeMessage() {
 		if(sbMergeMessagePopipTitle.isDisplayed())
 		{
-			//ExtentManager.getExtentTest().log(LogStatus.PASS, "MergeMessageDisplay", "Success");
 			closeMergeMessage();
-		} /*else
-			ExtentManager.getExtentTest().log(LogStatus.FAIL, "MergeMessageDisplay", "MissingElement");*/
+		} 
 	}
 	
 	public void closeMergeMessage(){		
