@@ -300,7 +300,9 @@ public class CheckoutPageObjects {
 		shippingZipCodeTextfield.sendKeys(Keys.TAB);
 		Utilities.explicitlyWait(3000);//wait for page to be fully loaded
 		shippingDayTimePhoneTextfield.sendKeys("5551234567");
+		Utilities.explicitlyWait(3000);
 		shippingContinueButton.click();
+		Utilities.explicitlyWait(3000);
 		shippingUseAddressAsEnteredButton.click();
 		
 		return shippingData = new AddressData(AddressData.SHIPPING, "Me", "", "John", "MobileWebTest", "Doe", "", "UNITED STATES", "1221 Main St.", "", "12345",

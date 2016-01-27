@@ -155,7 +155,7 @@ public class ShoppingBagPage {
 	
 	public CheckoutPageObjects startCheckoutProcess() {
 		Utilities.waitForAjaxToFinish();		
-		Utilities.explicitlyWait(2000);
+		Utilities.explicitlyWait(3000);
 		
 		if(sbCheckoutButton.isDisplayed()) {
 			Actions actions = new Actions(TestCaseConfiguration.driver.get());
@@ -196,6 +196,8 @@ public class ShoppingBagPage {
 			Utilities.waitForAjaxToFinish();
 			Utilities.explicitlyWait(7000);
 			sbClearSBLink.click();
+			Utilities.explicitlyWait(3000);
+
 			if(sbClearLayerRemoveAll.isDisplayed()){
 				//ExtentManager.getExtentTest().log(LogStatus.PASS, "ClearSBLayerDisplayed ", "Success");
 				sbClearLayerRemoveAll.click();

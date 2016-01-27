@@ -165,6 +165,8 @@ public class ProductListPageObjects {
 		Utilities.waitForAjaxToFinish();
 
 		plpResetAllFilter.click();
+		Utilities.explicitlyWait(3000);
+
 		Utilities.waitForAjaxToFinish();
 
 		Assert.assertEquals(0, filterCount.size());
