@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import com.relevantcodes.extentreports.LogStatus;
-
 import Pages.ProductPageCore;
 import Test.TestCaseConfiguration;
 import Tools.Constants;
