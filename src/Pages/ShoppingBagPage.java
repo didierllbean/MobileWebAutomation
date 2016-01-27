@@ -193,6 +193,8 @@ public class ShoppingBagPage {
 		{
 			closeMergeMessage();
 			
+			Utilities.waitForAjaxToFinish();
+			Utilities.explicitlyWait(7000);
 			sbClearSBLink.click();
 			if(sbClearLayerRemoveAll.isDisplayed()){
 				//ExtentManager.getExtentTest().log(LogStatus.PASS, "ClearSBLayerDisplayed ", "Success");
@@ -268,7 +270,8 @@ public class ShoppingBagPage {
 		Utilities.explicitlyWait(3000);	
 		
 		System.out.println(SavedRecipient);
-	
+		Utilities.waitForAjaxToFinish();
+
 		Assert.assertTrue(SavedRecipient.getText().equals("Dave"));
 		
 
@@ -307,8 +310,8 @@ public void sBgiftCardVerification()
 	Assert.assertEquals(s2[1], "$10.00");
 	Assert.assertEquals(s3[1], "David");
 	Assert.assertEquals(s4, "dave123@gmail.com");
-	Assert.assertEquals(s5, "Wreath e-Gift Card");
-	Assert.assertEquals(s6[1], "Tuesday, January 05, 2016");
+	Assert.assertEquals(s5, "Night Tent E-Mail Gift Card");
+	//Assert.assertEquals(s6[1], "Tuesday, January 05, 2016");
 }
 	
 public String MonogramVerification()

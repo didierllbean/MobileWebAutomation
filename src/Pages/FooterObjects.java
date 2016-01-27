@@ -68,7 +68,7 @@ public class FooterObjects {
 
 	public LoginPageObjects NavigateToLoginPage (){
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
-
+		Utilities.explicitlyWait(3000);
 		FooterLogin.click();
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), LoginPageObjects.class);	
@@ -81,7 +81,8 @@ public class FooterObjects {
 
 	public void footerSignOut()	
 	{
-		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
+		Utilities.waitForAjaxToFinish();
+		Utilities.explicitlyWait(3000);//wait for page to be fully loaded
 		FooterLogOut.click();
 	}
 	

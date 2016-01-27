@@ -1,6 +1,9 @@
 package Pages;
 
 
+import java.sql.Driver;
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,7 +54,19 @@ public class CreateAnAccount {
 	public void CreateAccClick()
 	{
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
-		CreateMyAccount.click();
+		
+		try{
+			
+			CreateMyAccount.click();
+
+		}
+		catch(NoSuchElementException e)
+		{
+			TestCaseConfiguration.driver.get().navigate().to("https://m-ecwebs01.llbean.com/index.html?nav=ftlink#userlogin");
+			Utilities.waitForAjaxToFinish();
+			Utilities.explicitlyWait(3000);
+			CreateMyAccount.click();
+		}
 		//ExtentManager.getExtentTest().log(LogStatus.PASS, "NavigateToCreateAccountPage", "Success");
 	}
 	

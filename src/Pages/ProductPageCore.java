@@ -128,8 +128,11 @@ public class ProductPageCore {
 	 * @version 1.0, 11/27/2015
 	 */
 	private ShoppingBagPage goToCheckout(){
+		
+		Utilities.waitForAjaxToFinish();
+		Utilities.explicitlyWait(3000);
 		pasbCheckoutButton.click();
-		//ExtentManager.getExtentTest().log(LogStatus.PASS, "GoToShoppingBag", "Success");
+		
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);
 	}
@@ -158,6 +161,7 @@ public class ProductPageCore {
 	 */
 	public ShoppingBagPage addToBagAndGoToSB(){
 		addToBag();
+	
 		return goToCheckout();
 	}
 	

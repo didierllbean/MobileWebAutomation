@@ -11,5 +11,8 @@ public class Constants {
 	public static final String NOCCACCOUNT = "mobilewebauto@nopaymentoptions.com";
 	public static final String FULLINFOACCOUNT = "mobilewebauto@fullcheckoutinfo.com";
 	public static final String PASSWORD = "hello123";
+	public static final String NEWCCACCOUNT = "dave090@gmail.com";
+	public static final String CCPASSWORD = "syed143";
+
 	public static final String REPORTFILEPATH = "Report/TestResults.html";
 }

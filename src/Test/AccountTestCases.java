@@ -24,33 +24,46 @@ public class AccountTestCases extends TestCaseConfiguration {
 		  CreditCardDetailPageObjects creditcard = new CreditCardDetailPageObjects();	 
 		  Login = footer.NavigateToLoginPage();
 		
-		  homepage = Login.login(Constants.FULLINFOACCOUNT, Constants.PASSWORD, HomePageObjects.class);	
+		  homepage = Login.login(Constants.NEWCCACCOUNT, Constants.CCPASSWORD, HomePageObjects.class);	
 		  Utilities.waitForAjaxToFinish();
 		  Utilities.explicitlyWait(3000);
 		  
 		  
 		  footer.clickUserAccountName();
 		  Utilities.waitForAjaxToFinish();
+		  Utilities.explicitlyWait(3000);
 		  
 		  account.linkVerification();
 		  Utilities.waitForAjaxToFinish();
+		  Utilities.explicitlyWait(3000);
+
 
 		  account.clickSavedCC();
 		  Utilities.waitForAjaxToFinish();
+		  Utilities.explicitlyWait(3000);
+
 
 
 		  paymentmethods.ClickAddNewCC();
 		  Utilities.waitForAjaxToFinish();
+		  Utilities.explicitlyWait(3000);
+
 
 
 		  creditcard.enterNewCreditCard();
 		  Utilities.waitForAjaxToFinish();
+		  Utilities.explicitlyWait(3000);
+
 
 
 		  paymentmethods.StoredCardVerification();
 		  Utilities.waitForAjaxToFinish();
+		  Utilities.explicitlyWait(3000);
 
 
-		  paymentmethods.DeleteCC();		    	  
+
+		  paymentmethods.DeleteCC();
+		  Utilities.explicitlyWait(3000);
+
 	  }
 	}

@@ -34,7 +34,7 @@ public class HeaderObjects {
 	@FindBy(xpath = "//a[@class='llb_productListTitle']")
 	List<WebElement> productTitle;
 	
-	@FindBy(xpath = "//div[contains(text(), 'socks')]")
+	@FindBy(xpath = "//div[contains(text(), 'slippers')]")
 	WebElement socks;
 	
 	@FindBy(id = "headerSearchCloseBtnSymbol")
@@ -74,7 +74,7 @@ public class HeaderObjects {
 		
 		String text1 = text.replaceAll("<div class=\"searchAutoCompleteDropdownList\"", " ");
 		
-		Assert.assertTrue(text1.contains("sock")|text1.contains("signature boots")|text1.contains("sweat pants"));
+		Assert.assertTrue(text1.contains("slippers")|text1.contains("sheet")|text1.contains("shoe liner"));
 		removeSearchTerm.click();
 	}
 	

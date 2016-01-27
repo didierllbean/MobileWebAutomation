@@ -24,7 +24,8 @@ public class GiftCardTestCases extends TestCaseConfiguration {
 
 	  shoppingbag = egiftcard.selectEgc();
 	  Utilities.waitForAjaxToFinish();
+	  shoppingbag.sBgiftCardVerification();
 	  
-	  shoppingbag.sBgiftCardVerification();	  
+	  
   }
 }

@@ -26,7 +26,7 @@ public class CreditCardDetailPageObjects {
 	
 	public void enterNewCreditCard()
 	{
-		enterCCNumber.sendKeys("3454 5421 1544 815");
+		enterCCNumber.sendKeys("3777 4985 3643 499");
 		enterMonth.sendKeys("02");
 		enterYear.sendKeys("2019");
 		saveCC.click();

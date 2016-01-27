@@ -46,8 +46,7 @@ public class SavedCreditCardsPageObjects {
 	
 	{
 		
-		Assert.assertEquals(storedCC.getText(), "American Express *4815");
-		//Assert.assertTrue(storedCC.getText().equals("American Express *4815"));	
+		Assert.assertTrue(storedCC.getText().equals("American Express *3499"));	
 	}
 	
 	public void DeleteCC()

@@ -400,6 +400,10 @@ public class CheckoutPageObjects {
 		Utilities.waitForAjaxToFinish();
 		paymentCreditCardTextfield.sendKeys("4444444444444448");
 		selectPaymentCCExpirationDate("12", "2030");
+		Utilities.waitForAjaxToFinish();
+
+		Utilities.explicitlyWait(5000);
+
 		paymentContinueToReviewOrderButton.click();
 	}
 

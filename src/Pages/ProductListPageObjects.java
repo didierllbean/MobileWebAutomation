@@ -85,7 +85,7 @@ public class ProductListPageObjects {
 	public void searchTermVerification()
 	 {
 		
-		Assert.assertTrue(plpSearchRsName.getText().contains("socks"));
+		Assert.assertTrue(plpSearchRsName.getText().contains("slippers"));
 
 		
 		 
@@ -94,42 +94,47 @@ public class ProductListPageObjects {
 	public void applyFilters()
 	{
 		plpFilterRst.click();
-		Utilities.explicitlyWait(3000);
 		Utilities.waitForAjaxToFinish();
-
+		Utilities.explicitlyWait(3000);
+		
 		plpFLSizeRng.click();
-		Utilities.explicitlyWait(3000);
 		Utilities.waitForAjaxToFinish();
+		Utilities.explicitlyWait(3000);
 
 
 		plpFLSizeRngReg.click();
-		Utilities.explicitlyWait(3000);
 		Utilities.waitForAjaxToFinish();
-
+		Utilities.explicitlyWait(3000);
 		String text1 = regular.getText();
 		
 		Assert.assertEquals(text1, "Regular");
         System.out.println(filterCount.size());
+		Utilities.explicitlyWait(3000);
+
         
         
 		plpFilterRst.click();
-		Utilities.explicitlyWait(3000);
 		Utilities.waitForAjaxToFinish();
+		Utilities.explicitlyWait(3000);
+
 
 
 		plpFLFeature.click();
-		Utilities.explicitlyWait(3000);
 		Utilities.waitForAjaxToFinish();
+		Utilities.explicitlyWait(3000);
+
 
 
 		plpFLFeatureAbrasionRstnt.click();
-		Utilities.explicitlyWait(3000);
 		Utilities.waitForAjaxToFinish();
+		Utilities.explicitlyWait(3000);
+
 
 		String text2 = Fade.getText();
 		Assert.assertEquals(text2, "Fade-Resistant");
-		Utilities.explicitlyWait(3000);
 		Utilities.waitForAjaxToFinish();
+		Utilities.explicitlyWait(3000);
+
 
         System.out.println(filterCount.size());
 
@@ -140,13 +145,15 @@ public class ProductListPageObjects {
 
 
         plpFLFabric.click();
-		Utilities.explicitlyWait(3000);
 		Utilities.waitForAjaxToFinish();
+		Utilities.explicitlyWait(3000);
+
 
 
         plpFabricCtnBlend.click();
-		Utilities.explicitlyWait(3000);
 		Utilities.waitForAjaxToFinish();
+		Utilities.explicitlyWait(3000);
+
 
 		String text3 = Cotton.getText();
 		Assert.assertEquals(text3, "Cotton");
@@ -154,13 +161,12 @@ public class ProductListPageObjects {
         System.out.println(filterCount.size());
 
 		plpFilterRst.click();
-		Utilities.explicitlyWait(5000);
+		Utilities.explicitlyWait(3000);
 		Utilities.waitForAjaxToFinish();
 
 		plpResetAllFilter.click();
 		Utilities.waitForAjaxToFinish();
 
-		Utilities.explicitlyWait(3000);
 		Assert.assertEquals(0, filterCount.size());
 
         System.out.println(filterCount.size());

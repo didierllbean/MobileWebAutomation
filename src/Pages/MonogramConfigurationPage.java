@@ -24,7 +24,7 @@ public class MonogramConfigurationPage {
 	@FindBy(xpath = "//div[@class= 'monogramType' and contains(text(), 'Single Letter')]")
 	WebElement singleLetter;
 	
-	@FindBy(xpath ="//img[contains(@src,'//ecwebs01.llbean.com/images/monogramming/monogram_icon_heirloom_sl.png')]")
+	@FindBy(xpath ="//img[contains(@src,'/images/monogramming/monogram_icon_heirloom_sl.png')]")
 	WebElement heirLoom;
 	
 	@FindBy(xpath  = "//div[@class = 'monogrammingTypes ui-grid-b']")

@@ -26,7 +26,7 @@ public class CreateAccountTestCases extends TestCaseConfiguration
 		String Part[] = EmPass.split(";");
 
 		footer.footerSignOut();
-
+        
 		Login = footer.NavigateToLoginPage();
 		Utilities.explicitlyWait(5000);
 

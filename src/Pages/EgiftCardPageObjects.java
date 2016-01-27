@@ -13,7 +13,7 @@ public class EgiftCardPageObjects {
 	
 	WebDriver driver;
 	
-	@FindBy(xpath ="//div[@name='Wreath']")
+	@FindBy(xpath ="//div[@name='Night Tent']")
 	WebElement EgcType;
 	
 	@FindBy(xpath = "//input[@type='text']")

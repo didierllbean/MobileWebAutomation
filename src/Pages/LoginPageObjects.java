@@ -46,6 +46,7 @@ public class LoginPageObjects {
 	 *  @version 1.0, 11/30/2015
 	 */
 	public <T> T login(String email, String password, Class<T> expectedPage){
+		Utilities.explicitlyWait(3000);
 		Utilities.waitForAjaxToFinish();//wait for page to be fully loaded
 		
 		this.email.clear();
@@ -118,6 +119,19 @@ public class LoginPageObjects {
 			password.sendKeys(Pass1);		
 		}
 		
-		loginBttn.click();	     
+		loginBttn.click();	   
+		
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

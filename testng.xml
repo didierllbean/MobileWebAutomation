@@ -9,12 +9,13 @@
          <define name="fullRegression">
          	<!-- Use include to specify what you want to be part of the Full Regression group -->
             <include name="smokeTest"/>
+             <include name="brokenOrDevelopment"/>
+            
          </define>
 
          <run>
 			<!-- Use include to specify what you want to run or exclude to not run the mentioned group(s) -->
             <include name="fullRegression"/>
-            <exclude name="brokenOrDevelopment"/>
          </run>
       </groups>
     <packages>
