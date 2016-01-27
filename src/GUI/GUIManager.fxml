@@ -80,19 +80,26 @@
       </VBox>
    </left>
    <bottom>
-      <HBox BorderPane.alignment="CENTER">
+      <HBox maxHeight="22.0" minHeight="20.0" prefHeight="20.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Mobile Web Automation" />
          </children>
       </HBox>
    </bottom>
    <center>
-      <ScrollPane BorderPane.alignment="CENTER">
-         <content>
-            <VBox alignment="TOP_CENTER">
+      <AnchorPane BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <WebView fx:id="reportView" />
-                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="371.0">
+                  <WebView fx:id="reportView">
+                     <VBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </WebView>
+                  <HBox alignment="CENTER" maxHeight="40.0" minHeight="40.0">
                      <children>
                         <Button fx:id="loadReport" mnemonicParsing="false" onAction="#displayReport" text="Load Report" />
                         <Button mnemonicParsing="false" text="Refresh" />
@@ -100,13 +107,7 @@
                   </HBox>
                </children>
             </VBox>
-         </content>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </ScrollPane>
+         </children>
+      </AnchorPane>
    </center>
 </BorderPane>

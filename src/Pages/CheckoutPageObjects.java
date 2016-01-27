@@ -398,7 +398,7 @@ public class CheckoutPageObjects {
 	 *  @version 1.0, 11/24/2015
 	 */
 	public void fillDefaultPaymentData() {
-		Utilities.explicitlyWait(3000);
+		Utilities.explicitlyWait(5000);
 		Utilities.waitForAjaxToFinish();
 		paymentCreditCardTextfield.sendKeys("4444444444444448");
 		selectPaymentCCExpirationDate("12", "2030");

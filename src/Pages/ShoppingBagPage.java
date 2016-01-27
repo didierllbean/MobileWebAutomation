@@ -179,14 +179,13 @@ public class ShoppingBagPage {
 		try {
 			if(sbMergePopipOkButton.isDisplayed())		
 				sbMergePopipOkButton.click();
-			/*else
-				ExtentManager.getExtentTest().log(LogStatus.FAIL, "MergeMessageOkButton", "MissingElement");*/
 		
 		} catch (Exception e) {}
 	}
 
 	public ShoppingBagPage clearSB() {
 		Utilities.waitForAjaxToFinish();
+		Utilities.explicitlyWait(2000);
 		
 		Boolean notEmpty = !Utilities.isElementPresent(TestCaseConfiguration.driver.get(), By.id("un_cartempty"));
 		if(notEmpty)
@@ -199,17 +198,9 @@ public class ShoppingBagPage {
 			Utilities.explicitlyWait(3000);
 
 			if(sbClearLayerRemoveAll.isDisplayed()){
-				//ExtentManager.getExtentTest().log(LogStatus.PASS, "ClearSBLayerDisplayed ", "Success");
 				sbClearLayerRemoveAll.click();
 			}
-			/*else
-				ExtentManager.getExtentTest().log(LogStatus.FAIL, "ClearSBLayerDisplayed ", "Missing Clear SB Layer");*/
 		}
-		/*else {
-			ExtentManager.getExtentTest().log(LogStatus.FAIL, "SBAlredyEmpty", "There Are No Products To Remove");
-			Assert.assertTrue(notEmpty, "There Are No Products To Remove, the SB is already empty");
-		}*/
-		
 		
 		return PageFactory.initElements(TestCaseConfiguration.driver.get(), ShoppingBagPage.class);
 	}
